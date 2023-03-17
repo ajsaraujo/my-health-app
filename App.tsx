@@ -2,6 +2,8 @@ import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
+  const modules = ["Calculadoras", "Códigos", "Diário", "Medicamentos"];
+
   return (
     <View style={styles.container}>
       <StatusBar style="auto" />
@@ -15,6 +17,14 @@ export default function App() {
         <Text style={styles.letsTakeCareText}>
           Vamos cuidar da sua sáude hoje? ❤️
         </Text>
+
+        <View style={styles.modulesContainer}>
+          {modules.map((moduleName) => (
+            <View style={styles.moduleCard}>
+              <Text>{moduleName}</Text>
+            </View>
+          ))}
+        </View>
       </View>
     </View>
   );
@@ -48,5 +58,28 @@ const styles = StyleSheet.create({
   letsTakeCareText: {
     fontSize: 16,
     color: "#212121",
+  },
+  modulesContainer: {
+    marginTop: 32,
+    justifyContent: "center",
+    display: "flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    columnGap: 24,
+    rowGap: 24,
+  },
+  moduleCard: {
+    width: 108,
+    height: 108,
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+
+    borderRadius: 5,
+
+    shadowColor: "#171717",
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.15,
+    shadowRadius: 6,
   },
 });

@@ -9,6 +9,13 @@ export default function App() {
       <View style={styles.topBar}>
         <Text style={styles.topBarText}>My Health</Text>
       </View>
+
+      <View style={styles.contentContainer}>
+        <Text style={styles.helloText}>Olá, Fulano.</Text>
+        <Text style={styles.letsTakeCareText}>
+          Vamos cuidar da sua sáude hoje? ❤️
+        </Text>
+      </View>
     </View>
   );
 }
@@ -29,5 +36,17 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 24,
     fontWeight: "bold",
+  },
+  contentContainer: {
+    paddingHorizontal: 24,
+    paddingVertical: 24,
+  },
+  helloText: {
+    fontSize: 20,
+    marginBottom: 8,
+  },
+  letsTakeCareText: {
+    fontSize: 16,
+    color: "#212121",
   },
 });

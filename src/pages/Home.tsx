@@ -1,7 +1,17 @@
-import { StyleSheet, Text, View } from "react-native";
+import { NativeStackScreenProps } from "@react-navigation/native-stack";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { RouteParams } from "../../App";
+import { MyHealthModule } from "../modules";
 
-export default function Home() {
-  const modules = ["Calculadoras", "Códigos", "Diário", "Medicamentos"];
+type HomeProps = NativeStackScreenProps<RouteParams, "Home">;
+
+export default function Home(props: HomeProps) {
+  const modules: MyHealthModule[] = [
+    MyHealthModule.Calculators,
+    MyHealthModule.Codes,
+    MyHealthModule.Diary,
+    MyHealthModule.Remedies,
+  ];
 
   return (
     <View style={styles.container}>
@@ -13,9 +23,15 @@ export default function Home() {
 
         <View style={styles.modulesContainer}>
           {modules.map((moduleName) => (
-            <View style={styles.moduleCard}>
-              <Text>{moduleName}</Text>
-            </View>
+            <TouchableOpacity
+              onPress={() => {
+                props.navigation.navigate(moduleName);
+              }}
+            >
+              <View style={styles.moduleCard}>
+                <Text>{moduleName}</Text>
+              </View>
+            </TouchableOpacity>
           ))}
         </View>
       </View>

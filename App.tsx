@@ -1,8 +1,17 @@
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { MyHealthModule } from "./src/modules";
 import Home from "./src/pages/Home";
 
-const Stack = createNativeStackNavigator();
+export type RouteParams = {
+  Home: undefined;
+  [MyHealthModule.Calculators]: undefined;
+  [MyHealthModule.Codes]: undefined;
+  [MyHealthModule.Diary]: undefined;
+  [MyHealthModule.Remedies]: undefined;
+};
+
+const Stack = createNativeStackNavigator<RouteParams>();
 
 export default function App() {
   return (
@@ -15,11 +24,11 @@ export default function App() {
         },
       }}
     >
-      <Stack.Navigator initialRouteName="My Health">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen
-          name="My Health"
+          name="Home"
           component={Home}
-          options={{ headerTitleAlign: "center" }}
+          options={{ headerTitleAlign: "center", title: "My Health" }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

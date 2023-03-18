@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { View, Text } from "react-native";
-import { RouteParams } from "../../../App";
 import { MyHealthModule } from "../../modules";
+import { RouteParams } from "../../routeParams";
 
 type CalculatorsProps = NativeStackScreenProps<
   RouteParams,

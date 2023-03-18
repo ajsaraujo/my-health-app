@@ -1,7 +1,7 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { View, Text } from "react-native";
-import { RouteParams } from "../../../App";
 import { MyHealthModule } from "../../modules";
+import { RouteParams } from "../../routeParams";
 
 type CodesProps = NativeStackScreenProps<RouteParams, MyHealthModule.Codes>;
 

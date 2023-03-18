@@ -24,6 +24,7 @@ export default function Home(props: HomeProps) {
         <View style={styles.modulesContainer}>
           {modules.map((moduleName) => (
             <TouchableOpacity
+              key={moduleName}
               onPress={() => {
                 props.navigation.navigate(moduleName);
               }}

@@ -1,5 +1,8 @@
 import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import {
+  createNativeStackNavigator,
+  NativeStackNavigationOptions,
+} from "@react-navigation/native-stack";
 import { MyHealthModule } from "./src/modules";
 import Calculators from "./src/modules/calculators/Calculators";
 import Codes from "./src/modules/codes/Codes";
@@ -18,6 +21,10 @@ export default function App() {
     [MyHealthModule.Remedies]: Remedies,
   };
 
+  const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
+    headerTitleAlign: "center",
+  };
+
   return (
     <NavigationContainer
       theme={{
@@ -32,7 +39,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ headerTitleAlign: "center", title: "My Health" }}
+          options={{ ...TITLE_STYLES, title: "My Health" }}
         ></Stack.Screen>
 
         {Object.values(MyHealthModule).map((module) => (
@@ -40,6 +47,7 @@ export default function App() {
             key={module}
             name={module}
             component={components[module]}
+            options={TITLE_STYLES}
           ></Stack.Screen>
         ))}
       </Stack.Navigator>

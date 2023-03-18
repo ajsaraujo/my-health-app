@@ -1,7 +1,9 @@
 import { NativeStackScreenProps } from "@react-navigation/native-stack";
 import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { RouteParams } from "../../App";
 import { MyHealthModule } from "../modules";
+import { RouteParams } from "../routeParams";
+import { LIGHT_BLACK, LIGHT_GREY } from "../shared/colors";
+import { globalStyles } from "../shared/globalStyles";
 
 type HomeProps = NativeStackScreenProps<RouteParams, "Home">;
 
@@ -14,8 +16,8 @@ export default function Home(props: HomeProps) {
   ];
 
   return (
-    <View style={styles.container}>
-      <View style={styles.contentContainer}>
+    <View>
+      <View style={globalStyles.defaultContainer}>
         <Text style={styles.helloText}>Olá, Fulano.</Text>
         <Text style={styles.letsTakeCareText}>
           Vamos cuidar da sua saúde hoje? ❤️
@@ -41,33 +43,13 @@ export default function Home(props: HomeProps) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    width: "100%",
-  },
-  topBar: {
-    paddingVertical: 24,
-    width: "100%",
-    shadowColor: "#171717",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-  },
-  topBarText: {
-    textAlign: "center",
-    fontSize: 24,
-    fontWeight: "bold",
-  },
-  contentContainer: {
-    paddingHorizontal: 24,
-    paddingVertical: 24,
-  },
   helloText: {
     fontSize: 20,
     marginBottom: 8,
   },
   letsTakeCareText: {
     fontSize: 16,
-    color: "#212121",
+    color: LIGHT_BLACK,
   },
   modulesContainer: {
     marginTop: 32,
@@ -87,7 +69,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 5,
 
-    shadowColor: "#171717",
+    shadowColor: LIGHT_GREY,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 6,

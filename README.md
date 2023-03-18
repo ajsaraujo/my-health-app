@@ -2,19 +2,44 @@
 
 Front-end do aplicativo My Health, desenvolvido na disciplina Engenharia de Software II, no período 2022.2, sob a orientação da professora Adicineia.
 
+## Contribuindo
+
+1. Clique em "Fork" para criar um fork do repositório.
+2. Clone o fork do projeto em sua máquina.
+3. Crie uma nova branch cujo nome descreva as modificações que fará, exemplo: `git checkout -b refatorar-componente-tal`
+4. Faça suas alterações e commite-as no repositório local.
+5. Pushe as alterações para o repositório remoto — `git push origin HEAD`
+6. Abra um pull request do seu fork para este repositório.
+
 ## Configuração
 
 Você precisará ter o [Git](https://git-scm.com/) e o [Node.js](https://nodejs.org/en) instalados.
 
-1. Clone o repositório.
-2. Instale as dependências com `npm i`.
-3. Execute o projeto com `npx expo start`
-
-Digite `w Enter` para executar o servidor web. Você poderá visualizar o app em http://localhost:19006.
+1. Instale as dependências com `npm i`.
+2. Execute o projeto com `npx expo start`
+3. Digite `w Enter` para executar o servidor web. Você poderá visualizar o app em http://localhost:19006.
 
 ## Recomendações
 
 A seguir, algumas recomendações de estilo, a fim de manter a integridade conceitual do projeto.
+
+### Commits
+
+Procure escrever as mensagens de commit iniciando com letra maiúscula e com um verbo no infinitivo.
+
+Ou seja, algo como:
+
+- "Criar tela de..."
+- "Refatorar..."
+- "Adicionar..."
+- "Corrigir bug no..."
+
+E **não** algo como:
+
+- "corrigir..." -> começa com letra minúscula
+- "fix: alguma coisa..." -> não usaremos conventional commits!
+
+Se quiser fazer um commit intermediário ou não souber o que escrever na mensagem de commit, use a mensagem "WIP" (work in progress). Use com parcimônia.
 
 ### Nomeação
 

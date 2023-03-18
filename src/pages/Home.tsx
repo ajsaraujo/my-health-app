@@ -1,11 +1,11 @@
-import { NativeStackScreenProps } from "@react-navigation/native-stack";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { MyHealthModule } from "../modules";
-import { RouteParams } from "../routeParams";
-import { LIGHT_BLACK, LIGHT_GREY } from "../shared/colors";
-import { globalStyles } from "../shared/globalStyles";
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+import { MyHealthModule } from '../modules'
+import { RouteParams } from '../routeParams'
+import { LIGHT_BLACK, LIGHT_GREY } from '../shared/ui/colors'
+import { globalStyles } from '../shared/ui/globalStyles'
 
-type HomeProps = NativeStackScreenProps<RouteParams, "Home">;
+type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 
 export default function Home(props: HomeProps) {
   const modules: MyHealthModule[] = [
@@ -13,7 +13,7 @@ export default function Home(props: HomeProps) {
     MyHealthModule.Codes,
     MyHealthModule.Diary,
     MyHealthModule.Remedies,
-  ];
+  ]
 
   return (
     <View>
@@ -28,7 +28,7 @@ export default function Home(props: HomeProps) {
             <TouchableOpacity
               key={moduleName}
               onPress={() => {
-                props.navigation.navigate(moduleName);
+                props.navigation.navigate(moduleName)
               }}
             >
               <View style={styles.moduleCard}>
@@ -39,7 +39,7 @@ export default function Home(props: HomeProps) {
         </View>
       </View>
     </View>
-  );
+  )
 }
 
 const styles = StyleSheet.create({
@@ -53,19 +53,19 @@ const styles = StyleSheet.create({
   },
   modulesContainer: {
     marginTop: 32,
-    justifyContent: "center",
-    display: "flex",
-    flexDirection: "row",
-    flexWrap: "wrap",
+    justifyContent: 'center',
+    display: 'flex',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     columnGap: 24,
     rowGap: 24,
   },
   moduleCard: {
     width: 108,
     height: 108,
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
 
     borderRadius: 5,
 
@@ -74,4 +74,4 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.15,
     shadowRadius: 6,
   },
-});
+})

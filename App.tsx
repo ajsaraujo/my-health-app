@@ -1,17 +1,17 @@
-import { DefaultTheme, NavigationContainer } from "@react-navigation/native";
+import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
-} from "@react-navigation/native-stack";
-import { MyHealthModule } from "./src/modules";
-import Calculators from "./src/modules/calculators/Calculators";
-import Codes from "./src/modules/codes/Codes";
-import Diary from "./src/modules/diary/Diary";
-import Remedies from "./src/modules/remedies/Remedies";
-import Home from "./src/pages/Home";
-import { RouteParams } from "./src/routeParams";
+} from '@react-navigation/native-stack'
+import { MyHealthModule } from './src/modules'
+import Calculators from './src/modules/calculators/Calculators'
+import Codes from './src/modules/codes/Codes'
+import Diary from './src/modules/diary/Diary'
+import Remedies from './src/modules/remedies/Remedies'
+import Home from './src/pages/Home'
+import { RouteParams } from './src/routeParams'
 
-const Stack = createNativeStackNavigator<RouteParams>();
+const Stack = createNativeStackNavigator<RouteParams>()
 
 export default function App() {
   const components: Record<string, any> = {
@@ -19,11 +19,11 @@ export default function App() {
     [MyHealthModule.Codes]: Codes,
     [MyHealthModule.Diary]: Diary,
     [MyHealthModule.Remedies]: Remedies,
-  };
+  }
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
-    headerTitleAlign: "center",
-  };
+    headerTitleAlign: 'center',
+  }
 
   return (
     <NavigationContainer
@@ -31,7 +31,7 @@ export default function App() {
         ...DefaultTheme,
         colors: {
           ...DefaultTheme.colors,
-          background: "white",
+          background: 'white',
         },
       }}
     >
@@ -39,7 +39,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ ...TITLE_STYLES, title: "My Health" }}
+          options={{ ...TITLE_STYLES, title: 'My Health' }}
         ></Stack.Screen>
 
         {Object.values(MyHealthModule).map((module) => (
@@ -52,5 +52,5 @@ export default function App() {
         ))}
       </Stack.Navigator>
     </NavigationContainer>
-  );
+  )
 }

@@ -14,7 +14,7 @@ Digite `w Enter` para executar o servidor web. Você poderá visualizar o app em
 
 ## Recomendações
 
-A seguir, algumas recomendações de estilo, a fim de manter o projeto coerente.
+A seguir, algumas recomendações de estilo, a fim de manter a integridade conceitual do projeto.
 
 ### Nomeação
 

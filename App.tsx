@@ -7,7 +7,7 @@ import { MyHealthModule } from './src/modules'
 import Calculators from './src/modules/calculators/Calculators'
 import Codes from './src/modules/codes/Codes'
 import Diary from './src/modules/diary/Diary'
-import Remedies from './src/modules/remedies/Remedies'
+import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
 
@@ -18,7 +18,7 @@ export default function App() {
     [MyHealthModule.Calculators]: Calculators,
     [MyHealthModule.Codes]: Codes,
     [MyHealthModule.Diary]: Diary,
-    [MyHealthModule.Remedies]: Remedies,
+    [MyHealthModule.Medicines]: Medicines,
   }
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {

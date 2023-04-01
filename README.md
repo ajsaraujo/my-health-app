@@ -41,6 +41,8 @@ E **não** algo como:
 
 Se quiser fazer um commit intermediário ou não souber o que escrever na mensagem de commit, use a mensagem "WIP" (work in progress). Use com parcimônia.
 
+Quando abrir um Merge Request, se ele tiver muitos commits ou o histórico estiver desorganizado, marque a opção "Squash commits" para condensar todos os commits num só após a mesclagem. Isso facilita a leitura do histórico.
+
 ### Nomeação
 
 Procure nomear os símbolos (variáveis, constantes, funções, classes) em inglês. Quanto ao casing:

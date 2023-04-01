@@ -12,7 +12,7 @@ export default function Home(props: HomeProps) {
     MyHealthModule.Calculators,
     MyHealthModule.Codes,
     MyHealthModule.Diary,
-    MyHealthModule.Remedies,
+    MyHealthModule.Medicines,
   ]
 
   return (

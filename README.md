@@ -66,6 +66,8 @@ As pastas de `modules/` têm a seguinte estrutura:
 
 `shared/` tem uma estrutura similar. Até então, a única diferença é que ele tem uma pasta `ui/` que agrega `components/` e estilos/cores globais.
 
+Arquivos de teste devem ser criados imediatamente vizinhos ao arquivo que testam, e com o sufixo `spec`. Por exemplo, se você vai testar o código de um arquivo chamado `sum.ts`, o teste deve ser `sum.spec.ts`.
+
 ### Estilização
 
 Procure estilizar o nó raiz de cada página usando `globalStyles.defaultContainer`, para que as páginas tenham um recuo padrão.

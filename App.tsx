@@ -35,13 +35,16 @@ export default function App() {
         },
       }}
     >
+      {/* Definição de rotas do aplicativo */}
       <Stack.Navigator initialRouteName="Home">
+        {/* Tela principal (Home) */}
         <Stack.Screen
           name="Home"
           component={Home}
           options={{ ...TITLE_STYLES, title: 'My Health' }}
         ></Stack.Screen>
 
+        {/* Módulos */}
         {Object.values(MyHealthModule).map((module) => (
           <Stack.Screen
             key={module}

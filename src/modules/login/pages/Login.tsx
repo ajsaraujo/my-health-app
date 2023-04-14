@@ -1,33 +1,38 @@
 import {
   TextInput,
-  Image,
   Text,
   View,
-  Button,
   TouchableOpacity,
+  Pressable,
 } from 'react-native'
+import { globalStyles } from '../../../shared/ui/globalStyles'
 
 export function Login() {
   return (
     <View>
-      <Text>E-mail</Text>
-      <TextInput></TextInput>
-
-      <Image
+      {/* <Image
         source={require('/assets/my-health-logo.png')}
         style={{ width: 200, height: 200 }}
-      ></Image>
-      <Text>Senha</Text>
-      <TextInput></TextInput>
+      ></Image> */}
+
+      <View style={{ marginBottom: 16 }}>
+        <Text style={globalStyles.textInputLabel}>E-mail</Text>
+        <TextInput style={globalStyles.textInput}></TextInput>
+      </View>
+
+      <Text style={globalStyles.textInputLabel}>Senha</Text>
+      <TextInput style={globalStyles.textInput}></TextInput>
 
       <TouchableOpacity>
-        <Text>Esqueci minha senha</Text>
+        <Text style={globalStyles.textButton}>Esqueci minha senha</Text>
       </TouchableOpacity>
 
-      <Button title="Entrar"></Button>
+      <Pressable style={globalStyles.primaryButton}>
+        <Text style={globalStyles.primaryButton.text}>Entrar</Text>
+      </Pressable>
 
       <TouchableOpacity>
-        <Text>Cadastrar</Text>
+        <Text style={globalStyles.textButton}>Cadastrar</Text>
       </TouchableOpacity>
     </View>
   )

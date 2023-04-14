@@ -10,6 +10,7 @@ import Diary from './src/modules/diary/Diary'
 import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
+import { GREEN } from './src/shared/ui/colors'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -23,6 +24,10 @@ export default function App() {
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
     headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: GREEN,
+    },
+    headerTintColor: 'white',
   }
 
   return (

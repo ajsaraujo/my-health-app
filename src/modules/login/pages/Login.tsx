@@ -9,7 +9,15 @@ import { globalStyles } from '../../../shared/ui/globalStyles'
 
 export function Login() {
   return (
-    <View>
+    <View
+      style={{
+        padding: 50,
+        width: '100%',
+        height: '100%',
+        flexDirection: 'column',
+        justifyContent: 'center',
+      }}
+    >
       {/* <Image
         source={require('/assets/my-health-logo.png')}
         style={{ width: 200, height: 200 }}
@@ -23,16 +31,32 @@ export function Login() {
       <Text style={globalStyles.textInputLabel}>Senha</Text>
       <TextInput style={globalStyles.textInput}></TextInput>
 
-      <TouchableOpacity>
+      <TouchableOpacity style={{ marginTop: 8 }}>
         <Text style={globalStyles.textButton}>Esqueci minha senha</Text>
       </TouchableOpacity>
 
-      <Pressable style={globalStyles.primaryButton}>
-        <Text style={globalStyles.primaryButton.text}>Entrar</Text>
-      </Pressable>
+      <View
+        style={{
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: '100%',
+          marginTop: 56,
+        }}
+      >
+        <Pressable
+          style={{
+            ...globalStyles.primaryButton,
+            width: '60%',
+          }}
+        >
+          <Text style={globalStyles.primaryButton.text}>Entrar</Text>
+        </Pressable>
+      </View>
 
-      <TouchableOpacity>
-        <Text style={globalStyles.textButton}>Cadastrar</Text>
+      <TouchableOpacity style={{ marginTop: 16 }}>
+        <Text style={{ ...globalStyles.textButton, textAlign: 'center' }}>
+          Cadastrar
+        </Text>
       </TouchableOpacity>
     </View>
   )

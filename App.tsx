@@ -11,6 +11,7 @@ import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
+import { Login } from './src/modules/login/pages/Login'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -29,6 +30,8 @@ export default function App() {
     },
     headerTintColor: 'white',
   }
+
+  return <Login></Login>
 
   return (
     <NavigationContainer

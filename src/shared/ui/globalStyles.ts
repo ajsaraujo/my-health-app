@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { GREEN } from './colors'
+import { GREEN, RED } from './colors'
 
 export const globalStyles = StyleSheet.create({
   marginTop1: {
@@ -75,5 +75,10 @@ export const globalStyles = StyleSheet.create({
       color: 'white',
       fontSize: 21,
     },
+  },
+
+  errorMessage: {
+    fontSize: 16,
+    color: RED,
   },
 })

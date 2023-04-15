@@ -12,7 +12,7 @@ export function PasswordTextBox(props: TextBoxProps) {
 
   return (
     <View>
-      <TextBox secureTextEntry={!passwordIsVisible}></TextBox>
+      <TextBox {...props} secureTextEntry={!passwordIsVisible}></TextBox>
       <PasswordVisibilityButton
         passwordIsVisible={passwordIsVisible}
         onPress={togglePasswordVisibility}

@@ -21,5 +21,9 @@ export function PrimaryButton(props: PrimaryButtonProps) {
     ...props.style,
   }
 
-  return <Pressable style={mergedStyle}>{textNode}</Pressable>
+  return (
+    <Pressable {...props} style={mergedStyle}>
+      {textNode}
+    </Pressable>
+  )
 }

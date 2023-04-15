@@ -4,7 +4,9 @@ import { globalStyles } from '../globalStyles'
 import { GREEN } from '../colors'
 import { useState } from 'react'
 
-export function TextBox(props: TextInputProps) {
+export type TextBoxProps = TextInputProps
+
+export function TextBox(props: TextBoxProps) {
   const [focused, setFocused] = useState(false)
 
   function handleFocus() {

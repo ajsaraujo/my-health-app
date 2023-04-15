@@ -5,6 +5,7 @@ import { TextBox } from '../../../shared/ui/components/TextBox'
 import { TextButtonUnderline } from '../../../shared/ui/components/TextButton'
 import { globalStyles } from '../../../shared/ui/globalStyles'
 import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
+import { PasswordTextBox } from '../../../shared/ui/components/PasswordTextBox'
 
 export function Login() {
   return (
@@ -22,7 +23,7 @@ export function Login() {
       </FormField>
 
       <FormField label="Senha">
-        <TextBox></TextBox>
+        <PasswordTextBox></PasswordTextBox>
       </FormField>
 
       <TextButtonUnderline style={globalStyles.marginTop1}>

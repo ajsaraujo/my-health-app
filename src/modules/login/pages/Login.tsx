@@ -1,12 +1,7 @@
-import {
-  TextInput,
-  Text,
-  View,
-  TouchableOpacity,
-  Pressable,
-} from 'react-native'
+import { Text, View, TouchableOpacity, Pressable } from 'react-native'
 import { globalStyles } from '../../../shared/ui/globalStyles'
 import { FormField } from '../../../shared/ui/components/FormField'
+import { TextBox } from '../../../shared/ui/components/TextBox'
 
 export function Login() {
   return (
@@ -20,11 +15,11 @@ export function Login() {
       }}
     >
       <FormField style={{ marginBottom: 16 }} label="E-mail">
-        <TextInput style={globalStyles.textInput}></TextInput>
+        <TextBox></TextBox>
       </FormField>
 
       <FormField label="Senha">
-        <TextInput style={globalStyles.textInput}></TextInput>
+        <TextBox></TextBox>
       </FormField>
 
       <TouchableOpacity style={{ marginTop: 8 }}>

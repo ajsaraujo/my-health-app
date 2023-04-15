@@ -1,4 +1,4 @@
-import { Pressable, Text, View } from 'react-native'
+import { View } from 'react-native'
 
 import { FormField } from '../../../shared/ui/components/FormField'
 import { TextBox } from '../../../shared/ui/components/TextBox'

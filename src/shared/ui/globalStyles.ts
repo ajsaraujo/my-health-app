@@ -44,6 +44,7 @@ export const globalStyles = StyleSheet.create({
     borderRadius: 14,
     width: '100%',
     padding: 8,
+    outlineStyle: 'none',
   },
 
   textInputLabel: {

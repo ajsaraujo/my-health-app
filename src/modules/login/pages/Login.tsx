@@ -54,6 +54,7 @@ export function Login(props: LoginProps) {
     >
       <FormField style={globalStyles.marginBottom2} label="E-mail">
         <TextBox
+          inputMode="email"
           value={formValues.email}
           onChangeText={handleChange('email')}
         ></TextBox>

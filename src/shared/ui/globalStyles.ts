@@ -33,6 +33,17 @@ export const globalStyles = StyleSheet.create({
     marginTop: 40,
   },
 
+  centerHorizontally: {
+    width: '100%',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  centerVertically: {
+    flexDirection: 'column',
+    height: '100%',
+    justifyContent: 'center',
+  },
+
   defaultContainer: {
     paddingHorizontal: 24,
     paddingVertical: 24,

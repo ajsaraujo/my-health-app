@@ -25,6 +25,10 @@ export function Login(props: LoginProps) {
 
   const [submitted, setSubmitted] = useState(false)
 
+  /**
+   * TO DO: Pesquisar se existem formas melhores de capturar mudanças
+   * em formulários. Se não houver, extrair essa função para a área compartilhada.
+   */
   function handleChange(field: keyof LoginForm) {
     return function handlerFn(value: string) {
       setFormValues({
@@ -47,9 +51,7 @@ export function Login(props: LoginProps) {
       style={{
         padding: 50,
         width: '100%',
-        height: '100%',
-        flexDirection: 'column',
-        justifyContent: 'center',
+        ...globalStyles.centerVertically,
       }}
     >
       <FormField style={globalStyles.marginBottom2} label="E-mail">
@@ -73,9 +75,7 @@ export function Login(props: LoginProps) {
 
       <View
         style={{
-          alignItems: 'center',
-          justifyContent: 'center',
-          width: '100%',
+          ...globalStyles.centerHorizontally,
           marginTop: 56,
         }}
       >

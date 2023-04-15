@@ -1,7 +1,9 @@
-import { Text, View, TouchableOpacity, Pressable } from 'react-native'
-import { globalStyles } from '../../../shared/ui/globalStyles'
+import { Pressable, Text, View } from 'react-native'
+
 import { FormField } from '../../../shared/ui/components/FormField'
 import { TextBox } from '../../../shared/ui/components/TextBox'
+import { TextButtonUnderline } from '../../../shared/ui/components/TextButton'
+import { globalStyles } from '../../../shared/ui/globalStyles'
 
 export function Login() {
   return (
@@ -22,9 +24,9 @@ export function Login() {
         <TextBox></TextBox>
       </FormField>
 
-      <TouchableOpacity style={{ marginTop: 8 }}>
-        <Text style={globalStyles.textButton}>Esqueci minha senha</Text>
-      </TouchableOpacity>
+      <TextButtonUnderline style={{ marginTop: 8 }}>
+        Esqueci minha senha
+      </TextButtonUnderline>
 
       <View
         style={{
@@ -44,11 +46,12 @@ export function Login() {
         </Pressable>
       </View>
 
-      <TouchableOpacity style={{ marginTop: 16 }}>
-        <Text style={{ ...globalStyles.textButton, textAlign: 'center' }}>
-          Cadastrar
-        </Text>
-      </TouchableOpacity>
+      <TextButtonUnderline
+        style={{ marginTop: 16 }}
+        textStyle={{ textAlign: 'center' }}
+      >
+        Cadastrar
+      </TextButtonUnderline>
     </View>
   )
 }

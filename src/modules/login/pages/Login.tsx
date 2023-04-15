@@ -17,7 +17,7 @@ export function Login() {
         justifyContent: 'center',
       }}
     >
-      <FormField style={{ marginBottom: 16 }} label="E-mail">
+      <FormField style={globalStyles.marginBottom2} label="E-mail">
         <TextBox></TextBox>
       </FormField>
 
@@ -25,7 +25,7 @@ export function Login() {
         <TextBox></TextBox>
       </FormField>
 
-      <TextButtonUnderline style={{ marginTop: 8 }}>
+      <TextButtonUnderline style={globalStyles.marginTop1}>
         Esqueci minha senha
       </TextButtonUnderline>
 
@@ -41,7 +41,7 @@ export function Login() {
       </View>
 
       <TextButtonUnderline
-        style={{ marginTop: 16 }}
+        style={globalStyles.marginTop2}
         textStyle={{ textAlign: 'center' }}
       >
         Cadastrar

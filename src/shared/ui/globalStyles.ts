@@ -2,6 +2,37 @@ import { StyleSheet } from 'react-native'
 import { GREEN } from './colors'
 
 export const globalStyles = StyleSheet.create({
+  marginTop1: {
+    marginTop: 8,
+  },
+  marginTop2: {
+    marginTop: 16,
+  },
+  marginTop3: {
+    marginTop: 24,
+  },
+  marginTop4: {
+    marginTop: 32,
+  },
+  marginTop5: {
+    marginTop: 40,
+  },
+  marginBottom1: {
+    marginBottom: 8,
+  },
+  marginBottom2: {
+    marginBottom: 16,
+  },
+  marginBottom3: {
+    marginBottom: 24,
+  },
+  marginBottom4: {
+    marginBottom: 32,
+  },
+  marginBottom5: {
+    marginTop: 40,
+  },
+
   defaultContainer: {
     paddingHorizontal: 24,
     paddingVertical: 24,

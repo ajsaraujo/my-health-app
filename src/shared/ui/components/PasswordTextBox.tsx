@@ -3,6 +3,10 @@ import { TextBox, TextBoxProps } from './TextBox'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useState } from 'react'
 
+/**
+ * Campo de entrada para senhas. Esconde o conteúdo digitado,
+ * mas permite visualizá-lo clicando no ícone de 👁️
+ */
 export function PasswordTextBox(props: TextBoxProps) {
   const [passwordIsVisible, setPasswordVisibility] = useState(false)
 

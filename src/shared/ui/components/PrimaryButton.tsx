@@ -8,6 +8,9 @@ type PrimaryButtonProps = PropsWithChildren<
   }
 >
 
+/**
+ * Botão primário, com fundo em cor sólida.
+ */
 export function PrimaryButton(props: PrimaryButtonProps) {
   const textNode =
     typeof props.children === 'string' ? (

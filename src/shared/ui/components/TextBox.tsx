@@ -6,6 +6,9 @@ import { useState } from 'react'
 
 export type TextBoxProps = TextInputProps
 
+/**
+ * Campo de entrada de texto.
+ */
 export function TextBox(props: TextBoxProps) {
   const [focused, setFocused] = useState(false)
 

@@ -11,6 +11,9 @@ const DEFAULT_VALUES: TextButtonProps = {
   children: '',
 }
 
+/**
+ * Botão textual, sem cor de fundo.
+ */
 export function TextButton(props: TextButtonProps = DEFAULT_VALUES) {
   return (
     <TouchableOpacity {...props}>
@@ -26,6 +29,9 @@ export function TextButton(props: TextButtonProps = DEFAULT_VALUES) {
   )
 }
 
+/**
+ * Botão textual decorado com um underline.
+ */
 export function TextButtonUnderline(props: TextButtonProps) {
   const mergedStyle: TextStyle = {
     ...props.textStyle,

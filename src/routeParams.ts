@@ -1,9 +1,12 @@
 import { MyHealthModule } from './modules'
 
+type NO_PARAMS = undefined
+
 export type RouteParams = {
-  Home: undefined
-  [MyHealthModule.Calculators]: undefined
-  [MyHealthModule.Codes]: undefined
-  [MyHealthModule.Diary]: undefined
-  [MyHealthModule.Medicines]: undefined
+  Login: NO_PARAMS
+  Home: NO_PARAMS
+  [MyHealthModule.Calculators]: NO_PARAMS
+  [MyHealthModule.Codes]: NO_PARAMS
+  [MyHealthModule.Diary]: NO_PARAMS
+  [MyHealthModule.Medicines]: NO_PARAMS
 }

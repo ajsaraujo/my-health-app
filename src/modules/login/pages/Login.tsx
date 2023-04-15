@@ -7,13 +7,17 @@ import { globalStyles } from '../../../shared/ui/globalStyles'
 import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
 import { PasswordTextBox } from '../../../shared/ui/components/PasswordTextBox'
 import { useState } from 'react'
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { RouteParams } from '../../../routeParams'
 
 type LoginForm = {
   email: string
   password: string
 }
 
-export function Login() {
+type LoginProps = NativeStackScreenProps<RouteParams, 'Login'>
+
+export function Login(props: LoginProps) {
   const [formValues, setFormValues] = useState<LoginForm>({
     email: '',
     password: '',
@@ -32,6 +36,10 @@ export function Login() {
 
   function handleLogin() {
     setSubmitted(true)
+
+    if (validateForm(formValues).valid) {
+      props.navigation.replace('Home')
+    }
   }
 
   return (
@@ -94,27 +102,24 @@ function LoginFormWarnings(props: {
   loginForm: LoginForm
   submitted: boolean
 }) {
+  const { loginForm, submitted } = props
+
+  const errorMessage = submitted ? validateForm(loginForm).message : ' '
+
   return (
     <View style={globalStyles.marginTop3}>
-      <Text style={globalStyles.errorMessage}>{getErrorMessage(props)}</Text>
+      <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
     </View>
   )
 }
 
-function getErrorMessage(props: { loginForm: LoginForm; submitted: boolean }) {
-  // Usamos um espaço ao invés de string vazia para
-  // que o elemento ocupe espaço na tela. Assim, o container
-  // não muda de tamanho quando a mensagem de erro aparecer.
-  const NO_ERROR_MESSAGE = ' '
-
-  if (!props.submitted) {
-    return NO_ERROR_MESSAGE
+function validateForm(form: LoginForm) {
+  if (!form.email || !form.password) {
+    return { valid: false, message: 'Por favor, informe seu e-mail e senha.' }
   }
 
-  const { email, password } = props.loginForm
-  if (!email || !password) {
-    return 'Por favor, informe seu e-mail e senha.'
-  }
-
-  return NO_ERROR_MESSAGE
+  // Retornamos um espaço em branco ao invés de uma string vazia
+  // para que o elemento ocupe espaço na página mesmo quando não houver erro.
+  // Assim, quando um erro aparecer, a página não mudará de tamanho.
+  return { valid: true, message: ' ' }
 }

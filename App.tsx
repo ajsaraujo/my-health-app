@@ -31,8 +31,6 @@ export default function App() {
     headerTintColor: 'white',
   }
 
-  return <Login></Login>
-
   return (
     <NavigationContainer
       theme={{
@@ -44,7 +42,14 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
+        {/* Tela de login */}
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+
         {/* Tela principal (Home) */}
         <Stack.Screen
           name="Home"

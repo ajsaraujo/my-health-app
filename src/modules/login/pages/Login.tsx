@@ -6,6 +6,7 @@ import {
   Pressable,
 } from 'react-native'
 import { globalStyles } from '../../../shared/ui/globalStyles'
+import { FormField } from '../../../shared/ui/components/FormField'
 
 export function Login() {
   return (
@@ -18,18 +19,13 @@ export function Login() {
         justifyContent: 'center',
       }}
     >
-      {/* <Image
-        source={require('/assets/my-health-logo.png')}
-        style={{ width: 200, height: 200 }}
-      ></Image> */}
-
-      <View style={{ marginBottom: 16 }}>
-        <Text style={globalStyles.textInputLabel}>E-mail</Text>
+      <FormField style={{ marginBottom: 16 }} label="E-mail">
         <TextInput style={globalStyles.textInput}></TextInput>
-      </View>
+      </FormField>
 
-      <Text style={globalStyles.textInputLabel}>Senha</Text>
-      <TextInput style={globalStyles.textInput}></TextInput>
+      <FormField label="Senha">
+        <TextInput style={globalStyles.textInput}></TextInput>
+      </FormField>
 
       <TouchableOpacity style={{ marginTop: 8 }}>
         <Text style={globalStyles.textButton}>Esqueci minha senha</Text>

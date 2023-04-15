@@ -4,6 +4,7 @@ import { FormField } from '../../../shared/ui/components/FormField'
 import { TextBox } from '../../../shared/ui/components/TextBox'
 import { TextButtonUnderline } from '../../../shared/ui/components/TextButton'
 import { globalStyles } from '../../../shared/ui/globalStyles'
+import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
 
 export function Login() {
   return (
@@ -36,14 +37,7 @@ export function Login() {
           marginTop: 56,
         }}
       >
-        <Pressable
-          style={{
-            ...globalStyles.primaryButton,
-            width: '60%',
-          }}
-        >
-          <Text style={globalStyles.primaryButton.text}>Entrar</Text>
-        </Pressable>
+        <PrimaryButton style={{ width: '60%' }}>Entrar</PrimaryButton>
       </View>
 
       <TextButtonUnderline

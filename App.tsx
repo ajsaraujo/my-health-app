@@ -10,6 +10,8 @@ import Diary from './src/modules/diary/Diary'
 import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
+import { GREEN } from './src/shared/ui/colors'
+import { Login } from './src/modules/login/pages/Login'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -23,6 +25,10 @@ export default function App() {
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
     headerTitleAlign: 'center',
+    headerStyle: {
+      backgroundColor: GREEN,
+    },
+    headerTintColor: 'white',
   }
 
   return (
@@ -36,7 +42,14 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Home">
+      <Stack.Navigator initialRouteName="Login">
+        {/* Tela de login */}
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+
         {/* Tela principal (Home) */}
         <Stack.Screen
           name="Home"

@@ -16,8 +16,7 @@ Front-end do aplicativo My Health, desenvolvido na disciplina Engenharia de Soft
 Você precisará ter o [Git](https://git-scm.com/) e o [Node.js](https://nodejs.org/en) instalados.
 
 1. Instale as dependências com `npm i`.
-2. Execute o projeto com `npx expo start`
-3. Digite `w Enter` para executar o servidor web. Você poderá visualizar o app em http://localhost:19006.
+2. Execute o projeto no seu navegador com `npm run web`.
 
 ## Recomendações
 

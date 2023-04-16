@@ -8,7 +8,6 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'prettier',
   ],
-  overrides: [],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 'latest',
@@ -18,5 +17,6 @@ module.exports = {
   rules: {
     indent: ['error', 'spaces'],
     'linebreak-style': 'off',
+    'func-style': ['warning', 'declaration'],
   },
 }

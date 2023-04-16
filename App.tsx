@@ -12,6 +12,7 @@ import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
+import CodeQuery from './src/modules/codes/pages/Consulta'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -57,7 +58,7 @@ export default function App() {
           options={{ ...TITLE_STYLES, title: 'My Health' }}
         ></Stack.Screen>
 
-        {/* Módulos */}
+        {/* Pontos de entrada dos módulos */}
         {Object.values(MyHealthModule).map((module) => (
           <Stack.Screen
             key={module}
@@ -66,6 +67,9 @@ export default function App() {
             options={TITLE_STYLES}
           ></Stack.Screen>
         ))}
+
+        {/* Telas do módulo de códigos */}
+        <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )

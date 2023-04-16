@@ -18,6 +18,34 @@ Você precisará ter o [Git](https://git-scm.com/) e o [Node.js](https://nodejs.
 1. Instale as dependências com `npm i`.
 2. Execute o projeto no seu navegador com `npm run web`.
 
+## Adicionando novas páginas ao app
+
+Para adicionar novas páginas/rotas ao app, você deve seguir estes passos:
+
+Primeiro, adicione a rota em `RouteParams`, especificando o tipo de input que ela recebe. Caso não seja necessário input, use o tipo `NO_PARAMS`.
+
+```diff
+export type RouteParams = {
+   // Rotas existentes...
++  MinhaNovaRota: TipoInput
+}
+```
+
+Agora, na definição do seu componente, você deve tipar as props de acordo com o nome da rota que você colocou em `RouteParams`:
+
+```tsx
+type ComponentProps = NativeStackScreenProps<RouteParams, 'MinhaNovaRota'>
+
+export default function MeuNovoComponent(props: ComponentProps) {}
+```
+
+Finalmente, adicione a tela em `App.tsx`:
+
+```diff
+  {*/ Telas do seu módulos */}
++ <Stack.Screen name="Nova tela" component={MeuNovoComponent}></Stack.Screen>
+```
+
 ## Recomendações
 
 A seguir, algumas recomendações de estilo, a fim de manter a integridade conceitual do projeto.

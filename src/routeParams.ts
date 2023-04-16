@@ -5,9 +5,17 @@ type NO_PARAMS = undefined
 export type RouteParams = {
   Login: NO_PARAMS
   Home: NO_PARAMS
-  Consulta: { name: string }
+
+  // Calculadoras
   [MyHealthModule.Calculators]: NO_PARAMS
-  [MyHealthModule.Codes]: NO_PARAMS
+
+  // Diário
   [MyHealthModule.Diary]: NO_PARAMS
+
+  // Medicamentos
   [MyHealthModule.Medicines]: NO_PARAMS
+
+  // Códigos
+  [MyHealthModule.Codes]: NO_PARAMS
+  Consulta: { name: string }
 }

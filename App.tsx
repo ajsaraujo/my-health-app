@@ -12,7 +12,7 @@ import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
-import Consulta from './src/modules/codes/pages/Consulta'
+import CodeQuery from './src/modules/codes/pages/Consulta'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -69,7 +69,7 @@ export default function App() {
         ))}
 
         {/* Telas do módulo de códigos */}
-        <Stack.Screen name="Consulta" component={Consulta}></Stack.Screen>
+        <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )

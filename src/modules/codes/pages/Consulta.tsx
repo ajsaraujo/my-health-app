@@ -1,34 +1,27 @@
 import React from 'react'
 import { Text, View, Button, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
+import { globalStyles } from '../../../shared/ui/globalStyles'
 
-const Consulta = () => {
+export function CodeQuery() {
   const navigation = useNavigation()
 
   return (
     <View style={{ alignItems: 'center' }}>
       <Text>MyHealth</Text>
       <Text>CID-10</Text>
-      <TouchableOpacity
-        style={{ padding: 8, backgroundColor: 'green' }}
-        onPress={() => {}}
-      >
-        <Text>Adicionar aos Favoritos</Text>
-      </TouchableOpacity>
-      <TouchableOpacity
-        style={{
-          alignItems: 'center',
-          width: 180,
-          marginTop: 12,
-          padding: 8,
-          backgroundColor: 'green',
-        }}
+
+      <PrimaryButton>Adicionar aos Favoritos</PrimaryButton>
+
+      <PrimaryButton
         onPress={() => navigation.goBack()}
+        style={globalStyles.marginTop2}
       >
-        <Text>Voltar</Text>
-      </TouchableOpacity>
+        Voltar
+      </PrimaryButton>
     </View>
   )
 }
 
-export default Consulta
+export default CodeQuery

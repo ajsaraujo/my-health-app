@@ -1,10 +1,14 @@
 import React from 'react'
 import { Text, View, Button, TouchableOpacity, TextInput } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { propsStack } from '../routes/Stack/Models'
+import { RouteParams } from '../../../routeParams'
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
+
+type UseNavigationType = NativeStackNavigationProp<RouteParams>
 
 const Home = () => {
-  const navigation = useNavigation<propsStack>()
+  const navigation = useNavigation<UseNavigationType>()
+
   return (
     <View
       style={{

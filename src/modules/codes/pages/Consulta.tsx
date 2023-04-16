@@ -1,7 +1,6 @@
 import React from 'react'
 import { Text, View, Button, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
-import { propsNavigationStack } from '../routes/Stack/Models'
 
 const Consulta = () => {
   const navigation = useNavigation()

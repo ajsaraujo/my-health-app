@@ -12,6 +12,7 @@ import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
+import Consulta from './src/modules/codes/pages/Consulta'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -56,6 +57,8 @@ export default function App() {
           component={Home}
           options={{ ...TITLE_STYLES, title: 'My Health' }}
         ></Stack.Screen>
+
+        <Stack.Screen name="Consulta" component={Consulta}></Stack.Screen>
 
         {/* Módulos */}
         {Object.values(MyHealthModule).map((module) => (

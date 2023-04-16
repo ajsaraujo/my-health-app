@@ -1,17 +1,25 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
+import { Text, View } from 'react-native'
+
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
+import { GREEN } from '../../shared/ui/colors'
+import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
+import { TextBox } from '../../shared/ui/components/TextBox'
+import { globalStyles } from '../../shared/ui/globalStyles'
 
 type CodesProps = NativeStackScreenProps<RouteParams, MyHealthModule.Codes>
 
 export default function Codes(props: CodesProps) {
   const { navigation } = props
 
+  function search() {
+    navigation.navigate('Consulta', { name: 'Consulta' })
+  }
+
   return (
     <View
       style={{
-        backgroundColor: '#258F45',
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
@@ -19,26 +27,13 @@ export default function Codes(props: CodesProps) {
     >
       <Text>MyHealth</Text>
       <Text>Módulo Consulta de Códigos</Text>
-      <TextInput
-        style={{
-          marginTop: 12,
-          backgroundColor: 'grey',
-          padding: 10,
-          fontSize: 30,
-        }}
+
+      <TextBox
+        style={globalStyles.marginTop1}
         placeholder="Digite o código"
-        placeholderTextColor="#272626"
-      />
-      <TouchableOpacity
-        style={{ padding: 20, backgroundColor: 'green' }}
-        onPress={() =>
-          navigation.navigate('Consulta', {
-            name: 'Consulta',
-          })
-        }
-      >
-        <Text>Buscar</Text>
-      </TouchableOpacity>
+      ></TextBox>
+
+      <PrimaryButton onPress={search}>Buscar</PrimaryButton>
     </View>
   )
 }

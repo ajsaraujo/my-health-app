@@ -13,7 +13,7 @@ import { MyHealthModule } from '../../modules'
 import { GREEN } from '../../shared/ui/colors'
 import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
 
-type DiaryProps = NativeStackScreenProps<RouteParams, MyHealthModule.Diary>
+type DiaryProps = NativeStackScreenProps<RouteParams, 'RegistersDiary'>
 
 export default function RegistersDiary(props: DiaryProps) {
   return (
@@ -90,6 +90,7 @@ const styles = StyleSheet.create({
   textList: {
     fontSize: 16,
     marginLeft: 3,
+    fontWeight: 'bold',
   },
   buttonContainer: {
     alignItems: 'center',

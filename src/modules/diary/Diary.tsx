@@ -1,19 +1,49 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
+import {
+  View,
+  Text,
+  StyleSheet,
+  TouchableOpacity,
+  Dimensions,
+} from 'react-native'
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
 import { globalStyles } from '../../shared/ui/globalStyles'
-import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
+import { MenuButton } from '../../shared/ui/components/MenuButton'
+import lixeira from '../../../assets/garbageIcon.png'
+import relatorio from '../../../assets/reportIcon.png'
+import novoRegistro from '../../../assets/newRegisterIcon.png'
+import visualizarRegistros from '../../../assets/lookRegistersIcon.png'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, MyHealthModule.Diary>
 
 export default function Diary(props: DiaryProps) {
   const menuItens = [
-    { label: 'Novo registro', route: 'NewRegister', key: 1, id: 1 },
-    { label: 'Visualizar registros', route: 'RegistersDiary', key: 2, id: 2 },
-    { label: 'Gerar relatório', route: '', key: 3, id: 3 },
-    { label: 'Lixeira', route: '', key: 4, id: 4 },
+    {
+      label: 'Novo registro',
+      route: 'RegistersDiary',
+      icon: novoRegistro,
+      key: 1,
+      id: 1,
+    },
+    {
+      label: 'Visualizar registros',
+      route: 'RegistersDiary',
+      icon: visualizarRegistros,
+      key: 2,
+      id: 2,
+    },
+    {
+      label: 'Gerar relatório',
+      route: 'RegistersDiary',
+      icon: relatorio,
+      key: 3,
+      id: 3,
+    },
+    { label: 'Lixeira', route: 'RegistersDiary', icon: lixeira, key: 4, id: 4 },
   ]
+
+  const getWindowSize = () => {}
 
   return (
     <View style={globalStyles.defaultContainer}>
@@ -22,12 +52,12 @@ export default function Diary(props: DiaryProps) {
       </View>
       <View style={styles.modulesContainer}>
         {menuItens.map((item) => (
-          <PrimaryButton
-            style={{ width: '35%', height: '45%' }}
+          <MenuButton
             onPress={() => props.navigation.navigate(item.route)}
-          >
-            {item.label}
-          </PrimaryButton>
+            route={item.route}
+            text={item.label}
+            icon={item.icon}
+          />
         ))}
       </View>
     </View>

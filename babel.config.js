@@ -11,6 +11,9 @@ module.exports = function (api) {
           alias: {
             '@shared': './src/shared',
             '@modules': './src/modules',
+            // Para adicionar novos path mappings, lembre-se
+            // também de alterar o tsconfig.json para que o editor
+            // de texto reconheça os mapeamentos
           },
         },
       ],

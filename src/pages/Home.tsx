@@ -1,10 +1,13 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
+
+import { LIGHT_BLACK, LIGHT_GREY } from '@shared/ui/colors'
+import { StyledText } from '@shared/ui/components'
+import { globalStyles } from '@shared/ui/globalStyles'
+
+import { StyleSheet, TouchableOpacity, View } from 'react-native'
+
 import { MyHealthModule } from '../modules'
 import { RouteParams } from '../routeParams'
-import { LIGHT_BLACK, LIGHT_GREY } from '../shared/ui/colors'
-import { globalStyles } from '../shared/ui/globalStyles'
-import { StyledText } from '../shared/ui/components/StyledText'
 
 type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 

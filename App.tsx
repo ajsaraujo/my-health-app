@@ -14,6 +14,7 @@ import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
 import RegisterDiary from './src/modules/diary/RegistersDiary'
 import RegisterNote from './src/modules/diary/RegisterNote'
+import GarbageDiary from './src/modules/diary/GarbageDiary'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -80,6 +81,12 @@ export default function App() {
           key={'RegisterNote'}
           name={'RegisterNote'}
           component={RegisterNote}
+          options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
+        ></Stack.Screen>
+        <Stack.Screen
+          key={'GarbageDiary'}
+          name={'GarbageDiary'}
+          component={GarbageDiary}
           options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
         ></Stack.Screen>
       </Stack.Navigator>

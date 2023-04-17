@@ -40,7 +40,7 @@ export default function Diary(props: DiaryProps) {
       key: 3,
       id: 3,
     },
-    { label: 'Lixeira', route: 'RegistersDiary', icon: lixeira, key: 4, id: 4 },
+    { label: 'Lixeira', route: 'GarbageDiary', icon: lixeira, key: 4, id: 4 },
   ]
 
   const getWindowSize = () => {}

@@ -10,4 +10,5 @@ export type RouteParams = {
   [MyHealthModule.Diary]: NO_PARAMS
   [MyHealthModule.Medicines]: NO_PARAMS
   RegistersDiary: NO_PARAMS
+  RegisterNote: NO_PARAMS
 }

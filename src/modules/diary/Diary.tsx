@@ -21,7 +21,7 @@ export default function Diary(props: DiaryProps) {
   const menuItens = [
     {
       label: 'Novo registro',
-      route: 'RegistersDiary',
+      route: 'RegisterNote',
       icon: novoRegistro,
       key: 1,
       id: 1,

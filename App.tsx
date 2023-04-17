@@ -13,6 +13,7 @@ import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
 import RegisterDiary from './src/modules/diary/RegistersDiary'
+import RegisterNote from './src/modules/diary/RegisterNote'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -67,10 +68,18 @@ export default function App() {
             options={TITLE_STYLES}
           ></Stack.Screen>
         ))}
+
         <Stack.Screen
           key={'RegistersDiary'}
           name={'RegistersDiary'}
           component={RegisterDiary}
+          options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
+        ></Stack.Screen>
+
+        <Stack.Screen
+          key={'RegisterNote'}
+          name={'RegisterNote'}
+          component={RegisterNote}
           options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
         ></Stack.Screen>
       </Stack.Navigator>

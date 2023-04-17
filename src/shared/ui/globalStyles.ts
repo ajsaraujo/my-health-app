@@ -56,7 +56,6 @@ export const globalStyles = StyleSheet.create({
     width: '100%',
     padding: 8,
     outlineStyle: 'none',
-    fontFamily: 'Inter-Regular',
   },
 
   textInputLabel: {
@@ -64,7 +63,6 @@ export const globalStyles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 19,
     marginBottom: 8,
-    fontFamily: 'Inter-Regular',
   },
 
   textButton: {
@@ -72,7 +70,6 @@ export const globalStyles = StyleSheet.create({
     textDecorationLine: 'underline',
     fontWeight: '500',
     fontSize: 18,
-    fontFamily: 'Inter-Regular',
   },
 
   primaryButton: {
@@ -88,7 +85,6 @@ export const globalStyles = StyleSheet.create({
     text: {
       color: 'white',
       fontSize: 21,
-      fontFamily: 'Inter-Regular',
     },
   },
 

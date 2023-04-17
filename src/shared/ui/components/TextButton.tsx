@@ -1,6 +1,7 @@
 import { TouchableOpacity, Text, TextStyle } from 'react-native'
 import { TouchableOpacityProps } from 'react-native/types'
 import { globalStyles } from '../globalStyles'
+import { StyledText } from './StyledText'
 
 type TextButtonProps = TouchableOpacityProps & {
   children: string
@@ -17,14 +18,14 @@ const DEFAULT_VALUES: TextButtonProps = {
 export function TextButton(props: TextButtonProps = DEFAULT_VALUES) {
   return (
     <TouchableOpacity {...props}>
-      <Text
+      <StyledText
         style={{
           ...globalStyles.textButton,
           ...props.textStyle,
         }}
       >
         {props.children}
-      </Text>
+      </StyledText>
     </TouchableOpacity>
   )
 }

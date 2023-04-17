@@ -1,7 +1,9 @@
-import React from 'react'
-import { Text, View, Button, TouchableOpacity } from 'react-native'
 import { useNavigation } from '@react-navigation/native'
+import React from 'react'
+import { View } from 'react-native'
+
 import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
+import { StyledText } from '../../../shared/ui/components/StyledText'
 import { globalStyles } from '../../../shared/ui/globalStyles'
 
 export function CodeQuery() {
@@ -9,8 +11,8 @@ export function CodeQuery() {
 
   return (
     <View style={{ alignItems: 'center' }}>
-      <Text>MyHealth</Text>
-      <Text>CID-10</Text>
+      <StyledText>MyHealth</StyledText>
+      <StyledText>CID-10</StyledText>
 
       <PrimaryButton>Adicionar aos Favoritos</PrimaryButton>
 

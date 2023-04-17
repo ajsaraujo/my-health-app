@@ -3,6 +3,7 @@ import { View, Text } from 'react-native'
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
 import { globalStyles } from '../../shared/ui/globalStyles'
+import { StyledText } from '../../shared/ui/components/StyledText'
 
 type RemediesProps = NativeStackScreenProps<
   RouteParams,
@@ -12,7 +13,7 @@ type RemediesProps = NativeStackScreenProps<
 export default function Medicines(props: RemediesProps) {
   return (
     <View style={globalStyles.defaultContainer}>
-      <Text>Hello, world</Text>
+      <StyledText>Hello, world</StyledText>
     </View>
   )
 }

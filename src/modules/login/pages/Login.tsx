@@ -9,6 +9,7 @@ import { PasswordTextBox } from '../../../shared/ui/components/PasswordTextBox'
 import { useState } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteParams } from '../../../routeParams'
+import { StyledText } from '../../../shared/ui/components/StyledText'
 
 type LoginForm = {
   email: string
@@ -109,7 +110,7 @@ function LoginFormWarnings(props: {
 
   return (
     <View style={globalStyles.marginTop3}>
-      <Text style={globalStyles.errorMessage}>{errorMessage}</Text>
+      <StyledText style={globalStyles.errorMessage}>{errorMessage}</StyledText>
     </View>
   )
 }

@@ -1,6 +1,7 @@
 import { PropsWithChildren } from 'react'
 import { Pressable, PressableProps, Text, TextStyle } from 'react-native'
 import { globalStyles } from '../globalStyles'
+import { StyledText } from './StyledText'
 
 type PrimaryButtonProps = PropsWithChildren<
   PressableProps & {
@@ -14,15 +15,14 @@ type PrimaryButtonProps = PropsWithChildren<
 export function PrimaryButton(props: PrimaryButtonProps) {
   const textNode =
     typeof props.children === 'string' ? (
-      <Text style={{ ...globalStyles.primaryButton.text, ...props.textStyle }}>
+      <StyledText
+        style={{ ...globalStyles.primaryButton.text, ...props.textStyle }}
+      >
         {props.children}
-      </Text>
+      </StyledText>
     ) : null
 
-  const mergedStyle: PressableProps['style'] = {
-    ...globalStyles.primaryButton,
-    ...props.style,
-  }
+  const mergedStyle = [globalStyles.primaryButton, props.style]
 
   return (
     <Pressable {...props} style={mergedStyle}>

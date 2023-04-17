@@ -13,6 +13,7 @@ import { RouteParams } from './src/routeParams'
 import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
 import CodeQuery from './src/modules/codes/pages/Consulta'
+import { useFonts } from 'expo-font'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -30,6 +31,14 @@ export default function App() {
       backgroundColor: GREEN,
     },
     headerTintColor: 'white',
+  }
+
+  const [fontsLoaded] = useFonts({
+    'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
+  })
+
+  if (!fontsLoaded) {
+    return null
   }
 
   return (

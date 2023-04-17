@@ -7,6 +7,7 @@ import { GREEN } from '../../shared/ui/colors'
 import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
 import { TextBox } from '../../shared/ui/components/TextBox'
 import { globalStyles } from '../../shared/ui/globalStyles'
+import { StyledText } from '../../shared/ui/components/StyledText'
 
 type CodesProps = NativeStackScreenProps<RouteParams, MyHealthModule.Codes>
 
@@ -25,8 +26,8 @@ export default function Codes(props: CodesProps) {
         alignItems: 'center',
       }}
     >
-      <Text>MyHealth</Text>
-      <Text>Módulo Consulta de Códigos</Text>
+      <StyledText>MyHealth</StyledText>
+      <StyledText>Módulo Consulta de Códigos</StyledText>
 
       <TextBox
         style={globalStyles.marginTop1}

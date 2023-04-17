@@ -1,3 +1,5 @@
+const WARNING = 1
+
 module.exports = {
   env: {
     es2021: true,
@@ -15,8 +17,8 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    indent: ['error', 'spaces'],
+    'react/react-in-jsx-scope': 'off',
     'linebreak-style': 'off',
-    'func-style': ['warning', 'declaration'],
+    'func-style': [WARNING, 'declaration'],
   },
 }

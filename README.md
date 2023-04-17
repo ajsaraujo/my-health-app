@@ -11,6 +11,30 @@ Front-end do aplicativo My Health, desenvolvido na disciplina Engenharia de Soft
 5. Pushe as alterações para o repositório remoto — `git push origin HEAD`
 6. Abra um pull request do seu fork para este repositório.
 
+### Baixando mudanças do repositório principal para o seu repositório local
+
+Digamos que novos commits foram adicionados à branch `master` do repositório principal, tal que seu repositório local ficou desatualizado. Para atualizá-lo, siga estes passos:
+
+Caso ainda não tenha o feito, adicione o repositório *principal* (não o seu fork) à lista de origens, com o nome `upstream`:
+```
+git remote add upstream https://github.com/ajsaraujo/my-health-app
+```
+
+Depois, puxe as mudanças do repositório upstream usando o comando fetch:
+```
+git fetch upstream
+```
+
+Finalmente, mude para a branch master e mescle-a à master que você acabou de baixar do upstream.
+```
+git checkout master
+git merge upstream/master
+```
+
+Pronto, agora sua branch master está atualizada em relação à do repositório principal. 
+
+Para mais informações, referencie esta thread: [How do I update or sync a forked repository on GitHub?](https://stackoverflow.com/a/19506355/12044155)
+
 ## Configuração
 
 Você precisará ter o [Git](https://git-scm.com/) e o [Node.js](https://nodejs.org/en) instalados.

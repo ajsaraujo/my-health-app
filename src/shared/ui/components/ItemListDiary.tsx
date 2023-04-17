@@ -4,7 +4,7 @@ import { GREEN } from '../colors'
 
 export function ItemListDiary({ ...props }) {
   return (
-    <View style={styles.container}>
+    <View>
       <TouchableOpacity activeOpacity={0.6}>
         <View style={styles.itensList}>
           <View style={styles.imageContainer}>
@@ -20,9 +20,13 @@ export function ItemListDiary({ ...props }) {
               />
             )}
           </View>
-          <Text style={styles.textList}>
-            Data do registro: {'\n'}01/01/2024
-          </Text>
+          <Text style={styles.textList}>{props.text}</Text>
+          <View style={styles.buttonOptionContainer}>
+            <Image
+              source={require('../../../../assets/dotsOptionsIcon.png')}
+              style={styles.buttonOption}
+            />
+          </View>
         </View>
       </TouchableOpacity>
     </View>
@@ -72,5 +76,15 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     alignItems: 'center',
+  },
+  buttonOption: {
+    height: 25,
+    width: 20,
+  },
+  buttonOptionContainer: {
+    justifyContent: 'flex-end',
+    alignItems: 'flex-end',
+    alignContent: 'flex-end',
+    flexDirection: 'row',
   },
 })

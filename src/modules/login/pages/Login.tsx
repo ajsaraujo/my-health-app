@@ -1,15 +1,17 @@
-import { View, Text } from 'react-native'
+import { View } from 'react-native'
 
-import { FormField } from '../../../shared/ui/components/FormField'
-import { TextBox } from '../../../shared/ui/components/TextBox'
-import { TextButtonUnderline } from '../../../shared/ui/components/TextButton'
-import { globalStyles } from '../../../shared/ui/globalStyles'
-import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
-import { PasswordTextBox } from '../../../shared/ui/components/PasswordTextBox'
+import {
+  FormField,
+  TextBox,
+  TextButtonUnderline,
+  PrimaryButton,
+  PasswordTextBox,
+  StyledText,
+} from '@shared/ui/components'
+import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteParams } from '../../../routeParams'
-import { StyledText } from '../../../shared/ui/components/StyledText'
 
 type LoginForm = {
   email: string

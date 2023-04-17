@@ -1,5 +1,5 @@
 import { PropsWithChildren } from 'react'
-import { Pressable, PressableProps, Text, TextStyle } from 'react-native'
+import { Pressable, PressableProps, TextStyle } from 'react-native'
 import { globalStyles } from '../globalStyles'
 import { StyledText } from './StyledText'
 

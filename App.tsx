@@ -34,12 +34,7 @@ export default function App() {
   }
 
   const [fontsLoaded] = useFonts({
-    'Inter-Black': require('./assets/fonts/Inter-Black.otf'),
-    'Inter-Bold': require('./assets/fonts/Inter-Bold.otf'),
-    'Inter-Light': require('./assets/fonts/Inter-Light.otf'),
-    'Inter-Medium': require('./assets/fonts/Inter-Medium.otf'),
     'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
-    'Inter-Thin': require('./assets/fonts/Inter-Thin.otf'),
   })
 
   if (!fontsLoaded) {

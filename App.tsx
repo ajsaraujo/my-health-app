@@ -57,7 +57,7 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Home" screenOptions={TITLE_STYLES}>
+      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
         {/* Tela de login */}
         <Stack.Screen
           name="Login"

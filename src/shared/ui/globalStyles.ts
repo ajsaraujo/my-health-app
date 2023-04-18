@@ -1,22 +1,6 @@
 import { StyleSheet } from 'react-native'
-import {
-  GRAY_100,
-  GRAY_200,
-  GRAY_300,
-  GRAY_400,
-  GRAY_500,
-  GRAY_600,
-  GRAY_700,
-  GRAY_800,
-  GREEN,
-  GREEN_300,
-  GREEN_400,
-  GREEN_500,
-  GREEN_600,
-  GREEN_700,
-  LIGHT_GRAY,
-  RED,
-} from './colors'
+
+import { GRAY_300, GRAY_700, GREEN_400, GREEN_600, RED } from './colors'
 
 export const globalStyles = StyleSheet.create({
   marginTop1: {
@@ -64,15 +48,6 @@ export const globalStyles = StyleSheet.create({
   defaultContainer: {
     paddingHorizontal: 24,
     paddingVertical: 24,
-  },
-
-  textInput: {
-    borderWidth: 2,
-    borderColor: GRAY_300,
-    borderRadius: 4,
-    width: '100%',
-    padding: 8,
-    outlineStyle: 'none',
   },
 
   textInputLabel: {

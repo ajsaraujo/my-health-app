@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import { TextInput } from 'react-native'
+import { TextInput, StyleSheet } from 'react-native'
 import { TextInputProps } from 'react-native/types'
 
-import { GREEN_600 } from '../colors'
-import { globalStyles } from '../globalStyles'
+import { GRAY_300, GREEN_600 } from '../colors'
 
 export type TextBoxProps = TextInputProps
 
@@ -21,18 +20,25 @@ export function TextBox(props: TextBoxProps) {
     setFocused(false)
   }
 
-  const styles: TextInputProps['style'] = [
-    globalStyles.textInput,
-    props.style,
-    focused ? { borderColor: GREEN_600 } : {},
-  ]
+  const greenBorderWhenFocused = focused && { borderColor: GREEN_600 }
 
   return (
     <TextInput
       {...props}
-      style={styles}
+      style={[styles.defaultStyle, greenBorderWhenFocused, props.style]}
       onFocus={handleFocus}
       onBlur={handleBlur}
     ></TextInput>
   )
 }
+
+const styles = StyleSheet.create({
+  defaultStyle: {
+    borderWidth: 2,
+    borderColor: GRAY_300,
+    borderRadius: 4,
+    width: '100%',
+    padding: 8,
+    outlineStyle: 'none',
+  },
+})

@@ -5,6 +5,9 @@ import {
   GRAY_300,
   GRAY_400,
   GRAY_500,
+  GRAY_600,
+  GRAY_700,
+  GRAY_800,
   GREEN,
   GREEN_500,
   GREEN_600,
@@ -71,7 +74,7 @@ export const globalStyles = StyleSheet.create({
   },
 
   textInputLabel: {
-    color: '#616161',
+    color: GRAY_700,
     fontWeight: '500',
     fontSize: 19,
     marginBottom: 8,

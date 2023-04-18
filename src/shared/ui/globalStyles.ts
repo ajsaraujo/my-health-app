@@ -9,6 +9,8 @@ import {
   GRAY_700,
   GRAY_800,
   GREEN,
+  GREEN_300,
+  GREEN_400,
   GREEN_500,
   GREEN_600,
   GREEN_700,
@@ -98,7 +100,26 @@ export const globalStyles = StyleSheet.create({
 
     text: {
       color: 'white',
-      fontSize: 21,
+      fontSize: 18,
+      fontWeight: 'bold',
+    },
+  },
+
+  secondaryButton: {
+    backgroundColor: 'transparent',
+    padding: 14,
+    borderRadius: 4,
+
+    alignItems: 'center',
+    justifyContent: 'center',
+
+    elevation: 3,
+    borderWidth: 2,
+    borderColor: GREEN_400,
+
+    text: {
+      color: GREEN_600,
+      fontSize: 18,
       fontWeight: 'bold',
     },
   },

@@ -3,7 +3,6 @@ import { View } from 'react-native'
 import { CheckBox } from './CheckBox'
 import { useState } from 'react'
 import { StyledText } from './StyledText'
-import userEvent from '@testing-library/user-event'
 
 describe('CheckBox', () => {
   function ExampleComponent() {
@@ -40,5 +39,14 @@ describe('CheckBox', () => {
     expect(
       screen.queryByText('Selected heroes: Geralt, Yennefer')
     ).toBeVisible()
+  })
+
+  it('should unselect an item', () => {
+    render(<ExampleComponent></ExampleComponent>)
+
+    fireEvent.press(screen.queryByText('Yennefer'))
+    fireEvent.press(screen.queryByText('Yennefer'))
+
+    expect(screen.queryByText('Selected heroes: None')).toBeVisible()
   })
 })

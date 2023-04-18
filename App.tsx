@@ -3,17 +3,18 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
+import { useFonts } from 'expo-font'
+
 import { MyHealthModule } from './src/modules'
 import Calculators from './src/modules/calculators/Calculators'
 import Codes from './src/modules/codes/Codes'
+import CodeQuery from './src/modules/codes/pages/Consulta'
 import Diary from './src/modules/diary/Diary'
+import { Login } from './src/modules/login/pages/Login'
 import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/pages/Home'
 import { RouteParams } from './src/routeParams'
-import { GREEN } from './src/shared/ui/colors'
-import { Login } from './src/modules/login/pages/Login'
-import CodeQuery from './src/modules/codes/pages/Consulta'
-import { useFonts } from 'expo-font'
+import { GREEN_700 } from './src/shared/ui/colors'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -28,7 +29,7 @@ export default function App() {
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
     headerTitleAlign: 'center',
     headerStyle: {
-      backgroundColor: GREEN,
+      backgroundColor: GREEN_700,
     },
     headerTintColor: 'white',
   }
@@ -52,7 +53,7 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
+      <Stack.Navigator initialRouteName="Home" screenOptions={TITLE_STYLES}>
         {/* Tela de login */}
         <Stack.Screen
           name="Login"

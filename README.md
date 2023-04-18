@@ -2,7 +2,18 @@
 
 Front-end do aplicativo My Health, desenvolvido na disciplina Engenharia de Software II, no período 2022.2, sob a orientação da professora Adicineia.
 
-## Contribuindo
+- [My Health](#my-health)
+- [1. Contribuindo](#1-contribuindo)
+  - [1.1 Baixando mudanças do repositório principal para o seu repositório local](#11-baixando-mudanças-do-repositório-principal-para-o-seu-repositório-local)
+- [2. Configuração](#2-configuração)
+- [3. Adicionando novas páginas ao app](#3-adicionando-novas-páginas-ao-app)
+- [4. Recomendações](#4-recomendações)
+  - [4.1 Commits](#41-commits)
+  - [4.2 Nomeação](#42-nomeação)
+  - [4.3 Estrutura de pastas](#43-estrutura-de-pastas)
+  - [4.4 Estilização](#44-estilização)
+
+# 1. Contribuindo
 
 1. Clique em "Fork" para criar um fork do repositório.
 2. Clone o fork do projeto em sua máquina.
@@ -11,38 +22,41 @@ Front-end do aplicativo My Health, desenvolvido na disciplina Engenharia de Soft
 5. Pushe as alterações para o repositório remoto — `git push origin HEAD`
 6. Abra um pull request do seu fork para este repositório.
 
-### Baixando mudanças do repositório principal para o seu repositório local
+## 1.1 Baixando mudanças do repositório principal para o seu repositório local
 
 Digamos que novos commits foram adicionados à branch `master` do repositório principal, tal que seu repositório local ficou desatualizado. Para atualizá-lo, siga estes passos:
 
-Caso ainda não tenha o feito, adicione o repositório *principal* (não o seu fork) à lista de origens, com o nome `upstream`:
+Caso ainda não tenha o feito, adicione o repositório _principal_ (não o seu fork) à lista de origens, com o nome `upstream`:
+
 ```
 git remote add upstream https://github.com/ajsaraujo/my-health-app
 ```
 
 Depois, puxe as mudanças do repositório upstream usando o comando fetch:
+
 ```
 git fetch upstream
 ```
 
 Finalmente, mude para a branch master e mescle-a à master que você acabou de baixar do upstream.
+
 ```
 git checkout master
 git merge upstream/master
 ```
 
-Pronto, agora sua branch master está atualizada em relação à do repositório principal. 
+Pronto, agora sua branch master está atualizada em relação à do repositório principal.
 
 Para mais informações, referencie esta thread: [How do I update or sync a forked repository on GitHub?](https://stackoverflow.com/a/19506355/12044155)
 
-## Configuração
+# 2. Configuração
 
-Você precisará ter o [Git](https://git-scm.com/) e o [Node.js](https://nodejs.org/en) instalados.
+Você precisará ter o [Node.js](https://nodejs.org/en) instalado.
 
 1. Instale as dependências com `npm i`.
 2. Execute o projeto no seu navegador com `npm run web`.
 
-## Adicionando novas páginas ao app
+# 3. Adicionando novas páginas ao app
 
 Para adicionar novas páginas/rotas ao app, você deve seguir estes passos:
 
@@ -70,11 +84,11 @@ Finalmente, adicione a tela em `App.tsx`:
 + <Stack.Screen name="Nova tela" component={MeuNovoComponent}></Stack.Screen>
 ```
 
-## Recomendações
+# 4. Recomendações
 
 A seguir, algumas recomendações de estilo, a fim de manter a integridade conceitual do projeto.
 
-### Commits
+## 4.1 Commits
 
 Procure escrever as mensagens de commit iniciando com letra maiúscula e com um verbo no infinitivo.
 
@@ -94,7 +108,7 @@ Se quiser fazer um commit intermediário ou não souber o que escrever na mensag
 
 Quando abrir um Merge Request, se ele tiver muitos commits ou o histórico estiver desorganizado, marque a opção "Squash commits" para condensar todos os commits num só após a mesclagem. Isso facilita a leitura do histórico.
 
-### Nomeação
+## 4.2 Nomeação
 
 Procure nomear os símbolos (variáveis, constantes, funções, classes) em inglês. Quanto ao casing:
 
@@ -103,7 +117,7 @@ Procure nomear os símbolos (variáveis, constantes, funções, classes) em ingl
 
 Procure também nomear os arquivos com o mesmo nome do que está sendo exportado por eles.
 
-### Estrutura de pastas
+## 4.3 Estrutura de pastas
 
 Os módulos do My Health estão abaixo de `modules/`. Código genérico que possa ser utilizado em mais de um módulo fica em `shared/`.
 
@@ -119,9 +133,7 @@ As pastas de `modules/` têm a seguinte estrutura:
 
 Arquivos de teste devem ser criados imediatamente vizinhos ao arquivo que testam, e com o sufixo `spec`. Por exemplo, se você vai testar o código de um arquivo chamado `sum.ts`, o teste deve ser `sum.spec.ts`.
 
-### Estilização
-
-Procure estilizar o nó raiz de cada página usando `globalStyles.defaultContainer`, para que as páginas tenham um recuo padrão.
+## 4.4 Estilização
 
 Procure utilizar múltiplos de 8 para definir margens e recuos (padding). Isso faz com que a UI pareça mais consistente. Caso precise de uma granularidade maior, use múltiplos de 4.
 

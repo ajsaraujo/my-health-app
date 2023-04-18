@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-import { GRAY_300, GRAY_700, GREEN_400, GREEN_600, RED } from './colors'
+import { GREEN_400, GREEN_600, RED } from './colors'
 
 export const globalStyles = StyleSheet.create({
   marginTop1: {
@@ -48,12 +48,6 @@ export const globalStyles = StyleSheet.create({
   defaultContainer: {
     paddingHorizontal: 24,
     paddingVertical: 24,
-  },
-
-  textButton: {
-    color: GREEN_600,
-    fontWeight: '500',
-    fontSize: 18,
   },
 
   primaryButton: {

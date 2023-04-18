@@ -9,6 +9,7 @@
     "web": "expo start --web",
     "prepare": "husky install",
     "test": "jest",
+    "test:watch": "jest --watch",
     "lint": "eslint src"
   },
   "jest": {
@@ -24,12 +25,16 @@
       "!**/node_modules/**",
       "!**/babel.config.js",
       "!**/jest.setup.js"
+    ],
+    "setupFilesAfterEnv": [
+      "@testing-library/jest-native/extend-expect"
     ]
   },
   "dependencies": {
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "@testing-library/jest-native": "^5.4.2",
     "expo": "~48.0.6",
     "expo-asset": "~8.9.1",
     "expo-font": "^11.1.1",
@@ -45,6 +50,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
+    "@testing-library/react-native": "^12.0.1",
     "@types/jest": "^29.5.0",
     "@types/react": "~18.0.14",
     "@typescript-eslint/eslint-plugin": "^5.55.0",

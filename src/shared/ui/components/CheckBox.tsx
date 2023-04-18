@@ -5,7 +5,7 @@ import { GREEN_600 } from '../colors'
 
 type CheckBoxProps = {
   items: string[]
-  selectedItems?: string[]
+  selectedItems: string[]
   onSelectionChange: (items: string[]) => unknown
 }
 
@@ -32,8 +32,7 @@ type CheckBoxProps = {
  * ```
  */
 export function CheckBox(props: CheckBoxProps) {
-  const { items, onSelectionChange } = props
-  const selectedItems = props.selectedItems || []
+  const { items, selectedItems, onSelectionChange } = props
 
   function isSelected(item: string) {
     return selectedItems.includes(item)

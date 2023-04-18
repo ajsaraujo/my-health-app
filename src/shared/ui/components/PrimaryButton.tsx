@@ -3,6 +3,9 @@ import { Pressable, PressableProps, TextStyle } from 'react-native'
 import { globalStyles } from '../globalStyles'
 import { StyledText } from './StyledText'
 
+// TO DO: Refatorar
+// TO DO: Inline de globalStyles
+
 type ButtonProps = PropsWithChildren<
   PressableProps & {
     textStyle?: TextStyle

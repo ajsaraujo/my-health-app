@@ -52,7 +52,7 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
         {/* Tela de login */}
         <Stack.Screen
           name="Login"
@@ -64,7 +64,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ ...TITLE_STYLES, title: 'My Health' }}
+          options={{ title: 'My Health' }}
         ></Stack.Screen>
 
         {/* Pontos de entrada dos módulos */}
@@ -73,7 +73,6 @@ export default function App() {
             key={module}
             name={module}
             component={components[module]}
-            options={TITLE_STYLES}
           ></Stack.Screen>
         ))}
 

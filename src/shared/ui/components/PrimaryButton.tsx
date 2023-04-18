@@ -1,55 +1,77 @@
-import { PropsWithChildren } from 'react'
-import { Pressable, PressableProps, TextStyle } from 'react-native'
-import { globalStyles } from '../globalStyles'
+import { Pressable, PressableProps, StyleSheet, TextProps } from 'react-native'
+
+import { GREEN_400, GREEN_600 } from '../colors'
 import { StyledText } from './StyledText'
 
-// TO DO: Refatorar
-// TO DO: Inline de globalStyles
-
-type ButtonProps = PropsWithChildren<
-  PressableProps & {
-    textStyle?: TextStyle
-  }
->
+type ButtonProps = PressableProps & { textStyle?: TextProps['style'] }
 
 /**
- * Botão primário, com fundo em cor sólida.
+ * Botão primário, com fundo em cor sólida (verde) e texto branco.
  */
 export function PrimaryButton(props: ButtonProps) {
-  const textNode = typeof props.children === 'string' && (
-    <StyledText
-      style={{ ...globalStyles.primaryButton.text, ...props.textStyle }}
-    >
-      {props.children}
-    </StyledText>
-  )
-
-  const mergedStyle = [globalStyles.primaryButton, props.style]
-
   return (
-    <Pressable {...props} style={mergedStyle}>
-      {textNode}
-    </Pressable>
+    <Button
+      {...props}
+      style={[styles.primaryButton, props.style as any]}
+      textStyle={[styles.primaryButtonText, props.textStyle]}
+    ></Button>
   )
 }
 
 /**
- * Botão secundário, com borda colorida e fundo transparente.
+ * Botão secundário, com fundo transparente e texto e borda coloridos.
  */
 export function SecondaryButton(props: ButtonProps) {
-  const textNode = typeof props.children === 'string' && (
-    <StyledText
-      style={{ ...globalStyles.secondaryButton.text, ...props.textStyle }}
-    >
-      {props.children}
+  return (
+    <Button
+      {...props}
+      style={[styles.secondaryButton, props.style as any]}
+      textStyle={[styles.secondaryButtonText, props.textStyle]}
+    ></Button>
+  )
+}
+
+function Button(props: ButtonProps) {
+  const shouldRenderTextNode = typeof props.children === 'string'
+
+  const textNode = shouldRenderTextNode && (
+    <StyledText style={[styles.buttonText, props.textStyle]}>
+      {String(props.children)}
     </StyledText>
   )
 
-  const mergedStyle = [globalStyles.secondaryButton, props.style]
-
   return (
-    <Pressable {...props} style={mergedStyle}>
+    <Pressable {...props} style={[styles.button, props.style as any]}>
       {textNode}
     </Pressable>
   )
 }
+
+const styles = StyleSheet.create({
+  button: {
+    padding: 14,
+    borderRadius: 4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    fontSize: 16,
+  },
+
+  primaryButton: {
+    backgroundColor: GREEN_600,
+  },
+  primaryButtonText: {
+    color: 'white',
+  },
+
+  secondaryButton: {
+    backgroundColor: 'transparent',
+    borderWidth: 2,
+    borderColor: GREEN_400,
+  },
+  secondaryButtonText: {
+    color: GREEN_600,
+  },
+})

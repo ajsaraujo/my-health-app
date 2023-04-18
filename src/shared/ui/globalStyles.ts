@@ -50,42 +50,6 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 24,
   },
 
-  primaryButton: {
-    backgroundColor: GREEN_600,
-    padding: 14,
-    borderRadius: 4,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    elevation: 3,
-
-    text: {
-      color: 'white',
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-  },
-
-  secondaryButton: {
-    backgroundColor: 'transparent',
-    padding: 14,
-    borderRadius: 4,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    elevation: 3,
-    borderWidth: 2,
-    borderColor: GREEN_400,
-
-    text: {
-      color: GREEN_600,
-      fontSize: 18,
-      fontWeight: 'bold',
-    },
-  },
-
   errorMessage: {
     fontSize: 16,
     color: RED,

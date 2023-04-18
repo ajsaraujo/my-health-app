@@ -6,6 +6,9 @@ import {
   GRAY_400,
   GRAY_500,
   GREEN,
+  GREEN_500,
+  GREEN_600,
+  GREEN_700,
   LIGHT_GRAY,
   RED,
 } from './colors'
@@ -75,16 +78,15 @@ export const globalStyles = StyleSheet.create({
   },
 
   textButton: {
-    color: GREEN,
-    textDecorationLine: 'underline',
+    color: GREEN_600,
     fontWeight: '500',
     fontSize: 18,
   },
 
   primaryButton: {
-    backgroundColor: GREEN,
+    backgroundColor: GREEN_600,
     padding: 14,
-    borderRadius: 14,
+    borderRadius: 4,
 
     alignItems: 'center',
     justifyContent: 'center',
@@ -94,6 +96,7 @@ export const globalStyles = StyleSheet.create({
     text: {
       color: 'white',
       fontSize: 21,
+      fontWeight: 'bold',
     },
   },
 

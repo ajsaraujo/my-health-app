@@ -6,8 +6,9 @@ import { globalStyles } from '@shared/ui/globalStyles'
 
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 
-import { MyHealthModule } from '../modules'
-import { RouteParams } from '../routeParams'
+import { MyHealthModule } from '../../modules'
+import { RouteParams } from '../../routeParams'
+import { ModuleCard } from './components/ModuleCard'
 
 type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 
@@ -29,16 +30,7 @@ export default function Home(props: HomeProps) {
 
         <View style={styles.modulesContainer}>
           {modules.map((moduleName) => (
-            <TouchableOpacity
-              key={moduleName}
-              onPress={() => {
-                props.navigation.navigate(moduleName)
-              }}
-            >
-              <View style={styles.moduleCard}>
-                <StyledText>{moduleName}</StyledText>
-              </View>
-            </TouchableOpacity>
+            <ModuleCard key={moduleName} moduleName={moduleName}></ModuleCard>
           ))}
         </View>
       </View>

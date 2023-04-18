@@ -12,11 +12,11 @@ import CodeQuery from './src/modules/codes/pages/Consulta'
 import Diary from './src/modules/diary/Diary'
 import { Login } from './src/modules/login/pages/Login'
 import Medicines from './src/modules/medicines/Medicines'
-import Home from './src/pages/Home'
+import Home from './src/modules/home/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
 
-const Stack = createNativeStackNavigator<RouteParams>()
+export const Stack = createNativeStackNavigator<RouteParams>()
 
 export default function App() {
   const components: Record<string, any> = {

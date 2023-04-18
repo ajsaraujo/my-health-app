@@ -1,8 +1,9 @@
-import { render, screen } from '@testing-library/react-native'
+import { fireEvent, render, screen } from '@testing-library/react-native'
 import { View } from 'react-native'
 import { CheckBox } from './CheckBox'
 import { useState } from 'react'
 import { StyledText } from './StyledText'
+import userEvent from '@testing-library/user-event'
 
 describe('CheckBox', () => {
   function ExampleComponent() {
@@ -24,9 +25,20 @@ describe('CheckBox', () => {
     )
   }
 
-  it('should start with all heroes unselected', () => {
+  it('should start with all items unselected (because thats the initial value passed to selectedItems)', () => {
     render(<ExampleComponent></ExampleComponent>)
 
     expect(screen.queryByText('Selected heroes: None')).toBeVisible()
+  })
+
+  it('should select an item', () => {
+    render(<ExampleComponent></ExampleComponent>)
+
+    fireEvent.press(screen.queryByText('Geralt'))
+    fireEvent.press(screen.queryByText('Yennefer'))
+
+    expect(
+      screen.queryByText('Selected heroes: Geralt, Yennefer')
+    ).toBeVisible()
   })
 })

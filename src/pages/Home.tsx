@@ -1,6 +1,6 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { LIGHT_BLACK, LIGHT_GREY } from '@shared/ui/colors'
+import { LIGHT_BLACK, LIGHT_GRAY } from '@shared/ui/colors'
 import { StyledText } from '@shared/ui/components'
 import { globalStyles } from '@shared/ui/globalStyles'
 
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 5,
 
-    shadowColor: LIGHT_GREY,
+    shadowColor: LIGHT_GRAY,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 6,

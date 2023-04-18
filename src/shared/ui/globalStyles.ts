@@ -1,5 +1,14 @@
 import { StyleSheet } from 'react-native'
-import { GREEN, RED } from './colors'
+import {
+  GRAY_100,
+  GRAY_200,
+  GRAY_300,
+  GRAY_400,
+  GRAY_500,
+  GREEN,
+  LIGHT_GRAY,
+  RED,
+} from './colors'
 
 export const globalStyles = StyleSheet.create({
   marginTop1: {
@@ -51,8 +60,8 @@ export const globalStyles = StyleSheet.create({
 
   textInput: {
     borderWidth: 2,
-    borderColor: '#616161',
-    borderRadius: 14,
+    borderColor: GRAY_300,
+    borderRadius: 4,
     width: '100%',
     padding: 8,
     outlineStyle: 'none',

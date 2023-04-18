@@ -1,8 +1,9 @@
+import { useState } from 'react'
 import { TextInput } from 'react-native'
 import { TextInputProps } from 'react-native/types'
+
+import { GREEN_600 } from '../colors'
 import { globalStyles } from '../globalStyles'
-import { GREEN } from '../colors'
-import { useState } from 'react'
 
 export type TextBoxProps = TextInputProps
 
@@ -23,7 +24,7 @@ export function TextBox(props: TextBoxProps) {
   const styles: TextInputProps['style'] = [
     globalStyles.textInput,
     props.style,
-    focused ? { borderColor: GREEN } : {},
+    focused ? { borderColor: GREEN_600 } : {},
   ]
 
   return (

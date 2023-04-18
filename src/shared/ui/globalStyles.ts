@@ -50,13 +50,6 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 24,
   },
 
-  textInputLabel: {
-    color: GRAY_700,
-    fontWeight: '500',
-    fontSize: 19,
-    marginBottom: 8,
-  },
-
   textButton: {
     color: GREEN_600,
     fontWeight: '500',

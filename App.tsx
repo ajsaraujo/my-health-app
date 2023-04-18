@@ -32,6 +32,10 @@ export default function App() {
       backgroundColor: GREEN_700,
     },
     headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: '600',
+      fontFamily: 'Inter-Regular',
+    },
   }
 
   const [fontsLoaded] = useFonts({

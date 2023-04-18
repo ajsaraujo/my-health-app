@@ -1,19 +1,32 @@
 import { render, screen } from '@testing-library/react-native'
+import { View } from 'react-native'
 import { CheckBox } from './CheckBox'
+import { useState } from 'react'
+import { StyledText } from './StyledText'
 
 describe('CheckBox', () => {
-  it('deve renderizar todas as alternativas', () => {
-    render(
-      <CheckBox
-        items={['Pizza', 'Hamburguer', 'Sushi']}
-        // eslint-disable-next-line @typescript-eslint/no-empty-function
-        onSelectionChange={() => {}}
-        selectedItems={[]}
-      ></CheckBox>
-    )
+  function ExampleComponent() {
+    const heroes = ['Geralt', 'Vesemir', 'Yennefer']
+    const [selectedHeros, setSelectedHeroes] = useState<string[]>([])
 
-    expect(screen.queryByText('Pizza')).toBeVisible()
-    expect(screen.queryByText('Hamburguer')).toBeVisible()
-    expect(screen.queryByText('Sushi')).toBeVisible()
+    return (
+      <View>
+        <CheckBox
+          items={heroes}
+          onSelectionChange={setSelectedHeroes}
+          selectedItems={selectedHeros}
+        ></CheckBox>
+
+        <StyledText>
+          Selected heroes: {selectedHeros.join(', ') || 'None'}
+        </StyledText>
+      </View>
+    )
+  }
+
+  it('should start with all heroes unselected', () => {
+    render(<ExampleComponent></ExampleComponent>)
+
+    expect(screen.queryByText('Selected heroes: None')).toBeVisible()
   })
 })

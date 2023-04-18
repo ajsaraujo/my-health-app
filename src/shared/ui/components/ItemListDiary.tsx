@@ -1,8 +1,11 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
 import { GREEN } from '../colors'
+import { ModalOptionsDiary } from './modals/ModalOptionsDiary'
 
 export function ItemListDiary({ ...props }) {
+  const [modalViseble, setModalViseble] = useState(false)
+
   return (
     <View>
       <TouchableOpacity activeOpacity={0.6}>
@@ -22,13 +25,16 @@ export function ItemListDiary({ ...props }) {
           </View>
           <Text style={styles.textList}>{props.text}</Text>
           <View style={styles.buttonOptionContainer}>
-            <Image
-              source={require('../../../../assets/dotsOptionsIcon.png')}
-              style={styles.buttonOption}
-            />
+            <TouchableOpacity onPress={() => setModalViseble(true)}>
+              <Image
+                source={require('../../../../assets/dotsOptionsIcon.png')}
+                style={styles.buttonOption}
+              />
+            </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
+      <ModalOptionsDiary isVisible={modalViseble} />
     </View>
   )
 }
@@ -46,14 +52,6 @@ const styles = StyleSheet.create({
   container: {
     marginTop: 10,
     marginBottom: 15,
-  },
-  textTitle: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    flexDirection: 'row',
-    fontSize: 25,
-    fontWeight: 'bold',
-    marginVertical: 5,
   },
   sizeIcon: {
     height: 30,
@@ -74,17 +72,18 @@ const styles = StyleSheet.create({
     marginLeft: 3,
     fontWeight: 'bold',
   },
-  buttonContainer: {
-    alignItems: 'center',
-  },
   buttonOption: {
     height: 25,
     width: 20,
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    alignContent: 'flex-end',
   },
   buttonOptionContainer: {
+    flexDirection: 'row',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
     alignContent: 'flex-end',
-    flexDirection: 'row',
+    marginLeft: 120,
   },
 })

@@ -3,19 +3,20 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
+import { useFonts } from 'expo-font'
+
 import { MyHealthModule } from './src/modules'
 import Calculators from './src/modules/calculators/Calculators'
 import Codes from './src/modules/codes/Codes'
-import Diary from './src/modules/diary/Diary'
-import Medicines from './src/modules/medicines/Medicines'
-import Home from './src/pages/Home'
-import { RouteParams } from './src/routeParams'
-import { GREEN } from './src/shared/ui/colors'
-import { Login } from './src/modules/login/pages/Login'
 import CodeQuery from './src/modules/codes/pages/Consulta'
-import { useFonts } from 'expo-font'
+import Diary from './src/modules/diary/Diary'
+import { Login } from './src/modules/login/pages/Login'
+import Medicines from './src/modules/medicines/Medicines'
+import Home from './src/modules/home/Home'
+import { RouteParams } from './src/routeParams'
+import { GREEN_700 } from './src/shared/ui/colors'
 
-const Stack = createNativeStackNavigator<RouteParams>()
+export const Stack = createNativeStackNavigator<RouteParams>()
 
 export default function App() {
   const components: Record<string, any> = {
@@ -28,9 +29,13 @@ export default function App() {
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
     headerTitleAlign: 'center',
     headerStyle: {
-      backgroundColor: GREEN,
+      backgroundColor: GREEN_700,
     },
     headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: '600',
+      fontFamily: 'Inter-Regular',
+    },
   }
 
   const [fontsLoaded] = useFonts({
@@ -52,7 +57,7 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
         {/* Tela de login */}
         <Stack.Screen
           name="Login"
@@ -64,7 +69,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ ...TITLE_STYLES, title: 'My Health' }}
+          options={{ title: 'My Health' }}
         ></Stack.Screen>
 
         {/* Pontos de entrada dos módulos */}
@@ -73,7 +78,6 @@ export default function App() {
             key={module}
             name={module}
             component={components[module]}
-            options={TITLE_STYLES}
           ></Stack.Screen>
         ))}
 

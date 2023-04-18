@@ -1,13 +1,14 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 
-import { LIGHT_BLACK, LIGHT_GREY } from '@shared/ui/colors'
+import { LIGHT_BLACK, LIGHT_GRAY } from '@shared/ui/colors'
 import { StyledText } from '@shared/ui/components'
 import { globalStyles } from '@shared/ui/globalStyles'
 
 import { StyleSheet, TouchableOpacity, View } from 'react-native'
 
-import { MyHealthModule } from '../modules'
-import { RouteParams } from '../routeParams'
+import { MyHealthModule } from '../../modules'
+import { RouteParams } from '../../routeParams'
+import { ModuleCard } from './components/ModuleCard'
 
 type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 
@@ -29,16 +30,7 @@ export default function Home(props: HomeProps) {
 
         <View style={styles.modulesContainer}>
           {modules.map((moduleName) => (
-            <TouchableOpacity
-              key={moduleName}
-              onPress={() => {
-                props.navigation.navigate(moduleName)
-              }}
-            >
-              <View style={styles.moduleCard}>
-                <StyledText>{moduleName}</StyledText>
-              </View>
-            </TouchableOpacity>
+            <ModuleCard key={moduleName} moduleName={moduleName}></ModuleCard>
           ))}
         </View>
       </View>
@@ -73,7 +65,7 @@ const styles = StyleSheet.create({
 
     borderRadius: 5,
 
-    shadowColor: LIGHT_GREY,
+    shadowColor: LIGHT_GRAY,
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.15,
     shadowRadius: 6,

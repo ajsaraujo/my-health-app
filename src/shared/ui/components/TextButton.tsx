@@ -1,7 +1,7 @@
-import { TouchableOpacity, TextStyle } from 'react-native'
+import { TouchableOpacity, TextStyle, StyleSheet } from 'react-native'
 import { TouchableOpacityProps } from 'react-native/types'
-import { globalStyles } from '../globalStyles'
 import { StyledText } from './StyledText'
+import { GREEN_600 } from '../colors'
 
 type TextButtonProps = TouchableOpacityProps & {
   children: string
@@ -20,7 +20,7 @@ export function TextButton(props: TextButtonProps = DEFAULT_VALUES) {
     <TouchableOpacity {...props}>
       <StyledText
         style={{
-          ...globalStyles.textButton,
+          ...styles.defaultStyle,
           ...props.textStyle,
         }}
       >
@@ -41,3 +41,11 @@ export function TextButtonUnderline(props: TextButtonProps) {
 
   return <TextButton {...props} textStyle={mergedStyle}></TextButton>
 }
+
+const styles = StyleSheet.create({
+  defaultStyle: {
+    color: GREEN_600,
+    fontWeight: '500',
+    fontSize: 18,
+  },
+})

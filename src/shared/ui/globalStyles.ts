@@ -104,4 +104,44 @@ export const globalStyles = StyleSheet.create({
     fontSize: 16,
     color: RED,
   },
+
+  elevation1: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 1,
+  },
+
+  elevation2: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 2,
+  },
+
+  elevation3: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 3,
+  },
+
+  elevation4: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 6.68,
+    elevation: 4,
+  },
+
+  elevation5: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.4,
+    shadowRadius: 9.41,
+    elevation: 5,
+  },
 })

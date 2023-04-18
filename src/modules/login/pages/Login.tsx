@@ -82,7 +82,10 @@ export function Login(props: LoginProps) {
           marginTop: 56,
         }}
       >
-        <PrimaryButton style={{ width: '60%' }} onPress={handleLogin}>
+        <PrimaryButton
+          style={{ width: '60%', ...globalStyles.elevation1 }}
+          onPress={handleLogin}
+        >
           Entrar
         </PrimaryButton>
       </View>

@@ -9,6 +9,29 @@ import {
 import { GRAY_300, GRAY_50, GREEN_700 } from '../colors'
 import { StyledText } from './StyledText'
 
+/**
+ * Componente de SelectButton. Seu comportamento é equivalente ao de RadioButtons, ou seja:
+ * deve ser usado para solicitar ao usuário que escolha uma dentre várias opções.
+ *
+ * @argument options Lista de opções que será exibida
+ * @argument selectedOption Opção selecionada
+ * @argument onSelectionChange Handler que será chamado quando o usuário escolher uma nova opção
+ *
+ * @usage
+ * Na maioria das vezes nós passaremos o retorno de uma chamada de `useState` para `selectedOption` e `onSelectionChange`.
+ *
+ * Por exemplo:
+ * ```tsx
+ * const allOptions = ['Pizza', 'Sushi', 'Hamburguer']
+ * const [selectedOption, setSelectedOption] = useState<string[]>([])
+ *
+ * return <CheckBox
+ *  items={allItems}
+ *  selectedOption={selectedOption}
+ *  onSelectionChange={setSelectedOption}
+ * ></CheckBox>
+ * ```
+ */
 export function SelectButton(
   props: {
     options: string[]

@@ -2,7 +2,8 @@ import { View } from 'react-native'
 import { Text } from 'react-native'
 import { SelectButton } from './SelectButton'
 import { useState } from 'react'
-import { fireEvent, render, screen } from '@testing-library/react-native'
+import { render, screen } from '@testing-library/react-native'
+import { press } from '@shared/utils/testing'
 
 describe('SelectButton', () => {
   function ExampleComponent() {
@@ -24,7 +25,7 @@ describe('SelectButton', () => {
   it('deve selecionar uma opção', () => {
     render(<ExampleComponent></ExampleComponent>)
 
-    fireEvent.press(screen.getByText('Tarde'))
+    press('Tarde')
 
     expect(screen.queryByText('Opção selecionada: Tarde')).toBeVisible()
   })
@@ -32,8 +33,8 @@ describe('SelectButton', () => {
   it('deve alterar a seleção', () => {
     render(<ExampleComponent></ExampleComponent>)
 
-    fireEvent.press(screen.getByText('Tarde'))
-    fireEvent.press(screen.getByText('Noite'))
+    press('Tarde')
+    press('Noite')
 
     expect(screen.queryByText('Opção selecionada: Noite')).toBeVisible()
   })
@@ -41,8 +42,8 @@ describe('SelectButton', () => {
   it('não deve desfazer a seleção se clicar duas vezes', () => {
     render(<ExampleComponent></ExampleComponent>)
 
-    fireEvent.press(screen.getByText('Tarde'))
-    fireEvent.press(screen.getByText('Tarde'))
+    press('Tarde')
+    press('Tarde')
 
     expect(screen.queryByText('Opção selecionada: Tarde')).toBeVisible()
   })

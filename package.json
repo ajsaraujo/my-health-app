@@ -8,8 +8,7 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "prepare": "husky install",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "jest --watch",
     "lint": "eslint src"
   },
   "jest": {

@@ -17,5 +17,6 @@ export type RouteParams = {
 
   // Códigos
   [MyHealthModule.Codes]: NO_PARAMS
-  Consulta: { name: string }
+  Consulta: { cid10: string }
+  ConsultaCid11: { cid11: string }
 }

@@ -79,6 +79,7 @@ export default function App() {
 
         {/* Telas do módulo de códigos */}
         <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
+        <Stack.Screen name="ConsultaCid11" component={CodeQuery}></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )

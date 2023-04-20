@@ -14,7 +14,7 @@ export default function Codes(props: CodesProps) {
   const { navigation } = props
 
   function search() {
-    navigation.navigate('Consulta', { name: 'Consulta' })
+    navigation.navigate('ConsultaCid11', { cid11: 'ConsultaCid11' })
   }
 
   return (

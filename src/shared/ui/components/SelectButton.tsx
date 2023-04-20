@@ -97,6 +97,8 @@ function OneButton(
   )
 }
 
+const SELECT_BUTTON_BORDER_RADIUS = 5
+
 const styles = StyleSheet.create({
   buttonsContainer: {
     display: 'flex',
@@ -122,13 +124,13 @@ const styles = StyleSheet.create({
   },
 
   firstButton: {
-    borderTopLeftRadius: 5,
-    borderBottomLeftRadius: 5,
+    borderTopLeftRadius: SELECT_BUTTON_BORDER_RADIUS,
+    borderBottomLeftRadius: SELECT_BUTTON_BORDER_RADIUS,
   },
 
   lastButton: {
-    borderTopRightRadius: 5,
-    borderBottomRightRadius: 5,
+    borderTopRightRadius: SELECT_BUTTON_BORDER_RADIUS,
+    borderBottomRightRadius: SELECT_BUTTON_BORDER_RADIUS,
   },
 
   selectedButton: {

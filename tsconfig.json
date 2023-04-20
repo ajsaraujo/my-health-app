@@ -6,6 +6,7 @@
     "paths": {
       "@shared/*": ["src/shared/*"],
       "@modules/*": ["src/modules/*"]
-    }
+    },
+    "types": ["jest", "@testing-library/jest-native"]
   }
 }

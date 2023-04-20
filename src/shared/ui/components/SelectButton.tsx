@@ -3,16 +3,19 @@ import {
   TouchableOpacity,
   TouchableOpacityProps,
   View,
+  ViewProps,
 } from 'react-native'
 
 import { GRAY_300, GRAY_50, GREEN_700 } from '../colors'
 import { StyledText } from './StyledText'
 
-export function SelectButton(props: {
-  options: string[]
-  selectedOption: string
-  onSelectionChange: (value: string) => unknown
-}) {
+export function SelectButton(
+  props: {
+    options: string[]
+    selectedOption: string
+    onSelectionChange: (value: string) => unknown
+  } & ViewProps
+) {
   const { options, selectedOption, onSelectionChange } = props
 
   function isSelected(option: string): boolean {
@@ -36,7 +39,7 @@ export function SelectButton(props: {
   }
 
   return (
-    <View style={styles.buttonsContainer}>
+    <View {...props} style={[styles.buttonsContainer, props.style]}>
       {options.map((option) => (
         <OneButton
           style={[

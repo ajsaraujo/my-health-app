@@ -6,7 +6,7 @@ import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
 import { StyledText } from '../../../shared/ui/components/StyledText'
 import { globalStyles } from '../../../shared/ui/globalStyles'
 
-export function CodeQuery() {
+export function CodeQuery2() {
   const navigation = useNavigation()
 
   return (
@@ -26,4 +26,4 @@ export function CodeQuery() {
   )
 }
 
-export default CodeQuery
+export default CodeQuery2

@@ -10,9 +10,12 @@ import {
   SecondaryButton,
 } from '@shared/ui/components'
 import { globalStyles } from '@shared/ui/globalStyles'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteParams } from '../../../routeParams'
+
+import db from '../../../shared/services/config/firebaseconfig'
+import { getCities } from '../../../shared/services/config/firebaseconfig'
 
 type LoginForm = {
   email: string
@@ -29,6 +32,12 @@ export function Login(props: LoginProps) {
 
   const [submitted, setSubmitted] = useState(false)
 
+  async function printCities() {
+    const cityList = await getCities(db)
+    console.log(cityList) // log the result to the console
+  }
+
+  printCities()
   /**
    * TO DO: Pesquisar se existem formas melhores de capturar mudanças
    * em formulários. Se não houver, extrair essa função para a área compartilhada.

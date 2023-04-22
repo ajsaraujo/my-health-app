@@ -3,7 +3,6 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import { MyHealthModule } from './src/modules'
 import Calculators from './src/modules/calculators/Calculators'
 import Codes from './src/modules/codes/Codes'
@@ -20,7 +19,6 @@ import CodeQuery3 from './src/modules/codes/pages/ConsultaCif'
 import { useFonts } from 'expo-font'
 
 const Stack = createNativeStackNavigator<RouteParams>()
-const Tab = createBottomTabNavigator<RouteParams>()
 
 export default function App() {
   const components: Record<string, any> = {
@@ -78,22 +76,28 @@ export default function App() {
             key={module}
             name={module}
             component={components[module]}
-            options={TITLE_STYLES}
+            options={{ headerShown: false }}
           ></Stack.Screen>
         ))}
 
         {/* Telas do módulo de códigos */}
-        <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
+
+        <Stack.Screen
+          name="Consulta"
+          component={CodeQuery}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
         <Stack.Screen
           name="ConsultaCid11"
           component={CodeQuery2}
+          options={{ headerShown: false }}
         ></Stack.Screen>
-        <Stack.Screen name="ConsultaCif" component={CodeQuery3}></Stack.Screen>
+        <Stack.Screen
+          name="ConsultaCif"
+          component={CodeQuery3}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
       </Stack.Navigator>
-      <Tab.Navigator>
-        <Tab.Screen name="ConsultaCid11" component={CodeQuery2} />
-        <Tab.Screen name="ConsultaCif" component={CodeQuery3} />
-      </Tab.Navigator>
     </NavigationContainer>
   )
 }

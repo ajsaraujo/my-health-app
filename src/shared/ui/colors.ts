@@ -1,6 +1,6 @@
 export const LIGHT_BLACK = '#212121'
 export const LIGHT_GREY = '#171717'
-
+export const CIAN = '#7fffd4'
 export const GREEN = '#258F45'
 
 // Estamos definindo RED ao invés de usar o literal diretamente,

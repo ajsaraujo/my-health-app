@@ -17,6 +17,18 @@ export const globalStyles = StyleSheet.create({
   marginTop5: {
     marginTop: 40,
   },
+
+  marginTop6: {
+    marginTop: 48,
+  },
+  marginTop7: {
+    marginTop: 56,
+  },
+
+  marginTop8: {
+    marginTop: 128,
+  },
+
   marginBottom1: {
     marginBottom: 8,
   },
@@ -31,6 +43,33 @@ export const globalStyles = StyleSheet.create({
   },
   marginBottom5: {
     marginTop: 40,
+  },
+
+  marginStart1: {
+    marginStart: 128,
+  },
+
+  fontSize1: {
+    fontSize: 8,
+  },
+
+  fontSize2: {
+    fontSize: 16,
+  },
+
+  fontSize3: {
+    fontSize: 24,
+  },
+
+  fontSize4: {
+    fontSize: 32,
+  },
+
+  iconBall: {
+    backgroundColor: GREEN,
+    width: 100,
+    height: 100,
+    borderRadius: 50,
   },
 
   centerHorizontally: {

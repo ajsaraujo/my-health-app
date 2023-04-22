@@ -90,10 +90,6 @@ export default function App() {
         ></Stack.Screen>
         <Stack.Screen name="ConsultaCif" component={CodeQuery3}></Stack.Screen>
       </Stack.Navigator>
-      <Tab.Navigator>
-        <Tab.Screen name="ConsultaCid11" component={CodeQuery2} />
-        <Tab.Screen name="ConsultaCif" component={CodeQuery3} />
-      </Tab.Navigator>
     </NavigationContainer>
   )
 }

@@ -5,9 +5,14 @@ import {
   TextInput,
   TouchableOpacity,
   View,
+  Image,
 } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteParams } from '../../routeParams'
+import { GREEN } from '../../shared/ui/colors'
+import salvar from '../../../assets/saveicon.png'
+import voltar from '../../../assets/backIcon.png'
+import enviar from '../../../assets/sendIcon.png'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegisterNote'>
 
@@ -17,8 +22,7 @@ export default function RegisterNote(props: DiaryProps) {
 
   const handleAddNote = () => {
     if (noteText.length > 0) {
-      const currentTime = new Date().toLocaleTimeString()
-      setNotes([...notes, { text: noteText, time: currentTime }])
+      setNotes([...notes, { text: noteText }])
       setNoteText('')
     }
   }
@@ -40,7 +44,6 @@ export default function RegisterNote(props: DiaryProps) {
             onPress={() => handleDeleteNote(index, note.time)}
           >
             <Text style={styles.noteText}>{note.text}</Text>
-            <Text style={styles.noteTime}>{note.time}</Text>
           </TouchableOpacity>
         ))}
       </View>
@@ -52,10 +55,24 @@ export default function RegisterNote(props: DiaryProps) {
           value={noteText}
           onChangeText={(text) => setNoteText(text)}
         />
-        <TouchableOpacity style={styles.addButton} onPress={handleAddNote}>
-          <Text style={styles.addButtonText}>Adicionar</Text>
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={handleAddNote}
+          activeOpacity={0.7}
+        >
+          <Image source={enviar} style={styles.sendIcon} />
         </TouchableOpacity>
       </View>
+      <TouchableOpacity style={styles.saveButton} activeOpacity={0.7}>
+        <Image style={styles.saveIcon} source={salvar} />
+      </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.backButton}
+        activeOpacity={0.7}
+        onPress={props.navigation.goBack}
+      >
+        <Image source={voltar} />
+      </TouchableOpacity>
     </View>
   )
 }
@@ -63,16 +80,16 @@ export default function RegisterNote(props: DiaryProps) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#E0FFFF',
   },
   notesContainer: {
     flex: 1,
-    padding: 20,
+    padding: 15,
+    marginTop: 8,
   },
   note: {
-    backgroundColor: '#f2f2f2',
-    padding: 10,
-    marginVertical: 10,
+    padding: 5,
+    marginVertical: 0,
     borderRadius: 5,
   },
   noteText: {
@@ -94,13 +111,47 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   addButton: {
-    backgroundColor: '#007aff',
+    backgroundColor: GREEN,
     padding: 10,
-    borderRadius: 5,
+    borderRadius: 20,
+    height: 40,
+    width: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   addButtonText: {
     color: '#fff',
     fontSize: 16,
     fontWeight: 'bold',
+  },
+  saveButton: {
+    backgroundColor: GREEN,
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    position: 'absolute',
+    right: 20,
+    bottom: 160,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  saveIcon: {
+    height: 40,
+    width: 40,
+  },
+  backButton: {
+    backgroundColor: '#FFF5EE',
+    width: 60,
+    height: 60,
+    borderRadius: 30,
+    position: 'absolute',
+    right: 20,
+    bottom: 80,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  sendIcon: {
+    height: 25,
+    width: 25,
   },
 })

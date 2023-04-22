@@ -2,13 +2,18 @@ import React, { useState } from 'react'
 import { View, Modal, Text, StyleSheet, TouchableHighlight } from 'react-native'
 
 export function ModalOptionsDiary({ ...props }) {
+  const [visible, setVisible] = useState(props.isVisible)
+
   return (
-    <Modal visible={props.isVisible} animationType="slide" transparent={true}>
+    <Modal visible={visible} animationType="slide" transparent={true}>
       <View style={styles.containerModal}>
         <TouchableHighlight style={styles.button}>
           <Text>Excluir</Text>
         </TouchableHighlight>
-        <TouchableHighlight style={styles.button}>
+        <TouchableHighlight
+          style={styles.button}
+          onPress={() => setVisible(false)}
+        >
           <Text>Cancelar</Text>
         </TouchableHighlight>
       </View>
@@ -18,7 +23,7 @@ export function ModalOptionsDiary({ ...props }) {
 
 const styles = StyleSheet.create({
   containerModal: {
-    backgroundColor: '#e2e2e2',
+    backgroundColor: 'red',
     width: 80,
     height: 60,
     borderRadius: 5,

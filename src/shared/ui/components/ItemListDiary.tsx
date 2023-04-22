@@ -8,7 +8,7 @@ export function ItemListDiary({ ...props }) {
 
   return (
     <View>
-      <TouchableOpacity activeOpacity={0.6}>
+      <TouchableOpacity activeOpacity={0.6} onPress={() => props.onPress()}>
         <View style={styles.itensList}>
           <View style={styles.imageContainer}>
             {props.typeList === 'lixeira' ? (
@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
   itensList: {
     borderWidth: 1,
     borderColor: GREEN,
-    marginHorizontal: 5,
+    marginHorizontal: 8,
     borderRadius: 5,
     marginVertical: 3,
     flexDirection: 'row',
@@ -75,15 +75,10 @@ const styles = StyleSheet.create({
   buttonOption: {
     height: 25,
     width: 20,
-    flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignContent: 'flex-end',
   },
   buttonOptionContainer: {
     flexDirection: 'row',
-    justifyContent: 'flex-end',
-    alignItems: 'flex-end',
-    alignContent: 'flex-end',
-    marginLeft: 120,
+    position: 'absolute',
+    right: 5,
   },
 })

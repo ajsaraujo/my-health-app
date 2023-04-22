@@ -34,7 +34,7 @@ export default function GarbageDiary(props: DiaryProps) {
       />
       <View style={styles.buttonContainer}>
         <PrimaryButton
-          style={{ width: '90%', height: 35 }}
+          style={{ width: '90%', height: 55, marginVertical: 10 }}
           onPress={props.navigation.goBack}
         >
           Voltar

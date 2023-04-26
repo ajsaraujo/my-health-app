@@ -15,6 +15,7 @@ import { Login } from './src/modules/login/pages/Login'
 import CodeQuery from './src/modules/codes/pages/Consulta'
 import CodeQuery2 from './src/modules/codes/pages/ConsultaCid11'
 import CodeQuery3 from './src/modules/codes/pages/ConsultaCif'
+import CodeQuery4 from './src/modules/codes/pages/Favoritos'
 
 import { useFonts } from 'expo-font'
 
@@ -95,6 +96,11 @@ export default function App() {
         <Stack.Screen
           name="ConsultaCif"
           component={CodeQuery3}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Favoritos"
+          component={CodeQuery4}
           options={{ headerShown: false }}
         ></Stack.Screen>
       </Stack.Navigator>

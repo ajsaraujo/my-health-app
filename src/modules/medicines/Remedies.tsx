@@ -7,10 +7,10 @@ import { StyledText } from '@shared/ui/components'
 
 type RemediesProps = NativeStackScreenProps<
   RouteParams,
-  MyHealthModule.Medicines
+  MyHealthModule.Remedies
 >
 
-export default function Medicines(props: RemediesProps) {
+export default function Remedies(props: RemediesProps) {
   return (
     <View style={globalStyles.defaultContainer}>
       <StyledText>Hello, world</StyledText>

@@ -11,7 +11,7 @@ import Codes from './src/modules/codes/Codes'
 import CodeQuery from './src/modules/codes/pages/Consulta'
 import Diary from './src/modules/diary/Diary'
 import { Login } from './src/modules/login/pages/Login'
-import Medicines from './src/modules/medicines/Medicines'
+import Remedies from './src/modules/medicines/Remedies'
 import Home from './src/modules/home/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
@@ -23,7 +23,7 @@ export default function App() {
     [MyHealthModule.Calculators]: Calculators,
     [MyHealthModule.Codes]: Codes,
     [MyHealthModule.Diary]: Diary,
-    [MyHealthModule.Medicines]: Medicines,
+    [MyHealthModule.Remedies]: Remedies,
   }
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {

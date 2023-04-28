@@ -1,11 +1,5 @@
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { View } from 'react-native'
-import { MyHealthModule } from '../../modules'
-import { RouteParams } from '../../routeParams'
-import { globalStyles } from '@shared/ui/globalStyles'
-import { StyledText } from '@shared/ui/components'
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import { View, StyleSheet } from 'react-native'
 import Home from './views/home'
 import Procedures from './views/procedures'
 import Medicines from './views/medicines'
@@ -13,12 +7,7 @@ import Historic from './views/historic'
 import Navigation from './views/layouts'
 import Head from './views/layouts/head'
 
-type RemediesProps = NativeStackScreenProps<
-  RouteParams,
-  MyHealthModule.Remedies
->
-
-export default function Remedies(props: RemediesProps) {
+export default function Remedies() {
   const [currentView, setCurrentView] = useState('home')
   const [activeButton, setActiveButton] = useState('button1')
 

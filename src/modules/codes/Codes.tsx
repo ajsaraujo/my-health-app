@@ -13,6 +13,7 @@ import { CIAN, GREEN, LIGHT_BLACK, LIGHT_GREY } from '@shared/ui/colors'
 import CodeQuery3 from './pages/ConsultaCif'
 import { Picker } from '@react-native-picker/picker'
 import CodeQuery4 from './pages/Favoritos'
+import { useState } from 'react'
 
 type CodesProps = NativeStackScreenProps<RouteParams, MyHealthModule.Codes>
 
@@ -20,6 +21,8 @@ const Tab = createBottomTabNavigator()
 
 export default function Codes(props: CodesProps) {
   const { navigation } = props
+  const [selectedOption, setSelectedOption] = useState('')
+  const [query, setQuery] = useState('')
 
   function search() {
     navigation.navigate('Consulta', { cid10: 'Consulta' })
@@ -53,7 +56,8 @@ export default function Codes(props: CodesProps) {
 
             <View style={[globalStyles.centerHorizontally]}>
               <Picker
-                selectedValue={{}}
+                selectedValue={selectedOption}
+                onValueChange={(value) => setSelectedOption(value)}
                 style={[
                   globalStyles.marginTop5,
                   {
@@ -64,8 +68,8 @@ export default function Codes(props: CodesProps) {
                     width: '30%',
                   },
                 ]}
-                onValueChange={() => {}}
               >
+                <Picker.Item label="Selecione a Tabela" value="ponto0" />
                 <Picker.Item label="CID-10" value="CID-10" />
                 <Picker.Item label="CID-11" value="CID-11" />
                 <Picker.Item label="CIF" value="CIF" />
@@ -92,7 +96,15 @@ export default function Codes(props: CodesProps) {
                   { backgroundColor: '#ffffff', width: '30%' },
                 ]}
                 textStyle={{ color: '#000000' }}
-                onPress={search}
+                onPress={() => {
+                  if (selectedOption === 'CID-10') {
+                    navigation.navigate('Consulta', { cid10: 'Consulta' })
+                  } else if (selectedOption === 'CID-11') {
+                    navigation.navigate('ConsultaCid11', { cid11: 'Consulta' })
+                  } else if (selectedOption === 'CIF') {
+                    navigation.navigate('ConsultaCif', { cif: 'Consulta' })
+                  }
+                }}
               >
                 Buscar
               </PrimaryButton>

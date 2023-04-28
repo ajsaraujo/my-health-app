@@ -1,8 +1,9 @@
-import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, SafeAreaView } from 'react-native'
+import React, { useState, useEffect, useRef } from 'react'
+import { View, Text, Image, TouchableOpacity, SafeAreaView, Modal, StyleSheet } from 'react-native'
 import { styles } from '../../css/profile'
+import CameraO from '../camera'
 
-const setaInfo = require('../../img/arrow-info.png')
+const cameraIcon = require('../../img/camera-icon_resized.png')
 
 export default function Historic() {
   const [showModal, setShowModal] = useState(false)
@@ -13,9 +14,25 @@ export default function Historic() {
 
   return (
     <View style={styles.profileContainer}>
-      {/* Tab Title */}
+
       <View style={styles.titleProfileContainer}>
         <Text style={styles.perfilProfileText}>Perfil</Text>
+
+        {/*camera*/}
+        <View style={styles.cameraIconContainer}>
+          <TouchableOpacity onPress={handlePress}>
+            <Image
+              source={cameraIcon}
+              style={styles.cameraIcon}
+            ></Image>
+          </TouchableOpacity>
+          <CameraO
+            visible={showModal}
+            onClose={() => setShowModal(false)}
+          />
+        </View>
+
+
         <View style={styles.profileInfoContainer}>
           <View style={styles.infoProfile}>
             <Text style={styles.profileText}>Nome</Text>

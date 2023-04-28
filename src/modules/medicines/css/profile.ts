@@ -60,7 +60,7 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },*/
   profileInfoContainer: {
-    marginTop: 120,
+    marginTop: 70,
   },
   infoProfile: {
     backgroundColor: '#D7E6F1',
@@ -81,5 +81,30 @@ export const styles = StyleSheet.create({
   },
   profileInfoText: {
     fontSize: 18,
+  },
+  buttonOpenCamera: {
+    alignSelf: 'center',
+    backgroundColor: '#2196F3',
+    borderRadius: 10,
+    padding: 10,
+    marginTop: 20,
+  },
+  buttonOpenCameraText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    textAlign: 'center',
+  },
+  cameraIconContainer: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    backgroundColor: '#D7E6F1',
+    paddingTop: 20,
+    marginBottom: 0,
+  },
+  cameraIcon: {
+    marginLeft: 13,
+    marginTop: 50,
+
   },
 })

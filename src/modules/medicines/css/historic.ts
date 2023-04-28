@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   historicsContainer: {
     backgroundColor: '#D7E6F1',
-    height: '75%',
+    height: '84%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },
@@ -25,11 +25,13 @@ export const styles = StyleSheet.create({
   },
   titleHistoricsContainer: {
     marginTop: 0,
+    marginBottom: 60,
   },
   containerHistoricsContent: {
     width: '100%',
     flexDirection: 'row',
     marginTop: 10,
+    marginLeft: 10,
   },
   infoHistoricsDate: {
     width: '25%',
@@ -67,7 +69,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   containerHistoricButton: {
-    marginTop: 100,
+    marginTop: 66,
     width: '100%',
     alignItems: 'center',
   },
@@ -76,6 +78,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#1E90FF',
     padding: 20,
     borderRadius: 20,
+    elevation: 10,
+    shadowOpacity: 100,
   },
   historicButtonText: {
     color: '#fff',

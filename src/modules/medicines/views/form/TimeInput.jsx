@@ -14,7 +14,6 @@ const TimeInput = (props) => {
     } else {
       setValue(`${cleanedValue.slice(0, 2)}:${cleanedValue.slice(2)}`)
     }
-    props.onChangeText()
   }
 
   return (

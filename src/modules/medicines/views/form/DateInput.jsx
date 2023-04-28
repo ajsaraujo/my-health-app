@@ -28,7 +28,6 @@ const DateInput = (props) => {
         )}/${cleanedValue.slice(4, 8)}`
       )
     }
-    props.onChangeText()
   }
 
   return (

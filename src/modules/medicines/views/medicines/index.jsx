@@ -1,12 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from '../../css/medicines'
+import MedChoice from '../form/choiceMed'
 
 const setaEsquerda = require('../../img/chevron-left.png')
 const setaDireita = require('../../img/chevron-right.png')
 const setaInfo = require('../../img/arrow-info.png')
 
 export default function Medicines() {
+  const [showModal, setShowModal] = useState(false)
+
+  const handlePress = () => {
+    setShowModal(true)
+  }
+
   return (
     <View style={styles.medicinesContainer}>
       {/* Tab Title */}
@@ -60,10 +67,12 @@ export default function Medicines() {
       {/* Tab Actions Buttons */}
 
       <View style={styles.containerMedicineButton}>
-        <TouchableOpacity style={styles.medicineButton}>
+        <TouchableOpacity style={styles.medicineButton} onPress={handlePress}>
           <Text style={styles.medicineButtonText}>Novo Medicamento</Text>
         </TouchableOpacity>
       </View>
+
+      <MedChoice visible={showModal} onClose={() => setShowModal(false)} />
     </View>
   )
 }

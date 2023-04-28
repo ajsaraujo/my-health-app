@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   proceduresContainer: {
     backgroundColor: '#D7E6F1',
-    height: '75%',
+    height: '84%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },
@@ -25,11 +25,13 @@ export const styles = StyleSheet.create({
   },
   titleProceduresContainer: {
     marginTop: 0,
+    marginBottom: 60,
   },
   containerProceduresContent: {
     width: '100%',
     flexDirection: 'row',
     marginTop: 10,
+    marginLeft: 2,
   },
   infoProceduresText: {
     width: '85%',
@@ -55,7 +57,7 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   containerProcedureButton: {
-    marginTop: 100,
+    marginTop: 66,
     width: '100%',
     alignItems: 'center',
   },
@@ -64,6 +66,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#1E90FF',
     padding: 20,
     borderRadius: 20,
+    elevation: 10,
+    shadowOpacity: 100,
   },
   procedureButtonText: {
     color: '#fff',

@@ -2,12 +2,13 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: '#c3d1db',
     paddingHorizontal: 60,
     paddingVertical: 35,
     flexDirection: 'row',
     justifyContent: 'center',
-    height: '20%',
+    height: '10.59%',
+    marginBottom: 15, //blueStack: 71, //iphone: 55
   },
   footerButton: {
     width: '25%',
@@ -31,6 +32,6 @@ export const styles = StyleSheet.create({
   footerButtonImageActive: {
     height: 30,
     width: 30,
-    tintColor: 'white',
+    tintColor: '#1E90FF',
   },
 })

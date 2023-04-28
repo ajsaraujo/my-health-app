@@ -3,12 +3,19 @@ import {
   Modal,
   View,
   Text,
+  TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native'
+
 import { styles } from '../../../css/info/schedule'
 
-const ShedulingInfo = ({ visible, onClose, data }) => {
+const RegisterModalMed = ({ visible, onClose }) => {
+  const handleSubmit = () => {
+    // Lógica para agendar o evento aqui
+    onClose()
+  }
+
   return (
     <Modal
       visible={visible}
@@ -19,15 +26,17 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
       <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Informações</Text>
-            <Text>{data.hour}</Text>
-            <Text>{data.description}</Text>
+            <Text style={styles.modalTitle}>Cadastrar Medicamento</Text>
+            <TextInput style={styles.input} placeholder="Nome" />
+            <TextInput style={styles.input} placeholder="Função" />
+            <TextInput style={styles.input} placeholder="Descrição" />
+
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={onClose}
+                onPress={handleSubmit}
               >
-                <Text style={styles.schedulingButtonText}>Fechar</Text>
+                <Text style={styles.schedulingButtonText}>Cadastrar</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -37,4 +46,4 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
   )
 }
 
-export default ShedulingInfo
+export default RegisterModalMed

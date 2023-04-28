@@ -17,7 +17,39 @@ export const styles = StyleSheet.create({
   modalTitle: {
     fontSize: 20,
     fontWeight: 'bold',
-    marginBottom: 20,
+    marginBottom: 14,
+  },
+  modalSelectionText: {
+    fontSize: 15,
+  },
+  modalSelection: {
+    flexDirection: 'row',
+    marginVertical: 10,
+  },
+  selectionMedButton: {
+    justifyContent: 'center',
+    backgroundColor: '#1E90FF',
+    padding: 10,
+    borderRadius: 20,
+    marginRight: 40,
+  },
+  modalSelectionMedText: {
+    fontSize: 13,
+    color: '#fff',
+    verticalAlign: 'middle',
+    fontWeight: 'bold',
+  },
+  SelectionProcButton: {
+    justifyContent: 'center',
+    backgroundColor: '#1E90FF',
+    padding: 10,
+    borderRadius: 20,
+  },
+  modalSelectionProcText: {
+    fontSize: 13,
+    color: '#fff',
+    verticalAlign: 'middle',
+    fontWeight: 'bold',
   },
   input: {
     borderWidth: 1,
@@ -30,14 +62,13 @@ export const styles = StyleSheet.create({
   containerSchedulingButton: {
     width: '100%',
     alignItems: 'center',
-    flexDirection: 'row',
-    justifyContent: 'center',
   },
   schedulingButton: {
+    justifyContent: 'center',
     backgroundColor: '#1E90FF',
-    width: '40%',
-    padding: 10,
-    marginHorizontal: 10,
+    width: '80%',
+    padding: 20,
+    margin: 20,
     borderRadius: 20,
   },
   schedulingButtonText: {

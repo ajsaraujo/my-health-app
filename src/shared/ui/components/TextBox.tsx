@@ -1,8 +1,8 @@
 import { useState } from 'react'
-import { TextInput, StyleSheet } from 'react-native'
+import { StyleSheet, TextInput } from 'react-native'
 import { TextInputProps } from 'react-native/types'
 
-import { GRAY_300, GREEN_600 } from '../colors'
+import { GRAY_300, GRAY_50, GREEN_600 } from '../colors'
 
 export type TextBoxProps = TextInputProps
 
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
   defaultStyle: {
     borderWidth: 2,
     borderColor: GRAY_300,
+    backgroundColor: GRAY_50,
     borderRadius: 4,
     width: '100%',
     padding: 8,

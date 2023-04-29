@@ -88,6 +88,7 @@ export function Login(props: LoginProps) {
       <TextButtonUnderline
         style={globalStyles.marginTop2}
         textStyle={{ textAlign: 'center' }}
+        onPress={() => props.navigation.navigate('SignIn')}
       >
         Cadastrar
       </TextButtonUnderline>

@@ -14,7 +14,7 @@ import { GREEN } from './src/shared/ui/colors'
 import { Login } from './src/modules/login/pages/Login'
 import CodeQuery from './src/modules/codes/pages/Consulta'
 import { useFonts } from 'expo-font'
-
+import SignIn from './src/modules/sign-in/pages/sign-in'
 const Stack = createNativeStackNavigator<RouteParams>()
 
 export default function App() {
@@ -57,6 +57,12 @@ export default function App() {
         <Stack.Screen
           name="Login"
           component={Login}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+
+        <Stack.Screen
+          name="SignIn"
+          component={SignIn}
           options={{ headerShown: false }}
         ></Stack.Screen>
 

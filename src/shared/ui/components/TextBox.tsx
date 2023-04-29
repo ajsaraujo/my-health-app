@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { StyleSheet, TextInput } from 'react-native'
 import { TextInputProps } from 'react-native/types'
 
-import { GRAY_300, GRAY_50, GREEN_600 } from '../colors'
+import { GRAY_300, GRAY_50, GRAY_500, GRAY_700, GREEN_600 } from '../colors'
 
 export type TextBoxProps = TextInputProps
 
@@ -21,11 +21,17 @@ export function TextBox(props: TextBoxProps) {
   }
 
   const greenBorderWhenFocused = focused && { borderColor: GREEN_600 }
+  const isEmpty = !props.value
 
   return (
     <TextInput
       {...props}
-      style={[styles.defaultStyle, greenBorderWhenFocused, props.style]}
+      style={[
+        styles.defaultStyle,
+        greenBorderWhenFocused,
+        props.style,
+        isEmpty && styles.placeholderText,
+      ]}
       onFocus={handleFocus}
       onBlur={handleBlur}
     ></TextInput>
@@ -41,5 +47,9 @@ const styles = StyleSheet.create({
     width: '100%',
     padding: 8,
     outlineStyle: 'none',
+  },
+
+  placeholderText: {
+    color: GRAY_700,
   },
 })

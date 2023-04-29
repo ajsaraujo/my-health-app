@@ -30,6 +30,7 @@ export function InsertEmail(props: InsertEmailProps) {
       </StyledText>
 
       <TextBox
+        value={email}
         style={styles.textBox}
         placeholder="email@email.com"
         inputMode="email"

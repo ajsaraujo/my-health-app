@@ -1,3 +1,4 @@
+import { NativeStackNavigationProp } from '@react-navigation/native-stack'
 import { MyHealthModule } from './modules'
 
 type NO_PARAMS = undefined
@@ -23,3 +24,5 @@ export type RouteParams = {
   ConsultaCif: { cif: string }
   Favoritos: NO_PARAMS
 }
+
+export type Navigation = NativeStackNavigationProp<RouteParams>

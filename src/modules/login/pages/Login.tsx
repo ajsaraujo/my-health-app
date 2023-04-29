@@ -7,6 +7,7 @@ import {
   PrimaryButton,
   PasswordTextBox,
   StyledText,
+  SecondaryButton,
 } from '@shared/ui/components'
 import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
@@ -78,21 +79,21 @@ export function Login(props: LoginProps) {
 
       <View
         style={{
-          ...globalStyles.centerHorizontally,
           marginTop: 56,
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+          rowGap: 16,
         }}
       >
-        <PrimaryButton style={{ width: '60%' }} onPress={handleLogin}>
+        <PrimaryButton
+          style={{ ...globalStyles.elevation1, width: '100%' }}
+          onPress={handleLogin}
+        >
           Entrar
         </PrimaryButton>
+        <SecondaryButton style={{ width: '100%' }}>Cadastrar</SecondaryButton>
       </View>
-
-      <TextButtonUnderline
-        style={globalStyles.marginTop2}
-        textStyle={{ textAlign: 'center' }}
-      >
-        Cadastrar
-      </TextButtonUnderline>
 
       <LoginFormWarnings
         loginForm={formValues}

@@ -1,5 +1,6 @@
 import { StyleSheet } from 'react-native'
-import { GREEN, RED } from './colors'
+
+import { GREEN_400, GREEN_600, RED } from './colors'
 
 export const globalStyles = StyleSheet.create({
   marginTop1: {
@@ -88,47 +89,48 @@ export const globalStyles = StyleSheet.create({
     paddingVertical: 24,
   },
 
-  textInput: {
-    borderWidth: 2,
-    borderColor: '#616161',
-    borderRadius: 14,
-    width: '100%',
-    padding: 8,
-    outlineStyle: 'none',
-  },
-
-  textInputLabel: {
-    color: '#616161',
-    fontWeight: '500',
-    fontSize: 19,
-    marginBottom: 8,
-  },
-
-  textButton: {
-    color: GREEN,
-    textDecorationLine: 'underline',
-    fontWeight: '500',
-    fontSize: 18,
-  },
-
-  primaryButton: {
-    backgroundColor: GREEN,
-    padding: 14,
-    borderRadius: 14,
-
-    alignItems: 'center',
-    justifyContent: 'center',
-
-    elevation: 3,
-
-    text: {
-      color: 'white',
-      fontSize: 21,
-    },
-  },
-
   errorMessage: {
     fontSize: 16,
     color: RED,
+  },
+
+  elevation1: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+    elevation: 1,
+  },
+
+  elevation2: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.27,
+    shadowRadius: 4.65,
+    elevation: 2,
+  },
+
+  elevation3: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.3,
+    shadowRadius: 4.65,
+    elevation: 3,
+  },
+
+  elevation4: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 6.68,
+    elevation: 4,
+  },
+
+  elevation5: {
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 8 },
+    shadowOpacity: 0.4,
+    shadowRadius: 9.41,
+    elevation: 5,
   },
 })

@@ -1,7 +1,9 @@
-import { Pressable, View } from 'react-native'
-import { TextBox, TextBoxProps } from './TextBox'
 import Ionicons from '@expo/vector-icons/Ionicons'
 import { useState } from 'react'
+import { Pressable, View } from 'react-native'
+
+import { GRAY_700 } from '../colors'
+import { TextBox, TextBoxProps } from './TextBox'
 
 /**
  * Campo de entrada para senhas. Esconde o conteúdo digitado,
@@ -43,6 +45,7 @@ function PasswordVisibilityButton(props: {
       <Ionicons
         size={24}
         name={props.passwordIsVisible ? 'eye' : 'eye-off'}
+        color={GRAY_700}
       ></Ionicons>
     </Pressable>
   )

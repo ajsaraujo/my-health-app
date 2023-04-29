@@ -3,23 +3,24 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
-import { MyHealthModule } from './src/modules'
-import Calculators from './src/modules/calculators/Calculators'
-import Codes from './src/modules/codes/Codes'
-import Diary from './src/modules/diary/Diary'
-import Medicines from './src/modules/medicines/Medicines'
-import Home from './src/pages/Home'
-import { RouteParams } from './src/routeParams'
-import { GREEN } from './src/shared/ui/colors'
-import { Login } from './src/modules/login/pages/Login'
-import CodeQuery from './src/modules/codes/pages/Consulta'
-import CodeQuery2 from './src/modules/codes/pages/ConsultaCid11'
-import CodeQuery3 from './src/modules/codes/pages/ConsultaCif'
-import CodeQuery4 from './src/modules/codes/pages/Favoritos'
-
 import { useFonts } from 'expo-font'
 
-const Stack = createNativeStackNavigator<RouteParams>()
+import { MyHealthModule } from './src/modules'
+import Calculators from '@modules/calculators/Calculators'
+import Codes from '@modules/codes/Codes'
+import CodeQuery from '@modules/codes/pages/Consulta'
+import CodeQuery2 from '@modules/codes/pages/ConsultaCid11'
+import CodeQuery3 from '@modules/codes/pages/ConsultaCif'
+import CodeQuery4 from '@modules/codes/pages/Favoritos'
+
+import Diary from '@modules/diary/Diary'
+import { Login } from '@modules/login/pages/Login'
+import Medicines from '@modules/medicines/Medicines'
+import Home from '@modules/home/Home'
+import { RouteParams } from './src/routeParams'
+import { GREEN_700 } from './src/shared/ui/colors'
+
+export const Stack = createNativeStackNavigator<RouteParams>()
 
 export default function App() {
   const components: Record<string, any> = {
@@ -32,9 +33,13 @@ export default function App() {
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {
     headerTitleAlign: 'center',
     headerStyle: {
-      backgroundColor: GREEN,
+      backgroundColor: GREEN_700,
     },
     headerTintColor: 'white',
+    headerTitleStyle: {
+      fontWeight: '600',
+      fontFamily: 'Inter-Regular',
+    },
   }
 
   const [fontsLoaded] = useFonts({
@@ -56,7 +61,7 @@ export default function App() {
       }}
     >
       {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login">
+      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
         {/* Tela de login */}
         <Stack.Screen
           name="Login"
@@ -68,7 +73,7 @@ export default function App() {
         <Stack.Screen
           name="Home"
           component={Home}
-          options={{ ...TITLE_STYLES, title: 'My Health' }}
+          options={{ title: 'My Health' }}
         ></Stack.Screen>
 
         {/* Pontos de entrada dos módulos */}
@@ -77,7 +82,6 @@ export default function App() {
             key={module}
             name={module}
             component={components[module]}
-            options={{ headerShown: false }}
           ></Stack.Screen>
         ))}
 

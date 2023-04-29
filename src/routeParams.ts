@@ -18,7 +18,11 @@ export type RouteParams = {
 
   // Códigos
   [MyHealthModule.Codes]: NO_PARAMS
-  Consulta: { name: string }
+
+  Consulta: { cid10: string }
+  ConsultaCid11: { cid11: string }
+  ConsultaCif: { cif: string }
+  Favoritos: NO_PARAMS
 }
 
 export type Navigation = NativeStackNavigationProp<RouteParams>

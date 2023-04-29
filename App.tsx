@@ -6,13 +6,17 @@ import {
 import { useFonts } from 'expo-font'
 
 import { MyHealthModule } from './src/modules'
-import Calculators from './src/modules/calculators/Calculators'
-import Codes from './src/modules/codes/Codes'
-import CodeQuery from './src/modules/codes/pages/Consulta'
-import Diary from './src/modules/diary/Diary'
-import { Login } from './src/modules/login/pages/Login'
-import Medicines from './src/modules/medicines/Medicines'
-import Home from './src/modules/home/Home'
+import Calculators from '@modules/calculators/Calculators'
+import Codes from '@modules/codes/Codes'
+import CodeQuery from '@modules/codes/pages/Consulta'
+import CodeQuery2 from '@modules/codes/pages/ConsultaCid11'
+import CodeQuery3 from '@modules/codes/pages/ConsultaCif'
+import CodeQuery4 from '@modules/codes/pages/Favoritos'
+
+import Diary from '@modules/diary/Diary'
+import { Login } from '@modules/login/pages/Login'
+import Medicines from '@modules/medicines/Medicines'
+import Home from '@modules/home/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
 
@@ -82,7 +86,27 @@ export default function App() {
         ))}
 
         {/* Telas do módulo de códigos */}
-        <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
+
+        <Stack.Screen
+          name="Consulta"
+          component={CodeQuery}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="ConsultaCid11"
+          component={CodeQuery2}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="ConsultaCif"
+          component={CodeQuery3}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
+        <Stack.Screen
+          name="Favoritos"
+          component={CodeQuery4}
+          options={{ headerShown: false }}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )

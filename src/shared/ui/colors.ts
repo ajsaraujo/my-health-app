@@ -1,3 +1,6 @@
+export const LIGHT_GREY = '#171717'
+export const CIAN = '#7fffd4'
+
 // As cores a seguir foram obtidas da paleta Material versão 2014.
 // https://m2.material.io/design/color/the-color-system.html#tools-for-picking-colors
 

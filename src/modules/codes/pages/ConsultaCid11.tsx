@@ -2,19 +2,16 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { View } from 'react-native'
 
-import { TextBox } from '../../../shared/ui/components/TextBox'
 import { PrimaryButton } from '../../../shared/ui/components/PrimaryButton'
 import { StyledText } from '../../../shared/ui/components/StyledText'
 import { globalStyles } from '../../../shared/ui/globalStyles'
 import { GREEN, CIAN } from '@shared/ui/colors'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import CodeQuery4 from './Favoritos'
-import Codes from '../Codes'
-import CodeQuery3 from './ConsultaCif'
 
 const Tab = createBottomTabNavigator()
 
-export function CodeQuery() {
+export function CodeQuery2() {
   const navigation = useNavigation()
 
   return (
@@ -47,7 +44,7 @@ export function CodeQuery() {
                 },
               ]}
             >
-              CID-10
+              CID-11
             </StyledText>
 
             <View
@@ -65,10 +62,12 @@ export function CodeQuery() {
                 <h2>Código:</h2> aqui vai o código q foi pesquisado
               </StyledText>
               <StyledText>
-                <StyledText>
-                  <h2>Título:</h2>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                </StyledText>
+                <h2>Título:</h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              </StyledText>
+              <StyledText>
+                <h2>Descrição:</h2>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
               </StyledText>
             </View>
             <View style={globalStyles.centerHorizontally}>
@@ -127,7 +126,7 @@ export function CodeQuery() {
           },
         ]}
       >
-        CID-10
+        CID-11
       </StyledText>
 
       <View
@@ -145,10 +144,12 @@ export function CodeQuery() {
           <h2>Código:</h2> aqui vai o código q foi pesquisado
         </StyledText>
         <StyledText>
-          <StyledText>
-            <h2>Título:</h2>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-          </StyledText>
+          <h2>Título:</h2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        </StyledText>
+        <StyledText>
+          <h2>Descrição:</h2>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
         </StyledText>
       </View>
       <View style={globalStyles.centerHorizontally}>
@@ -178,4 +179,4 @@ export function CodeQuery() {
   )
 }
 
-export default CodeQuery
+export default CodeQuery2

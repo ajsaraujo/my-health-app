@@ -19,6 +19,8 @@ export type RouteParams = {
   // Códigos
   [MyHealthModule.Codes]: NO_PARAMS
   Consulta: { name: string }
+
+  ResetPassword: NO_PARAMS
 }
 
 export type Navigation = NativeStackNavigationProp<RouteParams>

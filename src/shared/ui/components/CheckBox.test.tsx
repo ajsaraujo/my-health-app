@@ -1,8 +1,9 @@
-import { fireEvent, render, screen } from '@testing-library/react-native'
+import { render, screen } from '@testing-library/react-native'
 import { View } from 'react-native'
 import { CheckBox } from './CheckBox'
 import { useState } from 'react'
 import { StyledText } from './StyledText'
+import { press } from '@shared/utils/testing'
 
 describe('CheckBox', () => {
   function ExampleComponent() {
@@ -33,8 +34,8 @@ describe('CheckBox', () => {
   it('should select an item', () => {
     render(<ExampleComponent></ExampleComponent>)
 
-    fireEvent.press(screen.queryByText('Geralt'))
-    fireEvent.press(screen.queryByText('Yennefer'))
+    press('Geralt')
+    press('Yennefer')
 
     expect(
       screen.queryByText('Selected heroes: Geralt, Yennefer')
@@ -44,8 +45,8 @@ describe('CheckBox', () => {
   it('should unselect an item', () => {
     render(<ExampleComponent></ExampleComponent>)
 
-    fireEvent.press(screen.queryByText('Yennefer'))
-    fireEvent.press(screen.queryByText('Yennefer'))
+    press('Yennefer')
+    press('Yennefer')
 
     expect(screen.queryByText('Selected heroes: None')).toBeVisible()
   })

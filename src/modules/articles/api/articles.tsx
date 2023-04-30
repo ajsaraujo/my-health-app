@@ -1,17 +1,36 @@
 import axios from 'axios'
 import { Article } from '../interfaces/Article'
+import { config } from 'src/config'
+import { getSession } from '@shared/services/auth/session'
 
-let webApiUrl = 'https://my-health-api.herokuapp.com/article'
-let tokenStr = 'colocar access_token'
+const URL = `${config.mainAPIUrl}/article`
+
+async function fetchToken() {
+  const session = await getSession()
+
+  if (session !== null) {
+    return session.access_token
+  }
+  return null
+}
+
 export async function fetchArticles(): Promise<Article[]> {
-  const response = await axios.get(webApiUrl, {
+  let tokenStr = await fetchToken()
+  if (tokenStr === null) {
+    throw new Error('Usuario não autenticado')
+  }
+  const response = await axios.get(URL, {
     headers: { Authorization: `Bearer ${tokenStr}` },
   })
   return response.data
 }
 
 export async function postArticle(article: Article): Promise<number> {
-  const response = await axios.post(webApiUrl, article, {
+  let tokenStr = await fetchToken()
+  if (tokenStr === null) {
+    throw new Error('Usuario não autenticado')
+  }
+  const response = await axios.post(URL, article, {
     headers: { Authorization: `Bearer ${tokenStr}` },
   })
   console.log(response.status)

@@ -9,6 +9,8 @@ import { StyleSheet, TouchableOpacity, View } from 'react-native'
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
 import { ModuleCard } from './components/ModuleCard'
+import { useEffect, useState } from 'react'
+import { getSession } from '@shared/services/auth/session'
 
 type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 
@@ -21,10 +23,28 @@ export default function Home(props: HomeProps) {
     MyHealthModule.Articles,
   ]
 
+  const [username, setUsername] = useState('')
+
+  const welcomeMessage = username
+    ? `Olá, ${username}.`
+    : 'Bem vindo ao My Health'
+
+  useEffect(() => {
+    async function fetchUsername() {
+      const session = await getSession()
+
+      if (session !== null) {
+        setUsername(session.name)
+      }
+    }
+
+    fetchUsername()
+  })
+
   return (
     <View>
       <View style={globalStyles.defaultContainer}>
-        <StyledText style={styles.helloText}>Olá, Fulano.</StyledText>
+        <StyledText style={styles.helloText}>{welcomeMessage}</StyledText>
         <StyledText style={styles.letsTakeCareText}>
           Vamos cuidar da sua saúde hoje? ❤️
         </StyledText>

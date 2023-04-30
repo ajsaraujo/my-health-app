@@ -11,6 +11,7 @@ export function ArticleList({ articles }: ArticleListProps) {
         <div key={article.id}>
           <h2>{article.title}</h2>
           <p>{article.content}</p>
+          <p></p>
         </div>
       ))}
     </div>

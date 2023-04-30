@@ -11,6 +11,7 @@ import Codes from './src/modules/codes/Codes'
 import CodeQuery from './src/modules/codes/pages/Consulta'
 import Diary from './src/modules/diary/Diary'
 import Article from './src/modules/articles/Articles'
+import { NewsForm } from './src/modules/articles/pages/PostArticle'
 import { Login } from './src/modules/login/pages/Login'
 import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/modules/home/Home'
@@ -92,6 +93,13 @@ export default function App() {
           name="ResetPassword"
           component={ResetPassword}
           options={{ headerTitle: 'Redefinir senha' }}
+        ></Stack.Screen>
+
+        {/* Tela de publicar noticias */}
+        <Stack.Screen
+          name="PublishNews"
+          component={NewsForm}
+          options={{ title: 'My Health Notícias' }}
         ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>

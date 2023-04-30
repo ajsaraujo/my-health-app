@@ -1,7 +1,7 @@
 export interface Article {
-  id: string
+  id?: string
   title: string
   content: string
-  status: string
+  status?: string
   authorId: string
 }

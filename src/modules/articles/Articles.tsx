@@ -5,7 +5,8 @@ import { useState, useEffect } from 'react'
 import { ArticleList } from './components/ArticleList'
 import { fetchArticles } from './api'
 import { Article } from './interfaces/Article'
-
+import { globalStyles } from '@shared/ui/globalStyles'
+import { PrimaryButton } from '@shared/ui/components'
 type ArticlesProps = NativeStackScreenProps<
   RouteParams,
   MyHealthModule.Articles
@@ -16,15 +17,35 @@ export default function ShowArticles(props: ArticlesProps) {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await fetchArticles()
-      setArticles(data)
+      try {
+        const data = await fetchArticles()
+        setArticles(data)
+      } catch (error) {
+        // Melhorar esse catch error
+        console.error(error)
+      }
     }
     fetchData()
   }, [])
 
+  function handlePostNews() {
+    props.navigation.push('PublishNews')
+  }
+
   return (
     <div>
-      <ArticleList articles={articles} />
+      {articles.length > 0 ? (
+        <ArticleList articles={articles} />
+      ) : (
+        <p>Não há notícias para exibir.</p>
+      )}
+      {/* Ocultar esse botão de acordo com a permissão e colocar ele flutuante */}
+      <PrimaryButton
+        style={{ ...globalStyles.elevation1, width: '100%' }}
+        onPress={handlePostNews}
+      >
+        Publicar notícia
+      </PrimaryButton>
     </div>
   )
 }

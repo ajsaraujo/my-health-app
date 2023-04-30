@@ -6,6 +6,8 @@ type NO_PARAMS = undefined
 export type RouteParams = {
   Login: NO_PARAMS
   Home: NO_PARAMS
+  News: NO_PARAMS
+  PublishNews: NO_PARAMS
 
   // Calculadoras
   [MyHealthModule.Calculators]: NO_PARAMS

@@ -1,17 +1,19 @@
-import { View } from 'react-native'
-
+import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { authenticate } from '@shared/services/auth/auth'
 import {
   FormField,
+  PasswordTextBox,
+  PrimaryButton,
+  SecondaryButton,
+  StyledText,
   TextBox,
   TextButtonUnderline,
-  PrimaryButton,
-  PasswordTextBox,
-  StyledText,
-  SecondaryButton,
 } from '@shared/ui/components'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
-import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { View } from 'react-native'
+
 import { RouteParams } from '../../../routeParams'
 
 type LoginForm = {
@@ -28,6 +30,7 @@ export function Login(props: LoginProps) {
   })
 
   const [submitted, setSubmitted] = useState(false)
+  const toast = useToastActions()
 
   /**
    * TO DO: Pesquisar se existem formas melhores de capturar mudanças
@@ -42,12 +45,25 @@ export function Login(props: LoginProps) {
     }
   }
 
-  function handleLogin() {
+  async function handleLogin() {
     setSubmitted(true)
 
     if (validateForm(formValues).valid) {
-      props.navigation.replace('Home')
+      const result = await authenticate(formValues.email, formValues.password)
+
+      console.log(`Resultado ok? ${result.isOk}`)
+
+      if (result.isOk) {
+        toast.success('Bem vindo ao My Health!')
+        goToHome()
+      } else {
+        toast.error(result.message)
+      }
     }
+  }
+
+  function goToHome() {
+    props.navigation.replace('Home')
   }
 
   function resetPassword() {

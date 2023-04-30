@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import { styles } from '../../css/medicines'
 import MedChoice from '../form/choiceMed'
 import Content from './content'
+import { getAllSchedule } from '../form/choiceSchedule/scheduleMed/index'
 
 const setaInfo = require('../../img/arrow-info.png')
 
@@ -18,7 +19,8 @@ const medicinesList = [
   {
     id: 2,
     nome: 'Formoterol',
-    funcao: 'Efeito broncodilatador em pacientes com obstrução reversível das vias aéreas',
+    funcao:
+      'Efeito broncodilatador em pacientes com obstrução reversível das vias aéreas',
     data_inicio: '11/11/2023',
     data_fim: '11/11/2023',
     horario: '09:30',
@@ -38,10 +40,10 @@ const medicinesList = [
     data_inicio: '01/02/2024',
     data_fim: '01/02/2024',
     horario: '07:30',
-  }
-  
+  },
 ]
 
+const scheduleList = getAllSchedule
 
 export default function Medicines() {
   const [showModal, setShowModal] = useState(false)
@@ -61,9 +63,9 @@ export default function Medicines() {
       <FlatList
         style={styles.medicinesList}
         data={medicinesList}
-        keyExtractor={ ( item ) => String(item.id)}
+        keyExtractor={(item) => String(item.id)}
         showsVerticalScrollIndicator
-        renderItem={ ({ item }) => <Content data={item} />}
+        renderItem={({ item }) => <Content data={item} />}
       />
 
       {/* Tab Actions Buttons */}
@@ -74,10 +76,7 @@ export default function Medicines() {
         </TouchableOpacity>
       </View>
 
-      <MedChoice
-        visible={showModal}
-        onClose={() => setShowModal(false)}
-      />
+      <MedChoice visible={showModal} onClose={() => setShowModal(false)} />
     </View>
   )
 }

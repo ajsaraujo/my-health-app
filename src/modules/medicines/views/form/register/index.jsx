@@ -10,6 +10,28 @@ import {
 } from 'react-native'
 
 import { styles } from '../../../css/info/schedule'
+//retorna o medicamento cadastrado
+export async function getAllMed() {
+  try {
+    const keys = await AsyncStorage.getAllKeys()
+    const results = await AsyncStorage.multiGet(keys)
+
+    results.forEach((result) => {
+      const key = result[0]
+      const value = result[1]
+
+      // Verifique se o valor está no formato que você deseja (por exemplo, JSON)
+      if (value !== null) {
+        const parsedValue = JSON.parse(value)
+
+        // Exiba apenas os valores que você deseja
+        console.log(parsedValue.nomeMedicamento)
+      }
+    })
+  } catch (error) {
+    console.log(error) // erro ao recuperar valor
+  }
+}
 
 const RegisterModalMed = ({ visible, onClose }) => {
   const [nomeMed, setNomeMed] = useState('')
@@ -36,19 +58,6 @@ const RegisterModalMed = ({ visible, onClose }) => {
     }
   }
 
-  //retorna o medicamento cadastrado
-  async function getAllMed() {
-    try {
-      const value = await AsyncStorage.getItem(chave)
-      if (value !== null) {
-        console.log('Remedios cadastrados:', value) // valor encontrado
-      } else {
-        console.log('Nenhum valor encontrado para a chave ')
-      }
-    } catch (error) {
-      console.log(error) // erro ao recuperar valor
-    }
-  }
   return (
     <Modal
       visible={visible}

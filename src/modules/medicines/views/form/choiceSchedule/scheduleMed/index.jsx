@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import AsyncStorage from '@react-native-async-storage/async-storage'
+
 import {
   Modal,
   View,
@@ -12,13 +14,57 @@ import DateInput from '../../DateInput'
 import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 
+export async function getAllSchedule() {
+  try {
+    const keys = await AsyncStorage.getAllKeys()
+    const results = await AsyncStorage.multiGet(keys)
+
+    results.forEach((result) => {
+      const key = result[0]
+      const value = result[1]
+
+      // Verifique se o valor está no formato que você deseja (por exemplo, JSON)
+      if (value !== null) {
+        const parsedValue = JSON.parse(value)
+
+        // Exiba apenas os valores que você deseja
+        console.log(parsedValue)
+      }
+    })
+  } catch (error) {
+    console.log(error) // erro ao recuperar valor
+  }
+}
 const SchedulingModalMed = ({ visible, onClose }) => {
-  const handleSubmit = () => {
-    // Lógica para agendar o evento aqui
-    onClose()
+  const [nomeMed, setNomeMed] = useState('')
+  const [funcMed, setFuncMed] = useState('')
+  const [descMed, setDescMed] = useState('')
+  const [selDateIni, setSelDateIni] = useState('')
+  const [selDateFinal, setSelDateFinal] = useState('')
+  const [periodo, setPeriodo] = useState(null)
+
+  const cadAgendamento = {
+    nomeMedicamento: nomeMed,
+    funcMedicamento: funcMed,
+    descMedicamento: descMed,
+    dataInicio: selDateIni,
+    dataFinal: selDateFinal,
+    periodo: periodo,
   }
 
-  const [periodo, setPeriodo] = useState(null)
+  const chave = 'cadAgendamentos'
+
+  async function handleSubmit() {
+    const jsonAgendamentos = JSON.stringify(cadAgendamento)
+
+    try {
+      await AsyncStorage.setItem(chave, jsonAgendamentos)
+      console.log('Medicamentos agendados com sucesso!')
+      console.log(cadAgendamento)
+    } catch (error) {
+      console.log('Erro ao Agendar medicamentos:', error)
+    }
+  }
 
   return (
     <Modal
@@ -31,11 +77,34 @@ const SchedulingModalMed = ({ visible, onClose }) => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Novo Medicamento</Text>
-            <TextInput style={styles.input} placeholder="Nome" />
-            <TextInput style={styles.input} placeholder="Função" />
-            <TextInput style={styles.input} placeholder="Descrição" />
+            <TextInput
+              onChangeText={(event) => {
+                setNomeMed(event)
+              }}
+              value={nomeMed}
+              style={styles.input}
+              placeholder="Nome"
+            />
+
+            <TextInput
+              onChangeText={(event) => {
+                setFuncMed(event)
+              }}
+              value={funcMed}
+              style={styles.input}
+              placeholder="Função"
+            />
+
+            <TextInput
+              onChangeText={(event) => {
+                setDescMed(event)
+              }}
+              value={descMed}
+              style={styles.input}
+              placeholder="Descrição"
+            />
             <View style={styles.input}>
-              <DateInput placeholder={'Data de início'} />
+              <DateInput value={selDateIni} placeholder={'Data de início'} />
             </View>
             <View style={styles.input}>
               <DateInput placeholder={'Data de fim'} />

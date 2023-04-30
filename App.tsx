@@ -15,6 +15,7 @@ import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/modules/home/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
+import { ResetPassword } from '@modules/reset-password/ResetPassword'
 
 export const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -83,6 +84,13 @@ export default function App() {
 
         {/* Telas do módulo de códigos */}
         <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
+
+        {/* Tela de resetar senha */}
+        <Stack.Screen
+          name="ResetPassword"
+          component={ResetPassword}
+          options={{ headerTitle: 'Redefinir senha' }}
+        ></Stack.Screen>
       </Stack.Navigator>
     </NavigationContainer>
   )

@@ -50,6 +50,10 @@ export function Login(props: LoginProps) {
     }
   }
 
+  function resetPassword() {
+    props.navigation.push('ResetPassword')
+  }
+
   return (
     <View
       style={{
@@ -73,7 +77,10 @@ export function Login(props: LoginProps) {
         ></PasswordTextBox>
       </FormField>
 
-      <TextButtonUnderline style={globalStyles.marginTop1}>
+      <TextButtonUnderline
+        style={globalStyles.marginTop1}
+        onPress={resetPassword}
+      >
         Esqueci minha senha
       </TextButtonUnderline>
 

@@ -51,7 +51,10 @@ export function Login(props: LoginProps) {
     if (validateForm(formValues).valid) {
       const result = await authenticate(formValues.email, formValues.password)
 
+      console.log(`Resultado ok? ${result.isOk}`)
+
       if (result.isOk) {
+        toast.success('Bem vindo ao My Health!')
         goToHome()
       } else {
         toast.error(result.message)

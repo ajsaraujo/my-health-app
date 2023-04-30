@@ -21,6 +21,8 @@ import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
 import { ToastProvider } from '@shared/ui/components/toast/ToastProvider'
 import Home from '@modules/home/Home'
+import { Loading } from '@shared/ui/components/loading/Loading'
+import { LoadingInterceptor } from '@shared/ui/components/loading/LoadingInterceptor'
 
 export const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -56,6 +58,7 @@ export default function App() {
   return (
     <View style={{ width: '100%' }}>
       <ToastProvider>
+        <LoadingInterceptor></LoadingInterceptor>
         <Toast></Toast>
         <NavigationContainer
           theme={{

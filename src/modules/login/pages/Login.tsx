@@ -63,7 +63,7 @@ export function Login(props: LoginProps) {
   }
 
   function goToHome() {
-    props.navigation.navigate('Home')
+    props.navigation.replace('Home')
   }
 
   function resetPassword() {

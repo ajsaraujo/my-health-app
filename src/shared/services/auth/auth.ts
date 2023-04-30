@@ -2,6 +2,7 @@ import { ErrorResponse } from '@shared/models/ErrorResponse'
 import { failure, Result, success } from '@shared/utils/result/result'
 import axios, { AxiosError } from 'axios'
 import { config } from 'src/config'
+import { saveSession } from './session'
 
 const URL = `${config.mainAPIUrl}/auth`
 
@@ -17,6 +18,8 @@ export async function authenticate(
         password,
       }
     )
+
+    await saveSession(response.data as UserSession)
 
     return success(response.data as UserSession)
   } catch (error: unknown) {

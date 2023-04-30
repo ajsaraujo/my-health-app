@@ -23,6 +23,8 @@ import { ToastProvider } from '@shared/ui/components/toast/ToastProvider'
 import Home from '@modules/home/Home'
 import { Loading } from '@shared/ui/components/loading/Loading'
 import { LoadingInterceptor } from '@shared/ui/components/loading/LoadingInterceptor'
+import { useEffect, useState } from 'react'
+import { getSession } from '@shared/services/auth/session'
 
 export const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -51,6 +53,20 @@ export default function App() {
     'Inter-Regular': require('./assets/fonts/Inter-Regular.otf'),
   })
 
+  const [userIsLoggedIn, setUserIsLoggedIn] = useState(false)
+
+  useEffect(() => {
+    async function fetchSession() {
+      const session = await getSession()
+
+      if (session !== null) {
+        setUserIsLoggedIn(true)
+      }
+    }
+
+    fetchSession()
+  })
+
   if (!fontsLoaded) {
     return null
   }
@@ -71,7 +87,7 @@ export default function App() {
         >
           {/* Definição de rotas do aplicativo */}
           <Stack.Navigator
-            initialRouteName="Login"
+            initialRouteName={userIsLoggedIn ? 'Home' : 'Login'}
             screenOptions={TITLE_STYLES}
           >
             {/* Tela de login */}

@@ -9,6 +9,7 @@ import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
 import { View } from 'react-native'
 import { ResetPasswordRouteParams } from '../ResetPasswordRouteParams'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 
 type InsertNewPasswordProps = NativeStackScreenProps<
   ResetPasswordRouteParams,
@@ -21,6 +22,7 @@ export function InsertNewPassword(props: InsertNewPasswordProps) {
     passwordConfirmation: '',
   })
   const [errorMessage, setErrorMessage] = useState('')
+  const toast = useToastActions()
 
   function handleSubmit() {
     const { password, passwordConfirmation } = formValues
@@ -43,6 +45,7 @@ export function InsertNewPassword(props: InsertNewPasswordProps) {
     }
 
     goToLoginPage()
+    toast.success('Sua senha foi redefinida com sucesso.')
   }
 
   function goToLoginPage() {

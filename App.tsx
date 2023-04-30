@@ -1,9 +1,12 @@
+import { ResetPassword } from '@modules/reset-password/ResetPassword'
 import { DefaultTheme, NavigationContainer } from '@react-navigation/native'
 import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
+import { Toast, ToastProps } from '@shared/ui/components/toast/Toast'
 import { useFonts } from 'expo-font'
+import { View } from 'react-native'
 
 import { MyHealthModule } from './src/modules'
 import Calculators from './src/modules/calculators/Calculators'
@@ -14,10 +17,10 @@ import Article from './src/modules/articles/Articles'
 import { NewsForm } from './src/modules/articles/pages/PostArticle'
 import { Login } from './src/modules/login/pages/Login'
 import Medicines from './src/modules/medicines/Medicines'
-import Home from './src/modules/home/Home'
 import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
-import { ResetPassword } from '@modules/reset-password/ResetPassword'
+import { ToastProvider } from '@shared/ui/components/toast/ToastProvider'
+import Home from '@modules/home/Home'
 
 export const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -51,57 +54,65 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer
-      theme={{
-        ...DefaultTheme,
-        colors: {
-          ...DefaultTheme.colors,
-          background: 'white',
-        },
-      }}
-    >
-      {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login" screenOptions={TITLE_STYLES}>
-        {/* Tela de login */}
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
+    <View style={{ width: '100%' }}>
+      <ToastProvider>
+        <Toast></Toast>
+        <NavigationContainer
+          theme={{
+            ...DefaultTheme,
+            colors: {
+              ...DefaultTheme.colors,
+              background: 'white',
+            },
+          }}
+        >
+          {/* Definição de rotas do aplicativo */}
+          <Stack.Navigator
+            initialRouteName="Login"
+            screenOptions={TITLE_STYLES}
+          >
+            {/* Tela de login */}
+            <Stack.Screen
+              name="Login"
+              component={Login}
+              options={{ headerShown: false }}
+            ></Stack.Screen>
 
-        {/* Tela principal (Home) */}
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: 'My Health' }}
-        ></Stack.Screen>
+            {/* Tela principal (Home) */}
+            <Stack.Screen
+              name="Home"
+              component={Home}
+              options={{ title: 'My Health' }}
+            ></Stack.Screen>
 
-        {/* Pontos de entrada dos módulos */}
-        {Object.values(MyHealthModule).map((module) => (
-          <Stack.Screen
-            key={module}
-            name={module}
-            component={components[module]}
-          ></Stack.Screen>
-        ))}
+            {/* Pontos de entrada dos módulos */}
+            {Object.values(MyHealthModule).map((module) => (
+              <Stack.Screen
+                key={module}
+                name={module}
+                component={components[module]}
+              ></Stack.Screen>
+            ))}
 
-        {/* Telas do módulo de códigos */}
-        <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
+            {/* Telas do módulo de códigos */}
+            <Stack.Screen name="Consulta" component={CodeQuery}></Stack.Screen>
 
-        {/* Tela de resetar senha */}
-        <Stack.Screen
-          name="ResetPassword"
-          component={ResetPassword}
-          options={{ headerTitle: 'Redefinir senha' }}
-        ></Stack.Screen>
+            {/* Tela de resetar senha */}
+            <Stack.Screen
+              name="ResetPassword"
+              component={ResetPassword}
+              options={{ headerTitle: 'Redefinir senha' }}
+            ></Stack.Screen>
 
-        {/* Tela de publicar noticias */}
-        <Stack.Screen
-          name="PublishNews"
-          component={NewsForm}
-          options={{ title: 'My Health Notícias' }}
-        ></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
+            {/* Tela de publicar noticias */}
+            <Stack.Screen
+              name="PublishNews"
+              component={NewsForm}
+              options={{ title: 'My Health Notícias' }}
+            ></Stack.Screen>
+          </Stack.Navigator>
+        </NavigationContainer>
+      </ToastProvider>
+    </View>
   )
 }

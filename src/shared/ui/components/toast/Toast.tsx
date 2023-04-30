@@ -21,6 +21,7 @@ export function Toast() {
   return (
     <View
       style={[
+        { zIndex: 1 },
         styles.toastContainer,
         type === 'success' && styles.success,
         type === 'error' && styles.error,

@@ -58,6 +58,7 @@ export function CodeQuery() {
                   marginRight: 8,
                   backgroundColor: '#ffffff',
                   flex: 1,
+                  padding: 15,
                 },
               ]}
             >

@@ -13,6 +13,7 @@ import { Picker } from '@react-native-picker/picker'
 import DateInput from '../../DateInput'
 import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
+import * as FileSystem from 'expo-file-system'
 
 export async function getAllSchedule() {
   try {
@@ -41,6 +42,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   const [descMed, setDescMed] = useState('')
   const [selDateIni, setSelDateIni] = useState('')
   const [selDateFinal, setSelDateFinal] = useState('')
+  const [horario, setHorario] = useState('')
   const [periodo, setPeriodo] = useState(null)
 
   const cadAgendamento = {
@@ -49,7 +51,41 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     descMedicamento: descMed,
     dataInicio: selDateIni,
     dataFinal: selDateFinal,
+    hour: horario,
     periodo: periodo,
+  }
+
+  async function agendarMed() {
+    try {
+      let dado = cadAgendamento
+      const caminho = `${FileSystem.documentDirectory}dados.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      console.log('Dado adicionado com sucesso!')
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
   }
 
   const chave = 'cadAgendamentos'
@@ -104,13 +140,25 @@ const SchedulingModalMed = ({ visible, onClose }) => {
               placeholder="Descrição"
             />
             <View style={styles.input}>
-              <DateInput value={selDateIni} placeholder={'Data de início'} />
+              <DateInput
+                setValue={setSelDateIni}
+                value={selDateIni}
+                placeholder={'Data de início'}
+              />
             </View>
             <View style={styles.input}>
-              <DateInput placeholder={'Data de fim'} />
+              <DateInput
+                setValue={setSelDateFinal}
+                value={selDateFinal}
+                placeholder={'Data de fim'}
+              />
             </View>
             <View style={styles.input}>
-              <TimeInput placeholder={'Primeiro horário da Medicação'} />
+              <TimeInput
+                setValue={setHorario}
+                value={horario}
+                placeholder={'Primeiro horário da Medicação'}
+              />
             </View>
             <View style={styles.input}>
               <Picker
@@ -146,7 +194,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={handleSubmit}
+                onPress={agendarMed}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>
               </TouchableOpacity>

@@ -1,8 +1,16 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, Alert, Pressable } from 'react-native'
+import {
+  View,
+  Text,
+  Image,
+  TouchableOpacity,
+  Alert,
+  Pressable,
+} from 'react-native'
 import { styles } from '../../css/home'
 import SchedulingModalChoice from '../form/choiceSchedule'
 import ShedulingInfo from '../info/schedule'
+import * as FileSystem from 'expo-file-system'
 
 // Set Username
 const username = 'José'
@@ -18,7 +26,6 @@ const today = dataFormatada
 const setaInfo = require('../../img/arrow-info.png')
 
 export default function Home() {
-
   const daysOfWeek = [
     'Sunday',
     'Monday',
@@ -47,7 +54,6 @@ export default function Home() {
   const [showInfo2, setShowInfo2] = useState(false)
   const [showInfo3, setShowInfo3] = useState(false)
   const handleInfo1 = () => {
-
     setShowInfo1(true)
   }
   const handleInfo2 = () => {
@@ -59,6 +65,35 @@ export default function Home() {
 
   const handlePress = () => {
     setShowModalChoice(true)
+  }
+
+  async function lerJSON() {
+    try {
+      const caminho = `${FileSystem.documentDirectory}dados.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      if (!infoArquivo.exists) {
+        console.log('O arquivo não existe!')
+        return
+      }
+
+      // Lê os dados do arquivo
+      const arquivo = await FileSystem.readAsStringAsync(caminho)
+
+      // Converte a string JSON para array
+      const dados = JSON.parse(arquivo)
+
+      // // Imprime os dados
+      for (let i = 0; i < dados.length; i++) {
+        console.log(dados[i])
+      }
+
+      // return dados;
+    } catch (error) {
+      console.log('Erro ao ler o JSON:', error)
+    }
   }
 
   return (
@@ -199,12 +234,25 @@ export default function Home() {
         )}
       </View>
 
-      {/* Tab Calendar content @todo substituir com info do DB */}
       <View>
+        {/* {lerJSON.map( (schedule) => {
+          <Pressable style={styles.containerInfoDay} onPress={handleInfo1}>
+          <Text style={styles.infoDayHour}>{schedule.funcMed}</Text>
+          <Text style={styles.infoDayText}>{schedule.nomeMed}</Text>
+          <TouchableOpacity style={styles.infoDayButton} >
+            <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
+          </TouchableOpacity>
+          <ShedulingInfo
+            visible={showInfo1}
+            data={{ hour: '8:00', description: schedule.descMed }}
+            onClose={() => setShowInfo1(false)}
+          />
+          </Pressable>
+        } )} */}
         <Pressable style={styles.containerInfoDay} onPress={handleInfo1}>
           <Text style={styles.infoDayHour}>8:00</Text>
           <Text style={styles.infoDayText}>Tomar insulina</Text>
-          <TouchableOpacity style={styles.infoDayButton} >
+          <TouchableOpacity style={styles.infoDayButton}>
             <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
           </TouchableOpacity>
           <ShedulingInfo
@@ -246,6 +294,9 @@ export default function Home() {
       <View style={styles.containerSchedulingButton}>
         <TouchableOpacity style={styles.schedulingButton} onPress={handlePress}>
           <Text style={styles.schedulingButtonText}>Novo Agendamento</Text>
+        </TouchableOpacity>
+        <TouchableOpacity style={styles.schedulingButton} onPress={lerJSON}>
+          <Text style={styles.schedulingButtonText}>Get Agendamentos</Text>
         </TouchableOpacity>
       </View>
       <SchedulingModalChoice

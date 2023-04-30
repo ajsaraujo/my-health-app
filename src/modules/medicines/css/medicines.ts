@@ -26,40 +26,47 @@ export const styles = StyleSheet.create({
   titleMedicinesContainer: {
     marginTop: 0,
     marginBottom: 60,
+  },//a partir daqui
+  medicinesList: {
+    //backgroundColor: '#fff',
+    marginLeft: 18,
+    marginRight: 18,
+    
   },
   containerMedicinesContent: {
     width: '100%',
-    flexDirection: 'row',
     marginTop: 10,
-    marginLeft: 2,
-  },
-  infoMedicinesText: {
-    width: '85%',
-    marginTop: 10,
-    marginLeft: 5,
-    fontSize: 15,
-    textAlign: 'center',
-    verticalAlign: 'middle',
+    alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
-    height: '100%',
   },
-  viewMedicinesButton: {
-    backgroundColor: '#1E90FF',
-    marginTop: 10,
-    marginLeft: 5,
-    padding: 10,
-    borderRadius: 10,
-    height: '100%',
+  nameContentText:{
+    fontSize: 20,
+    marginBottom: 10,
   },
-  viewMedicinesButtonText: {
-    marginTop: 10,
+  viewMedicineContent:{
+    flexDirection: 'row',
+    marginBottom: 3,
   },
+  FuncaoContentText:{
+    marginBottom: 3,
+  },
+  startDateContentText:{
+    marginRight: 25,
+  },
+  endDateContentText:{
+
+  },
+  timeContentText:{
+
+  },
+  //
   containerMedicineButton: {
-    marginTop: 66,
+    marginTop: 30,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   medicineButton: {
     justifyContent: 'center',

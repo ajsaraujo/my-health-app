@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { View, Text, Image, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, Image, TouchableOpacity, Alert, Pressable } from 'react-native'
 import { styles } from '../../css/home'
 import SchedulingModalChoice from '../form/choiceSchedule'
 import ShedulingInfo from '../info/schedule'
@@ -18,6 +18,7 @@ const today = dataFormatada
 const setaInfo = require('../../img/arrow-info.png')
 
 export default function Home() {
+
   const daysOfWeek = [
     'Sunday',
     'Monday',
@@ -46,6 +47,7 @@ export default function Home() {
   const [showInfo2, setShowInfo2] = useState(false)
   const [showInfo3, setShowInfo3] = useState(false)
   const handleInfo1 = () => {
+
     setShowInfo1(true)
   }
   const handleInfo2 = () => {
@@ -199,10 +201,10 @@ export default function Home() {
 
       {/* Tab Calendar content @todo substituir com info do DB */}
       <View>
-        <View style={styles.containerInfoDay}>
+        <Pressable style={styles.containerInfoDay} onPress={handleInfo1}>
           <Text style={styles.infoDayHour}>8:00</Text>
           <Text style={styles.infoDayText}>Tomar insulina</Text>
-          <TouchableOpacity style={styles.infoDayButton} onPress={handleInfo1}>
+          <TouchableOpacity style={styles.infoDayButton} >
             <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
           </TouchableOpacity>
           <ShedulingInfo
@@ -210,12 +212,12 @@ export default function Home() {
             data={{ hour: '8:00', description: 'Tomar insulina' }}
             onClose={() => setShowInfo1(false)}
           />
-        </View>
+        </Pressable>
 
-        <View style={styles.containerInfoDay}>
+        <Pressable style={styles.containerInfoDay} onPress={handleInfo2}>
           <Text style={styles.infoDayHour}>15:00</Text>
           <Text style={styles.infoDayText}>Exame de Rotina</Text>
-          <TouchableOpacity style={styles.infoDayButton} onPress={handleInfo2}>
+          <TouchableOpacity style={styles.infoDayButton}>
             <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
           </TouchableOpacity>
           <ShedulingInfo
@@ -223,12 +225,12 @@ export default function Home() {
             data={{ hour: '15:00', description: 'Exame de Rotina' }}
             onClose={() => setShowInfo2(false)}
           />
-        </View>
+        </Pressable>
 
-        <View style={styles.containerInfoDay}>
+        <Pressable style={styles.containerInfoDay} onPress={handleInfo3}>
           <Text style={styles.infoDayHour}>21:30</Text>
           <Text style={styles.infoDayText}>Exame Urinário</Text>
-          <TouchableOpacity style={styles.infoDayButton} onPress={handleInfo3}>
+          <TouchableOpacity style={styles.infoDayButton}>
             <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
           </TouchableOpacity>
           <ShedulingInfo
@@ -236,7 +238,7 @@ export default function Home() {
             data={{ hour: '21:30', description: 'Exame Urinário' }}
             onClose={() => setShowInfo3(false)}
           />
-        </View>
+        </Pressable>
       </View>
 
       {/* Tab Actions Buttons */}

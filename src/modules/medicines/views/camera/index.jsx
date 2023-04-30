@@ -4,7 +4,6 @@ import { styles } from '../../css/camera'
 import {Camera} from "expo-camera"
 import {FontAwesome} from '@expo/vector-icons'
 
-
 export default function CameraO({ visible, onClose }) {
 
     const camRef = useRef(null);
@@ -12,6 +11,7 @@ export default function CameraO({ visible, onClose }) {
     const [type, setType] = useState(Camera.Constants.Type.back);
     const [capturedPhoto, setCapturedPhoto] = useState(null);
     const [open, setOpen] = useState(false);
+
 
     useEffect(() => {
         (async () => {
@@ -87,7 +87,7 @@ return (
                             <Image style={styles.imgPhoto} source={{ uri: capturedPhoto }} />
                         </View>
                     </Modal>
-                    )}
+            )}
         </SafeAreaView>
     </Modal>
    );

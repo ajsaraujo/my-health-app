@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: '#D7E6F1',
     width: '70%',
     padding: 20,
     borderRadius: 10,
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#1E90FF',
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 14,
     marginRight: 40,
   },
   modalSelectionMedText: {
@@ -43,7 +43,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     backgroundColor: '#1E90FF',
     padding: 10,
-    borderRadius: 20,
+    borderRadius: 14,
   },
   modalSelectionProcText: {
     fontSize: 13,

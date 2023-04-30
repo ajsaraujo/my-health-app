@@ -6,7 +6,7 @@ import CameraO from '../camera'
 
 const cameraIcon = require('../../img/camera-icon_resized.png')
 
-export default function Historic() {
+export default function ProfileProc() {
   const [showModal, setShowModal] = useState(false)
 
   const handlePress = () => {
@@ -38,19 +38,19 @@ export default function Historic() {
           <View style={styles.infoProfile}>
             <Text style={styles.profileText}>Nome</Text>
             <View style={styles.profileInfo}>
-              <Text style={styles.profileInfoText}>Insulina</Text>
+              <Text style={styles.profileInfoText}>Exame de Rotina</Text>
             </View>
           </View>
 
           <View style={styles.infoProfile}>
-            <Text style={styles.profileText}>Função</Text>
+            <Text style={styles.profileText}>Local</Text>
             <View style={styles.profileInfo}>
-              <Text style={styles.profileInfoText}>Por causa da Diabete</Text>
+              <Text style={styles.profileInfoText}>Nada.</Text>
             </View>
           </View>
 
           <View style={styles.infoProfile}>
-            <Text style={styles.profileText}>Observação</Text>
+            <Text style={styles.profileText}>Descrição</Text>
             <View style={styles.profileInfo}>
               <Text style={styles.profileInfoText}>Nada.</Text>
             </View>

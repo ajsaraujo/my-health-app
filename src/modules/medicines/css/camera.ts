@@ -47,7 +47,10 @@ export const styles = StyleSheet.create({
     margin: 20,
   },
   closeButtonA: {
-    
+    position: "absolute",
+    top: 10,
+    left: 2,
+    margin: 10,
   },
   closeButtonB: {
     position: "absolute",

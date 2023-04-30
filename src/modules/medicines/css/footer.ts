@@ -16,6 +16,7 @@ export const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    //marginRight: 25,
   },
   footerButtonActive: {
     width: '25%',
@@ -24,14 +25,20 @@ export const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
+    //marginRight: 25
   },
   footerButtonImage: {
-    height: 30,
-    width: 30,
+    height: 43,
+    width: 43,
+    tintColor: '#383f42',
+    //marginRight: 30,
+    //marginLeft: 40,
   },
   footerButtonImageActive: {
-    height: 30,
-    width: 30,
-    tintColor: '#1E90FF',
+    height: 43,
+    width: 43,
+    tintColor: '#195cf7',
+   // marginRight: 30,
+    //marginLeft: 40,
   },
 })

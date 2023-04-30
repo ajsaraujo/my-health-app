@@ -26,40 +26,46 @@ export const styles = StyleSheet.create({
   titleProceduresContainer: {
     marginTop: 0,
     marginBottom: 60,
+  },//a partir daqui
+  proceduresList: {
+    //backgroundColor: '#fff',
+    marginLeft: 18,
+    marginRight: 18,
   },
   containerProceduresContent: {
     width: '100%',
-    flexDirection: 'row',
     marginTop: 10,
-    marginLeft: 2,
-  },
-  infoProceduresText: {
-    width: '85%',
-    marginTop: 10,
-    marginLeft: 5,
-    fontSize: 15,
-    textAlign: 'center',
-    verticalAlign: 'middle',
+    alignItems: 'center',
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
-    height: '100%',
   },
-  viewProceduresButton: {
-    backgroundColor: '#1E90FF',
-    marginTop: 10,
-    marginLeft: 5,
-    padding: 10,
-    borderRadius: 10,
-    height: '100%',
+  nameContentText:{
+    fontSize: 20,
+    marginBottom: 10,
   },
-  viewProceduresButtonText: {
-    marginTop: 10,
+  viewProcedureContent:{
+    flexDirection: 'row',
+    marginBottom: 3,
   },
+  localContentText:{
+    marginBottom: 3,
+  },
+  startDateContentText:{
+    marginRight: 25,
+  },
+  endDateContentText:{
+
+  },
+  timeContentText:{
+
+  },
+  //
   containerProcedureButton: {
-    marginTop: 66,
+    marginTop: 30,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   procedureButton: {
     justifyContent: 'center',

@@ -6,7 +6,7 @@ import CameraO from '../camera'
 
 const cameraIcon = require('../../img/camera-icon_resized.png')
 
-export default function Historic() {
+export default function ProfileMed() {
   const [showModal, setShowModal] = useState(false)
 
   const handlePress = () => {

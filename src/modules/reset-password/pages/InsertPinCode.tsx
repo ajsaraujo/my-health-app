@@ -22,7 +22,7 @@ export function InsertPinCode(props: InsertPinCodeProps) {
   const [pinCode, setPinCode] = useState('')
 
   function returnToInsertEmailScreen() {
-    props.navigation.navigate('InsertEmail', { userEmail: email })
+    props.navigation.replace('InsertEmail', { userEmail: email })
   }
 
   function confirm() {
@@ -31,12 +31,12 @@ export function InsertPinCode(props: InsertPinCodeProps) {
       return
     }
 
-    props.navigation.navigate('InsertNewPassword')
+    props.navigation.replace('InsertNewPassword')
   }
 
   return (
     <View style={styles.container}>
-      <StyledText style={globalStyles.marginBottom1}>
+      <StyledText style={globalStyles.marginBottom2}>
         Insira o código recebido no e-mail {email}
       </StyledText>
 
@@ -45,7 +45,7 @@ export function InsertPinCode(props: InsertPinCodeProps) {
         inputMode="numeric"
         value={pinCode}
         onChangeText={setPinCode}
-        style={globalStyles.marginBottom2}
+        style={globalStyles.marginBottom4}
       ></TextBox>
 
       <PrimaryButton style={globalStyles.marginBottom1} onPress={confirm}>

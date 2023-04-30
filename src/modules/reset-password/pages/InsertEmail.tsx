@@ -20,7 +20,7 @@ export function InsertEmail(props: InsertEmailProps) {
       return
     }
 
-    props.navigation.navigate('InsertPinCode', { userEmail: email })
+    props.navigation.replace('InsertPinCode', { userEmail: email })
   }
 
   return (

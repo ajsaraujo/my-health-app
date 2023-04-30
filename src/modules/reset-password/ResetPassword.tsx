@@ -1,5 +1,6 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
-import { InsertNewPassword, InsertPinCode, Success, InsertEmail } from './pages'
+
+import { InsertEmail, InsertNewPassword, InsertPinCode } from './pages'
 import { ResetPasswordRouteParams } from './ResetPasswordRouteParams'
 
 const Stack = createNativeStackNavigator<ResetPasswordRouteParams>()
@@ -19,7 +20,6 @@ export function ResetPassword() {
         name="InsertNewPassword"
         component={InsertNewPassword}
       ></Stack.Screen>
-      <Stack.Screen name="Success" component={Success}></Stack.Screen>
     </Stack.Navigator>
   )
 }

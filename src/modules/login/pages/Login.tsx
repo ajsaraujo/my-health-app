@@ -51,7 +51,7 @@ export function Login(props: LoginProps) {
   }
 
   function resetPassword() {
-    props.navigation.navigate('ResetPassword')
+    props.navigation.push('ResetPassword')
   }
 
   return (

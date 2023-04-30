@@ -33,6 +33,7 @@
     "@expo/webpack-config": "^18.0.1",
     "@react-navigation/native": "^6.1.6",
     "@react-navigation/native-stack": "^6.9.12",
+    "axios": "^1.4.0",
     "expo": "~48.0.6",
     "expo-asset": "~8.9.1",
     "expo-font": "^11.1.1",

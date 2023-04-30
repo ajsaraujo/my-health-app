@@ -3,4 +3,5 @@ export enum MyHealthModule {
   Codes = 'Códigos',
   Diary = 'Diário',
   Medicines = 'Medicamento',
+  Articles = 'Notícias',
 }

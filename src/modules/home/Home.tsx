@@ -1,16 +1,14 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-
+import { getSession } from '@shared/services/auth/session'
 import { LIGHT_BLACK, LIGHT_GRAY } from '@shared/ui/colors'
 import { StyledText } from '@shared/ui/components'
 import { globalStyles } from '@shared/ui/globalStyles'
-
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import { useEffect, useState } from 'react'
+import { StyleSheet, View } from 'react-native'
 
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
 import { ModuleCard } from './components/ModuleCard'
-import { useEffect, useState } from 'react'
-import { getSession } from '@shared/services/auth/session'
 
 type HomeProps = NativeStackScreenProps<RouteParams, 'Home'>
 

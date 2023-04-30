@@ -18,6 +18,7 @@ export default function Home(props: HomeProps) {
     MyHealthModule.Codes,
     MyHealthModule.Diary,
     MyHealthModule.Medicines,
+    MyHealthModule.Articles,
   ]
 
   return (

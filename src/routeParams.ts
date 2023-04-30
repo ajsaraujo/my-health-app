@@ -16,6 +16,9 @@ export type RouteParams = {
   // Medicamentos
   [MyHealthModule.Medicines]: NO_PARAMS
 
+  // Noticias
+  [MyHealthModule.Articles]: NO_PARAMS
+
   // Códigos
   [MyHealthModule.Codes]: NO_PARAMS
   Consulta: { name: string }

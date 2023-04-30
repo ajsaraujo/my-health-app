@@ -10,6 +10,7 @@ import Calculators from './src/modules/calculators/Calculators'
 import Codes from './src/modules/codes/Codes'
 import CodeQuery from './src/modules/codes/pages/Consulta'
 import Diary from './src/modules/diary/Diary'
+import Article from './src/modules/articles/Articles'
 import { Login } from './src/modules/login/pages/Login'
 import Medicines from './src/modules/medicines/Medicines'
 import Home from './src/modules/home/Home'
@@ -25,6 +26,7 @@ export default function App() {
     [MyHealthModule.Codes]: Codes,
     [MyHealthModule.Diary]: Diary,
     [MyHealthModule.Medicines]: Medicines,
+    [MyHealthModule.Articles]: Article,
   }
 
   const TITLE_STYLES: Partial<NativeStackNavigationOptions> = {

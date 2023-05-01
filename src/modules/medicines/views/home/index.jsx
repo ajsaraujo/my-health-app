@@ -253,7 +253,7 @@ export default function Home() {
         )}
       </View>
 
-      <ScrollView style={{ height: 200 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View style={styles.infoText}>
           {views ? (
             views

@@ -94,4 +94,9 @@ export const globalStyles = StyleSheet.create({
     shadowRadius: 9.41,
     elevation: 5,
   },
+
+  debug: {
+    borderWidth: 1,
+    borderColor: 'red',
+  },
 })

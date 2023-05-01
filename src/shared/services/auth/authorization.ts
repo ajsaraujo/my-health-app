@@ -10,6 +10,6 @@ export async function hasPermission(permission: string): Promise<boolean> {
   return session.permissions.includes(permission)
 }
 
-export async function isAdmin() {
+export async function checkIfUserIsAdmin() {
   return hasPermission('adm')
 }

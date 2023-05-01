@@ -1,4 +1,5 @@
-import { StyleSheet } from 'react-native'
+import React from 'react'
+import { StyleSheet, Text } from 'react-native'
 
 export const styles = StyleSheet.create({
   proceduresContainer: {
@@ -37,28 +38,51 @@ export const styles = StyleSheet.create({
     marginTop: 10,
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 10,
+    borderRadius: 40,
     padding: 10,
+    elevation: 3,
+    borderWidth: 2,
+    borderColor: '#ddd',
   },
   nameContentText:{
-    fontSize: 20,
+    fontSize: 25,
     marginBottom: 10,
+    paddingTop: 15,
+    fontWeight: 'bold',
+    backgroundColor: '#f2f2f2',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    color: '#333',
+    borderRadius: 5,
   },
   viewProcedureContent:{
-    flexDirection: 'row',
+    flexDirection: 'column',
+    alignItems: 'baseline',
     marginBottom: 3,
+    paddingLeft: 15,
   },
-  localContentText:{
-    marginBottom: 3,
+  calendarDate:{
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  calendarIcon:{
+    height: 43,
+    width: 43,
   },
   startDateContentText:{
-    marginRight: 25,
+    color: '#c4b529',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   endDateContentText:{
-
+    color: '#c4b529',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
   timeContentText:{
-
+    color: '#48494a',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   //
   containerProcedureButton: {

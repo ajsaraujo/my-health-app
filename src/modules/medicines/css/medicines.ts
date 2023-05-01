@@ -40,10 +40,12 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     borderRadius: 10,
     padding: 10,
+    elevation: 2,
   },
   nameContentText:{
-    fontSize: 20,
+    fontSize: 25,
     marginBottom: 10,
+    fontWeight: 'bold',
   },
   viewMedicineContent:{
     flexDirection: 'row',

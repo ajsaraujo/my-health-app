@@ -32,7 +32,12 @@ const SchedulingModalProc = ({ visible, onClose }) => {
 
   const cadHistoric = {
     date: new Date().toLocaleDateString('pt-BR'),
-    description: nomeProc,
+    description: nomeMed,
+    operation: 'Cadastro',
+    hour: new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    }),
   }
 
   const cadProcedimento = {

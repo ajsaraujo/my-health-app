@@ -29,7 +29,8 @@ async function getProcedures() {
     var count_proc = 0
 
     dados.forEach((dado) => {
-      conteudo = {
+      // Cria um novo objeto JSON com os dados
+      const conteudo = {
         id: count_proc,
         nome: dado.nomeProcedimento,
         local: dado.locProcedimento,
@@ -37,8 +38,18 @@ async function getProcedures() {
         data_fim: dado.dataFinal,
         horario: dado.hour,
       }
-      proceduresList.push(conteudo)
-      count_proc++
+
+      // Verifica se o objeto JSON já existe no array
+      let jsonExistente = proceduresList.find((json) => json.id === conteudo.id)
+
+      if (jsonExistente) {
+        // Se já existir, exibe uma mensagem de erro
+        console.log(`Erro: já existe um objeto JSON com ID ${conteudo.id}`)
+      } else {
+        // Se não existir, adiciona o novo objeto JSON ao array
+        proceduresList.push(conteudo)
+        count_proc++
+      }
     })
   } catch (error) {
     console.log('Erro ao ler o JSON:', error)

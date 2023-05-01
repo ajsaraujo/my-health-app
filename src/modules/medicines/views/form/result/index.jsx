@@ -3,80 +3,27 @@ import {
   Modal,
   View,
   Text,
-  TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
-  Alert,
+  Image,
 } from 'react-native'
-import * as FileSystem from 'expo-file-system'
+import * as DocumentPicker from 'expo-document-picker'
 import { styles } from '../../../css/info/schedule'
-import DocumentPicker from 'react-native-document-picker'
+
+const calendar = require('../../../img/historicList.png')
 
 const RegisterModalMed = ({ visible, onClose }) => {
-  const [refresh, setRefresh] = useState(false)
-  const [nomeMed, setNomeMed] = useState('')
-  const [funcMed, setFuncMed] = useState('')
-  const [descMed, setDescMed] = useState('')
-  const [fileData, setFileData] = useState(null)
+  const [selectedFile, setSelectedFile] = useState(null)
 
-  function alertSaveResult() {
-    Alert.alert(
-      'Resultado anexado com sucesso!',
-      '',
-      [
-        {
-          text: 'OK',
-          onPress: () => {
-            onClose()
-            setRefresh(!refresh)
-          },
-        },
-      ],
-      { cancelable: false }
-    )
-  }
-
-  async function saveResult() {
-    try {
-      const formData = new FormData()
-      formData.append('nomeMedicamento', nomeMed)
-      formData.append('funcMedicamento', funcMed)
-      formData.append('descMedicamento', descMed)
-      formData.append('arquivo', {
-        uri: fileData.uri,
-        type: fileData.type,
-        name: fileData.name,
-      })
-      const response = await fetch('URL_DO_SERVIDOR', {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Content-Type': 'multipart/form-data',
-        },
-      })
-      if (response.ok) {
-        alertSaveResult()
-      } else {
-        throw new Error('Erro ao enviar o arquivo')
-      }
-    } catch (error) {
-      console.log('Erro ao adicionar ao JSON:', error)
+  const pickDocument = async () => {
+    const result = await DocumentPicker.getDocumentAsync({})
+    if (result.type === 'success') {
+      setSelectedFile(result.name)
     }
   }
 
-  async function selectFile() {
-    try {
-      const result = await DocumentPicker.pick({
-        type: [DocumentPicker.types.allFiles],
-      })
-      setFileData(result)
-    } catch (err) {
-      if (DocumentPicker.isCancel(err)) {
-        // Usuário cancelou a seleção de arquivos
-      } else {
-        // Algum erro ocorreu
-      }
-    }
+  function saveResult() {
+    console.log('save')
   }
 
   return (
@@ -90,25 +37,21 @@ const RegisterModalMed = ({ visible, onClose }) => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Anexar Resultado</Text>
-
             <TouchableOpacity
-              style={styles.selectFileButton}
-              onPress={selectFile}
+              onPress={pickDocument}
+              style={styles.resultButton}
             >
-              <Text style={styles.selectFileButtonText}>
-                Selecionar arquivo
+              <Image source={calendar} style={{ height: 20, width: 20 }} />
+              <Text style={styles.resultButtonText}>
+                {selectedFile ? selectedFile : 'Selecione um arquivo'}
               </Text>
             </TouchableOpacity>
-            {fileData && (
-              <Text style={styles.selectedFileName}>{fileData.name}</Text>
-            )}
-
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
                 onPress={saveResult}
               >
-                <Text style={styles.schedulingButtonText}>Cadastrar</Text>
+                <Text style={styles.schedulingButtonText}>Salvar</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -117,4 +60,5 @@ const RegisterModalMed = ({ visible, onClose }) => {
     </Modal>
   )
 }
+
 export default RegisterModalMed

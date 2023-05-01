@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
 import {
   Modal,
   View,
@@ -7,54 +6,66 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native'
-
+import * as FileSystem from 'expo-file-system'
 import { styles } from '../../../css/info/schedule'
-//retorna o medicamento cadastrado
-export async function getAllMed() {
-  try {
-    const keys = await AsyncStorage.getAllKeys()
-    const results = await AsyncStorage.multiGet(keys)
-
-    results.forEach((result) => {
-      const key = result[0]
-      const value = result[1]
-
-      // Verifique se o valor está no formato que você deseja (por exemplo, JSON)
-      if (value !== null) {
-        const parsedValue = JSON.parse(value)
-
-        // Exiba apenas os valores que você deseja
-        console.log(parsedValue.nomeMedicamento)
-      }
-    })
-  } catch (error) {
-    console.log(error) // erro ao recuperar valor
-  }
-}
 
 const RegisterModalMed = ({ visible, onClose }) => {
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
   const [descMed, setDescMed] = useState('')
 
-  const medicamentos = {
+  const cadMedicamento = {
     nomeMedicamento: nomeMed,
     funcMedicamento: funcMed,
     descMedicamento: descMed,
   }
-  const chave = 'meusMedicamentos'
 
-  //adiciona um novo medicamento ao asyncStorage
-  async function handleSubmit() {
-    const jsonMedicamentos = JSON.stringify(medicamentos)
+  function alertSaveMed() {
+    Alert.alert(
+      'Medicamento cadastrado com sucesso!',
+      '',
+      [
+        {
+          text: 'OK',
+          onPress: onClose,
+        },
+      ],
+      { cancelable: false }
+    )
+  }
 
+  async function saveMed() {
     try {
-      await AsyncStorage.setItem(chave, jsonMedicamentos)
-      console.log('Medicamentos salvos com sucesso!')
-      console.log(medicamentos)
+      let dado = cadMedicamento
+      const caminho = `${FileSystem.documentDirectory}medicines.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      alertSaveMed()
     } catch (error) {
-      console.log('Erro ao salvar medicamentos:', error)
+      console.log('Erro ao adicionar ao JSON:', error)
     }
   }
 
@@ -99,7 +110,7 @@ const RegisterModalMed = ({ visible, onClose }) => {
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={handleSubmit}
+                onPress={saveMed}
               >
                 <Text style={styles.schedulingButtonText}>Cadastrar</Text>
               </TouchableOpacity>

@@ -29,6 +29,7 @@ async function getMedicines() {
     var count_med = 0
 
     dados.forEach((dado) => {
+      // console.log(dado)
       // Cria um novo objeto JSON com os dados
       const conteudo = {
         id: count_med,

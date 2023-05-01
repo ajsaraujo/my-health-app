@@ -46,4 +46,16 @@ export const styles = StyleSheet.create({
     textAlign: 'center',
     fontSize: 15,
   },
+  resultButton: {
+    backgroundColor: '#D7E6F1',
+    display: 'flex',
+    flexDirection: 'row',
+    padding: 20,
+    margin: 20,
+    borderRadius: 20,
+  },
+  resultButtonText: {
+    fontSize: 12,
+    marginLeft: 10,
+  },
 })

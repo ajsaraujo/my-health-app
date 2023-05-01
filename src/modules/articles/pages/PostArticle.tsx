@@ -1,13 +1,13 @@
-import { View, TextInput } from 'react-native'
-import { MyHealthModule } from '.../../src/modules'
 import { useNavigation } from '@react-navigation/native'
-import { Navigation } from 'src/routeParams'
-import { useState } from 'react'
-import { globalStyles } from '@shared/ui/globalStyles'
 import { FormField, PrimaryButton, TextBox } from '@shared/ui/components'
-import { postArticle } from './../api'
-import { Article } from '../interfaces/Article'
 import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
+import { globalStyles } from '@shared/ui/globalStyles'
+import { useState } from 'react'
+import { View } from 'react-native'
+import { Navigation } from 'src/routeParams'
+
+import { MyHealthModule } from '.../../src/modules'
+import { postArticle } from './../api'
 
 type NewsForm = {
   title: string

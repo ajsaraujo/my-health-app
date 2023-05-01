@@ -48,7 +48,7 @@ export default function Articles(props: ArticlesProps) {
     <View style={{ height: '100%', ...globalStyles.defaultContainer }}>
       <ArticleList articles={articles}></ArticleList>
 
-      {true && (
+      {isAdmin && (
         <FloatingActionButton
           icon="add"
           onPress={goToPostNews}

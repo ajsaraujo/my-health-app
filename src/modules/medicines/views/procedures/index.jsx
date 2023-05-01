@@ -1,50 +1,61 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import { styles } from '../../css/procedures'
 import SchedulingModalProc from '../form/choiceSchedule/scheduleProc'
 import Content from './content'
+import * as FileSystem from 'expo-file-system'
 
 const setaInfo = require('../../img/arrow-info.png')
 
-const proceduresList = [
-  {
-    id: 1,
-    nome: 'Fisioterapia Ortopédica',
-    local: 'Av. Barao de Maruim, número 034, Aracaju, Sergipe',
-    data_inicio: '10/10/2023',
-    data_fim: '10/10/2024',
-    horario: '10:34',
-  },
-  {
-    id: 2,
-    nome: 'Exame de Rotina',
-    local: 'Av. Riacho dos Bois, número 517, Aracaju, Sergipe',
-    data_inicio: '11/11/2023',
-    data_fim: '11/11/2023',
-    horario: '09:30',
-  },
-  {
-    id: 3,
-    nome: 'Proc3',
-    local: 'Rua dos Consagrados, Bairro Industrial, número 079, Aracaju, Sergipe',
-    data_inicio: '15/10/2023',
-    data_fim: '16/11/2023',
-    horario: '10:34',
-  },
-  {
-    id: 4,
-    nome: 'Proc4',
-    local: 'Rua dos Companheiros, Bairro Industrial, número 46, Aracaju, Sergipe',
-    data_inicio: '01/02/2024',
-    data_fim: '01/02/2024',
-    horario: '07:30',
-  }
-  
-]
+const proceduresList = []
 
+async function getProcedures() {
+  try {
+    const caminho = `${FileSystem.documentDirectory}procedures.json`
+
+    // Verifica se o arquivo já existe
+    const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+    if (!infoArquivo.exists) {
+      console.log('O arquivo não existe!')
+      return
+    }
+
+    // Lê os dados do arquivo
+    const arquivo = await FileSystem.readAsStringAsync(caminho)
+
+    // Converte a string JSON para array
+    const dados = JSON.parse(arquivo)
+    var count_proc = 0
+
+    dados.forEach((dado) => {
+      conteudo = {
+        id: count_proc,
+        nome: dado.nomeProcedimento,
+        local: dado.locProcedimento,
+        data_inicio: dado.dataInicio,
+        data_fim: dado.dataFinal,
+        horario: dado.hour,
+      }
+      proceduresList.push(conteudo)
+      count_proc++
+    })
+  } catch (error) {
+    console.log('Erro ao ler o JSON:', error)
+  }
+}
 
 export default function Procedures() {
+  const [dados, setDados] = useState(null)
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    async function loadDados() {
+      const dados = await getProcedures()
+      setDados(dados)
+    }
+    loadDados()
+  }, [])
 
   const handlePress = () => {
     setShowModal(true)
@@ -61,9 +72,9 @@ export default function Procedures() {
       <FlatList
         style={styles.proceduresList}
         data={proceduresList}
-        keyExtractor={ ( item ) => String(item.id)}
+        keyExtractor={(item) => String(item.id)}
         showsVerticalScrollIndicator
-        renderItem={ ({ item }) => <Content data={item} />}
+        renderItem={({ item }) => <Content data={item} />}
       />
 
       {/* Tab Actions Buttons */}

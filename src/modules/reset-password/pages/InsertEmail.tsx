@@ -4,6 +4,8 @@ import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ResetPasswordRouteParams } from '../ResetPasswordRouteParams'
+import { sendPinCode } from '../services/sendPinCode'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 
 type InsertEmailProps = NativeStackScreenProps<
   ResetPasswordRouteParams,
@@ -12,15 +14,27 @@ type InsertEmailProps = NativeStackScreenProps<
 
 export function InsertEmail(props: InsertEmailProps) {
   const [email, setEmail] = useState(props.route.params?.userEmail || '')
-  const [errorMessage, setErrorMessage] = useState('')
+  const [submitted, setSubmitted] = useState(false)
 
-  function sendCode() {
+  const toast = useToastActions()
+
+  const errorMessage =
+    submitted && !email ? 'Por favor, informe seu e-mail.' : ''
+
+  async function sendCode() {
+    setSubmitted(true)
+
     if (!email) {
-      setErrorMessage('Por favor, insira o seu e-mail.')
       return
     }
 
-    props.navigation.replace('InsertPinCode', { userEmail: email })
+    const result = await sendPinCode(email)
+
+    if (result.isOk) {
+      props.navigation.replace('InsertPinCode', { userEmail: email })
+    } else {
+      toast.error(result.message)
+    }
   }
 
   return (

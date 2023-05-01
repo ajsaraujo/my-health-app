@@ -16,6 +16,8 @@ export const styles = StyleSheet.create({
   helloRemediesDate: {
     marginTop: 20,
     textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 15, 
   },
   titleHomeContainer: {
     marginTop: 0,
@@ -30,6 +32,8 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginRight: 8,
+    fontWeight: 'bold',
+    fontSize: 18
   },
   containerInfoDay: {
     width: '100%',

@@ -1,4 +1,9 @@
-import { PrimaryButton, StyledText, TextBox } from '@shared/ui/components'
+import {
+  PrimaryButton,
+  SecondaryButton,
+  StyledText,
+  TextBox,
+} from '@shared/ui/components'
 import { View, StyleSheet } from 'react-native'
 import { globalStyles } from '@shared/ui/globalStyles'
 import { useState } from 'react'
@@ -37,6 +42,10 @@ export function InsertEmail(props: InsertEmailProps) {
     }
   }
 
+  async function cancel() {
+    props.navigation.pop()
+  }
+
   return (
     <View style={styles.container}>
       <StyledText style={styles.labelText}>
@@ -51,7 +60,10 @@ export function InsertEmail(props: InsertEmailProps) {
         onChangeText={setEmail}
       ></TextBox>
 
-      <PrimaryButton onPress={sendCode}>Enviar código</PrimaryButton>
+      <PrimaryButton onPress={sendCode} style={globalStyles.marginBottom1}>
+        Enviar código
+      </PrimaryButton>
+      <SecondaryButton onPress={cancel}>Cancelar</SecondaryButton>
 
       <ErrorMessage text={errorMessage}></ErrorMessage>
     </View>

@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   containerRemedies: {
     backgroundColor: '#D7E6F1',
-    height: '84%',
+    height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   infoDayText: {
-    width: '60%',
+    width: '70%',
     marginTop: 10,
     marginLeft: 5,
     fontSize: 15,
@@ -72,9 +72,10 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   containerSchedulingButton: {
-    marginVertical: 50,
+    marginTop: 30,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   schedulingButton: {
     justifyContent: 'center',

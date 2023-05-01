@@ -4,7 +4,7 @@ import { StyleSheet, Text } from 'react-native'
 export const styles = StyleSheet.create({
   proceduresContainer: {
     backgroundColor: '#D7E6F1',
-    height: '84%',
+    height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },
@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
   titleProceduresContainer: {
     marginTop: 0,
     marginBottom: 60,
-  },//a partir daqui
+  }, //a partir daqui
   proceduresList: {
     //backgroundColor: '#fff',
     marginLeft: 18,
@@ -44,42 +44,41 @@ export const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#ddd',
   },
-  nameContentText:{
+  nameContentText: {
     fontSize: 25,
     marginBottom: 10,
     paddingTop: 15,
     fontWeight: 'bold',
-    backgroundColor: '#f2f2f2',
     paddingHorizontal: 20,
     paddingVertical: 10,
     color: '#333',
     borderRadius: 20,
   },
-  viewProcedureContent:{
+  viewProcedureContent: {
     flexDirection: 'column',
     alignItems: 'baseline',
     marginBottom: 3,
     paddingLeft: 15,
   },
-  calendarDate:{
+  calendarDate: {
     flexDirection: 'row',
     marginBottom: 5,
   },
-  calendarIcon:{
+  calendarIcon: {
     height: 43,
     width: 43,
   },
-  startDateContentText:{
+  startDateContentText: {
     color: '#c4b529',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  endDateContentText:{
+  endDateContentText: {
     color: '#c4b529',
     fontSize: 18,
     fontWeight: 'bold',
   },
-  timeContentText:{
+  timeContentText: {
     color: '#48494a',
     fontSize: 20,
     fontWeight: 'bold',

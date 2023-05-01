@@ -2,13 +2,12 @@ import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: '#c3d1db',
+    backgroundColor: '#D7E6F1',
     paddingHorizontal: 60,
     paddingVertical: 35,
     flexDirection: 'row',
     justifyContent: 'center',
-    height: '10.59%',
-    marginBottom: 15, //blueStack: 71, //iphone: 55
+    height: '20%',
   },
   footerButton: {
     width: '25%',
@@ -16,7 +15,6 @@ export const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    //marginRight: 25,
   },
   footerButtonActive: {
     width: '25%',
@@ -25,20 +23,14 @@ export const styles = StyleSheet.create({
     margin: 10,
     justifyContent: 'center',
     alignItems: 'center',
-    //marginRight: 25
   },
   footerButtonImage: {
-    height: 43,
-    width: 43,
-    tintColor: '#383f42',
-    //marginRight: 30,
-    //marginLeft: 40,
+    height: 30,
+    width: 30,
   },
   footerButtonImageActive: {
-    height: 43,
-    width: 43,
-    tintColor: '#195cf7',
-   // marginRight: 30,
-    //marginLeft: 40,
+    height: 30,
+    width: 30,
+    tintColor: 'white',
   },
 })

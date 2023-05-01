@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native'
 export const styles = StyleSheet.create({
   historicsContainer: {
     backgroundColor: '#D7E6F1',
-    height: '84%',
+    height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },
@@ -72,6 +72,7 @@ export const styles = StyleSheet.create({
     marginTop: 66,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   historicButton: {
     justifyContent: 'center',
@@ -85,5 +86,54 @@ export const styles = StyleSheet.create({
     color: '#fff',
     verticalAlign: 'middle',
     fontWeight: 'bold',
+  },
+  historicList: {
+    // backgroundColor: '#fff',
+    marginLeft: 18,
+    marginRight: 18,
+  },
+  historicIcon: {
+    height: 43,
+    width: 43,
+  },
+  historicDate: {
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  timeContentText: {
+    marginVertical: 10,
+    color: '#48494a',
+    fontSize: 20,
+    fontWeight: 'bold',
+  },
+  viewHistoricContentText: {
+    fontSize: 15,
+  },
+  containerHistoricContent: {
+    width: '100%',
+    marginTop: 10,
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderRadius: 40,
+    padding: 10,
+    elevation: 3,
+    borderWidth: 2,
+    borderColor: '#ddd',
+  },
+  nameContentText: {
+    fontSize: 25,
+    marginBottom: 10,
+    paddingTop: 15,
+    fontWeight: 'bold',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    color: '#333',
+    borderRadius: 5,
+  },
+  viewHistoricContent: {
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    marginBottom: 3,
+    paddingLeft: 15,
   },
 })

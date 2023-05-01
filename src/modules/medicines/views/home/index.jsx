@@ -56,7 +56,7 @@ export default function Home() {
   ]
   const date = new Date()
   const dayOfWeek = daysOfWeek[date.getDay()]
-  const [currentDay, setCurrentDay] = useState('Sunday')
+  const [currentDay, setCurrentDay] = useState(dayOfWeek)
   const [dados, setDados] = useState(null)
 
   const changeDayCalendar = (day) => {
@@ -108,9 +108,6 @@ export default function Home() {
         <View style={styles.containerInfoDay} key={index}>
           <Text style={styles.infoDayHour}>{dado.hour}</Text>
           <Text style={styles.infoDayText}>{dado.description}</Text>
-          <TouchableOpacity style={styles.infoDayButton}>
-            <Image source={setaInfo} style={styles.infoDayButtonText} />
-          </TouchableOpacity>
         </View>
       )
     } else {
@@ -256,7 +253,7 @@ export default function Home() {
         )}
       </View>
 
-      <ScrollView style={{ height: 200 }}>
+      <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View style={styles.infoText}>
           {views ? (
             views

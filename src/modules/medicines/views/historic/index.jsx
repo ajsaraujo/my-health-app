@@ -57,7 +57,7 @@ async function getHistoric() {
   }
 }
 
-const proceduresList = [{ name: 'Proc 1' }]
+const proceduresList = []
 
 async function getProcedures() {
   try {

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { GREEN_50 } from '../../../shared/ui/colors'
+import { GREEN_50, GREEN_600 } from '../../../shared/ui/colors'
 
 export const styles = StyleSheet.create({
   containerRemedies: {
@@ -85,7 +85,7 @@ export const styles = StyleSheet.create({
   },
   schedulingButton: {
     justifyContent: 'center',
-    backgroundColor: '#43A047',
+    backgroundColor: GREEN_600,
     padding: 20,
     borderRadius: 20,
     elevation: 10,

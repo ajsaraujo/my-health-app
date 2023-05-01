@@ -1,3 +1,4 @@
+import { GREEN_50, GREEN_600 } from '@shared/ui/colors'
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
@@ -8,7 +9,7 @@ export const styles = StyleSheet.create({
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   modalContent: {
-    backgroundColor: 'white',
+    backgroundColor: GREEN_50,
     width: '70%',
     padding: 20,
     borderRadius: 10,
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   schedulingButton: {
     justifyContent: 'center',
-    backgroundColor: '#1E90FF',
+    backgroundColor: GREEN_600,
     width: '80%',
     padding: 20,
     margin: 20,

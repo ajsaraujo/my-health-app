@@ -11,6 +11,7 @@ import { Picker } from '@react-native-picker/picker'
 import DateInput from '../../DateInput'
 import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
+import * as FileSystem from 'expo-file-system'
 
 const SchedulingModalProc = ({ visible, onClose }) => {
   const [nomeProc, setNomeProc] = useState('')

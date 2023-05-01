@@ -61,6 +61,8 @@ export function NewsForm() {
             onChangeText={(content) =>
               setFormValues({ ...formValues, content })
             }
+            numberOfLines={20}
+            multiline={true}
           ></TextBox>
         </FormField>
       </View>

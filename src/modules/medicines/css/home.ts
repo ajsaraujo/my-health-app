@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
     height: '100%',
   },
   infoDayText: {
-    width: '60%',
+    width: '70%',
     marginTop: 10,
     marginLeft: 5,
     fontSize: 15,

@@ -263,7 +263,15 @@ export default function Home() {
         )}
       </View>
 
-      <View>{views ? views : <Text>Não há agendamentos</Text>}</View>
+      <View>
+        {views ? (
+          views
+        ) : (
+          <View style={styles.containerNoSchedules}>
+            <Text style={styles.noSchedules}>Não há agendamentos</Text>
+          </View>
+        )}
+      </View>
 
       {/* Tab Actions Buttons */}
 

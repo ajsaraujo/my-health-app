@@ -89,4 +89,15 @@ export const styles = StyleSheet.create({
     verticalAlign: 'middle',
     fontWeight: 'bold',
   },
+  containerNoSchedules: {
+    marginTop: 100,
+    width: '100%',
+    alignItems: 'center',
+  },
+  noSchedules: {
+    justifyContent: 'center',
+    backgroundColor: '#ccc',
+    padding: 20,
+    borderRadius: 20,
+  },
 })

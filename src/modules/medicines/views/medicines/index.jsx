@@ -1,52 +1,72 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import { styles } from '../../css/medicines'
 import MedChoice from '../form/choiceMed'
 import Content from './content'
-import { getAllSchedule } from '../form/choiceSchedule/scheduleMed/index'
+import * as FileSystem from 'expo-file-system'
 
 const setaInfo = require('../../img/arrow-info.png')
 
-const medicinesList = [
-  {
-    id: 1,
-    nome: 'Salmeterol',
-    funcao: 'Proteção contra a broncoconstrição induzida pela histamina',
-    data_inicio: '10/10/2023',
-    data_fim: '10/10/2024',
-    horario: '10:34',
-  },
-  {
-    id: 2,
-    nome: 'Formoterol',
-    funcao:
-      'Efeito broncodilatador em pacientes com obstrução reversível das vias aéreas',
-    data_inicio: '11/11/2023',
-    data_fim: '11/11/2023',
-    horario: '09:30',
-  },
-  {
-    id: 3,
-    nome: 'Insulina',
-    funcao: 'Ajudar na diabetes',
-    data_inicio: '15/10/2023',
-    data_fim: '16/11/2023',
-    horario: '10:34',
-  },
-  {
-    id: 4,
-    nome: 'Corticoides Inalatórios',
-    funcao: 'Ajuda com a asma',
-    data_inicio: '01/02/2024',
-    data_fim: '01/02/2024',
-    horario: '07:30',
-  },
-]
+const medicinesList = []
 
-const scheduleList = getAllSchedule
+async function getMedicines() {
+  try {
+    const caminho = `${FileSystem.documentDirectory}medicines.json`
+
+    // Verifica se o arquivo já existe
+    const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+    if (!infoArquivo.exists) {
+      console.log('O arquivo não existe!')
+      return
+    }
+
+    // Lê os dados do arquivo
+    const arquivo = await FileSystem.readAsStringAsync(caminho)
+
+    // Converte a string JSON para array
+    const dados = JSON.parse(arquivo)
+    var count_med = 0
+
+    dados.forEach((dado) => {
+      // Cria um novo objeto JSON com os dados
+      const conteudo = {
+        id: count_med,
+        nome: dado.nomeMedicamento,
+        funcao: dado.funcMedicamento,
+        data_inicio: dado.dataInicio,
+        data_fim: dado.dataFinal,
+        horario: dado.hour,
+      }
+
+      // Verifica se o objeto JSON já existe no array
+      let jsonExistente = medicinesList.find((json) => json.id === conteudo.id)
+
+      if (jsonExistente) {
+        // Se já existir, exibe uma mensagem de erro
+        console.log(`Erro: já existe um objeto JSON com ID ${conteudo.id}`)
+      } else {
+        // Se não existir, adiciona o novo objeto JSON ao array
+        medicinesList.push(conteudo)
+        count_med++
+      }
+    })
+  } catch (error) {
+    console.log('Erro ao ler o JSON:', error)
+  }
+}
 
 export default function Medicines() {
+  const [dados, setDados] = useState(null)
   const [showModal, setShowModal] = useState(false)
+
+  useEffect(() => {
+    async function loadDados() {
+      const dados = await getMedicines()
+      setDados(dados)
+    }
+    loadDados()
+  }, [])
 
   const handlePress = () => {
     setShowModal(true)

@@ -26,42 +26,61 @@ export const styles = StyleSheet.create({
   titleMedicinesContainer: {
     marginTop: 0,
     marginBottom: 60,
-  },//a partir daqui
+  }, //a partir daqui
   medicinesList: {
     //backgroundColor: '#fff',
     marginLeft: 18,
     marginRight: 18,
-    
   },
   containerMedicinesContent: {
     width: '100%',
     marginTop: 10,
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderRadius: 10,
+    borderRadius: 40,
     padding: 10,
-    elevation: 2,
+    elevation: 3,
+    borderWidth: 2,
+    borderColor: '#ddd',
   },
-  nameContentText:{
+  nameContentText: {
     fontSize: 25,
     marginBottom: 10,
+    paddingTop: 15,
+    fontWeight: 'bold',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    color: '#333',
+    borderRadius: 5,
+  },
+  viewMedicineContent: {
+    flexDirection: 'column',
+    alignItems: 'baseline',
+    marginBottom: 3,
+    paddingLeft: 15,
+  },
+  calendarDate: {
+    flexDirection: 'row',
+    marginBottom: 5,
+  },
+  calendarIcon: {
+    height: 43,
+    width: 43,
+  },
+  startDateContentText: {
+    color: '#c4b529',
+    fontSize: 18,
     fontWeight: 'bold',
   },
-  viewMedicineContent:{
-    flexDirection: 'row',
-    marginBottom: 3,
+  endDateContentText: {
+    color: '#c4b529',
+    fontSize: 18,
+    fontWeight: 'bold',
   },
-  FuncaoContentText:{
-    marginBottom: 3,
-  },
-  startDateContentText:{
-    marginRight: 25,
-  },
-  endDateContentText:{
-
-  },
-  timeContentText:{
-
+  timeContentText: {
+    color: '#48494a',
+    fontSize: 20,
+    fontWeight: 'bold',
   },
   //
   containerMedicineButton: {

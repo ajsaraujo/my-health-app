@@ -3,6 +3,7 @@ import { Article } from '../interfaces/Article'
 import { StyledText } from '@shared/ui/components'
 import { ArticleCard } from './ArticleCard'
 import { globalStyles } from '@shared/ui/globalStyles'
+import { useFocusEffect } from '@react-navigation/native'
 
 interface ArticleListProps {
   articles: Article[]

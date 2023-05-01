@@ -11,6 +11,7 @@ import { ArticleList } from './components/ArticleList'
 import { Article } from './interfaces/Article'
 import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 import { checkIfUserIsAdmin } from '@shared/services/auth'
+import { useFocusEffect } from '@react-navigation/native'
 
 type ArticlesProps = NativeStackScreenProps<
   RouteParams,
@@ -23,7 +24,7 @@ export default function Articles(props: ArticlesProps) {
 
   const toast = useToastActions()
 
-  useEffect(() => {
+  useFocusEffect(() => {
     function fetchData() {
       fetchArticles()
         .then(setArticles)
@@ -38,7 +39,7 @@ export default function Articles(props: ArticlesProps) {
     }
 
     fetchData()
-  }, [])
+  })
 
   function goToPostNews() {
     props.navigation.push('PublishNews')

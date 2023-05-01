@@ -6,7 +6,6 @@ import { useState } from 'react'
 import { View } from 'react-native'
 import { Navigation } from 'src/routeParams'
 
-import { MyHealthModule } from '.../../src/modules'
 import { postArticle } from './../api'
 
 type NewsForm = {
@@ -29,7 +28,7 @@ export function NewsForm() {
 
     if (result.isOk) {
       toast.success('O artigo foi publicado com sucesso.')
-      navigation.navigate(MyHealthModule.Articles)
+      navigation.pop()
     } else {
       toast.error(result.message)
     }

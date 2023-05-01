@@ -86,8 +86,7 @@ export default function App() {
         >
           {/* Definição de rotas do aplicativo */}
           <Stack.Navigator
-            // initialRouteName={userIsLoggedIn ? 'Home' : 'Login'}
-            initialRouteName={MyHealthModule.Articles}
+            initialRouteName={userIsLoggedIn ? 'Home' : 'Login'}
             screenOptions={TITLE_STYLES}
           >
             {/* Tela de login */}

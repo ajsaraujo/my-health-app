@@ -27,7 +27,7 @@ const setaInfo = require('../../img/arrow-info.png')
 
 async function lerDados() {
   try {
-    const caminho = `${FileSystem.documentDirectory}dados.json`
+    const caminho = `${FileSystem.documentDirectory}schedules.json`
 
     // Verifica se o arquivo já existe
     const infoArquivo = await FileSystem.getInfoAsync(caminho)
@@ -114,7 +114,7 @@ export default function Home() {
       return (
         <View style={styles.containerInfoDay} key={index}>
           <Text style={styles.infoDayHour}>{dado.hour}</Text>
-          <Text style={styles.infoDayText}>{dado.descMedicamento}</Text>
+          <Text style={styles.infoDayText}>{dado.description}</Text>
           <TouchableOpacity style={styles.infoDayButton}>
             <Image source={setaInfo} style={styles.infoDayButtonText} />
           </TouchableOpacity>
@@ -263,7 +263,7 @@ export default function Home() {
         )}
       </View>
 
-      <View>{views ? views : <Text>Carregando...</Text>}</View>
+      <View>{views ? views : <Text>Não há agendamentos</Text>}</View>
 
       {/* Tab Actions Buttons */}
 

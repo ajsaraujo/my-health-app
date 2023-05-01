@@ -15,27 +15,6 @@ import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
 
-export async function getAllSchedule() {
-  try {
-    const keys = await AsyncStorage.getAllKeys()
-    const results = await AsyncStorage.multiGet(keys)
-
-    results.forEach((result) => {
-      const key = result[0]
-      const value = result[1]
-
-      // Verifique se o valor está no formato que você deseja (por exemplo, JSON)
-      if (value !== null) {
-        const parsedValue = JSON.parse(value)
-
-        // Exiba apenas os valores que você deseja
-        console.log(parsedValue)
-      }
-    })
-  } catch (error) {
-    console.log(error) // erro ao recuperar valor
-  }
-}
 const SchedulingModalMed = ({ visible, onClose }) => {
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
@@ -46,6 +25,12 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   const [periodo, setPeriodo] = useState(null)
 
   const cadAgendamento = {
+    hour: horario,
+    description: descMed,
+    currentDay: new Date().toLocaleDateString('pt-BR'),
+  }
+
+  const cadMedicamento = {
     nomeMedicamento: nomeMed,
     funcMedicamento: funcMed,
     descMedicamento: descMed,
@@ -53,13 +38,12 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     dataFinal: selDateFinal,
     hour: horario,
     periodo: periodo,
-    currentDay: new Date().toLocaleDateString('pt-BR'),
   }
 
-  async function agendarMed() {
+  async function saveMed() {
     try {
-      let dado = cadAgendamento
-      const caminho = `${FileSystem.documentDirectory}dados.json`
+      let dado = cadMedicamento
+      const caminho = `${FileSystem.documentDirectory}medicines.json`
 
       // Verifica se o arquivo já existe
       const infoArquivo = await FileSystem.getInfoAsync(caminho)
@@ -89,17 +73,36 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     }
   }
 
-  const chave = 'cadAgendamentos'
-
-  async function handleSubmit() {
-    const jsonAgendamentos = JSON.stringify(cadAgendamento)
-
+  async function agendarMed() {
     try {
-      await AsyncStorage.setItem(chave, jsonAgendamentos)
-      console.log('Medicamentos agendados com sucesso!')
-      console.log(cadAgendamento)
+      let dado = cadAgendamento
+      const caminho = `${FileSystem.documentDirectory}schedules.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      console.log('Dado adicionado com sucesso!')
     } catch (error) {
-      console.log('Erro ao Agendar medicamentos:', error)
+      console.log('Erro ao adicionar ao JSON:', error)
     }
   }
 
@@ -195,7 +198,10 @@ const SchedulingModalMed = ({ visible, onClose }) => {
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={agendarMed}
+                onPress={() => {
+                  agendarMed()
+                  saveMed()
+                }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>
               </TouchableOpacity>

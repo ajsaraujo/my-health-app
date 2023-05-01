@@ -13,12 +13,95 @@ import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 
 const SchedulingModalProc = ({ visible, onClose }) => {
-  const handleSubmit = () => {
-    // Lógica para agendar o evento aqui
-    onClose()
+  const [nomeProc, setNomeProc] = useState('')
+  const [localProc, setLocalProc] = useState('')
+  const [descProc, setDescProc] = useState('')
+  const [selDateIni, setSelDateIni] = useState('')
+  const [selDateFinal, setSelDateFinal] = useState('')
+  const [horario, setHorario] = useState('')
+  const [periodo, setPeriodo] = useState(null)
+
+  const cadAgendamento = {
+    hour: horario,
+    description: descProc,
+    currentDay: new Date().toLocaleDateString('pt-BR'),
   }
 
-  const [periodo, setPeriodo] = useState(null)
+  const cadProcedimento = {
+    nomeProcedimento: nomeProc,
+    locProcedimento: localProc,
+    descProcedimento: descProc,
+    dataInicio: selDateIni,
+    dataFinal: selDateFinal,
+    hour: horario,
+    periodo: periodo,
+  }
+
+  async function saveProc() {
+    try {
+      let dado = cadProcedimento
+      const caminho = `${FileSystem.documentDirectory}procedures.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      console.log('Dado adicionado com sucesso!')
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
+  }
+
+  async function agendarProc() {
+    try {
+      let dado = cadAgendamento
+      const caminho = `${FileSystem.documentDirectory}schedules.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      console.log('Dado adicionado com sucesso!')
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
+  }
 
   return (
     <Modal
@@ -31,17 +114,50 @@ const SchedulingModalProc = ({ visible, onClose }) => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Novo Procedimento</Text>
-            <TextInput style={styles.input} placeholder="Nome" />
-            <TextInput style={styles.input} placeholder="Local" />
-            <TextInput style={styles.input} placeholder="Descrição" />
+            <TextInput
+              onChangeText={(event) => {
+                setNomeProc(event)
+              }}
+              value={nomeProc}
+              style={styles.input}
+              placeholder="Nome"
+            />
+            <TextInput
+              onChangeText={(event) => {
+                setLocalProc(event)
+              }}
+              value={localProc}
+              style={styles.input}
+              placeholder="Local"
+            />
+            <TextInput
+              onChangeText={(event) => {
+                setDescProc(event)
+              }}
+              value={descProc}
+              style={styles.input}
+              placeholder="Descrição"
+            />
             <View style={styles.input}>
-              <DateInput placeholder={'Data de início'} />
+              <DateInput
+                setValue={setSelDateIni}
+                value={selDateIni}
+                placeholder={'Data de início'}
+              />
             </View>
             <View style={styles.input}>
-              <DateInput placeholder={'Data de fim'} />
+              <DateInput
+                setValue={setSelDateFinal}
+                value={selDateFinal}
+                placeholder={'Data de fim'}
+              />
             </View>
             <View style={styles.input}>
-              <TimeInput placeholder={'Horário'} />
+              <TimeInput
+                setValue={setHorario}
+                value={horario}
+                placeholder={'Horário'}
+              />
             </View>
             <View style={styles.input}>
               <Picker
@@ -72,7 +188,10 @@ const SchedulingModalProc = ({ visible, onClose }) => {
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={handleSubmit}
+                onPress={() => {
+                  agendarProc()
+                  saveProc()
+                }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>
               </TouchableOpacity>

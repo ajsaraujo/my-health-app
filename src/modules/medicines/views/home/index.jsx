@@ -256,7 +256,7 @@ export default function Home() {
         )}
       </View>
 
-      <ScrollView style={styles.infoContainer}>
+      <ScrollView style={{ height: 200 }}>
         <View style={styles.infoText}>
           {views ? (
             views

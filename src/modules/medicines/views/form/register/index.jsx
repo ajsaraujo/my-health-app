@@ -12,6 +12,7 @@ import * as FileSystem from 'expo-file-system'
 import { styles } from '../../../css/info/schedule'
 
 const RegisterModalMed = ({ visible, onClose }) => {
+  const [refresh, setRefresh] = useState(false)
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
   const [descMed, setDescMed] = useState('')
@@ -29,7 +30,10 @@ const RegisterModalMed = ({ visible, onClose }) => {
       [
         {
           text: 'OK',
-          onPress: onClose,
+          onPress: () => {
+            onClose()
+            setRefresh(!refresh)
+          },
         },
       ],
       { cancelable: false }

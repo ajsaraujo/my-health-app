@@ -15,6 +15,7 @@ import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
 
 const SchedulingModalMed = ({ visible, onClose }) => {
+  const [refresh, setRefresh] = useState(false)
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
   const [descMed, setDescMed] = useState('')
@@ -46,7 +47,10 @@ const SchedulingModalMed = ({ visible, onClose }) => {
       [
         {
           text: 'OK',
-          onPress: onClose,
+          onPress: () => {
+            onClose()
+            setRefresh(!refresh)
+          },
         },
       ],
       { cancelable: false }

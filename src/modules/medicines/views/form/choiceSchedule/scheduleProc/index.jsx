@@ -15,6 +15,7 @@ import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
 
 const SchedulingModalProc = ({ visible, onClose }) => {
+  const [refresh, setRefresh] = useState(false)
   const [nomeProc, setNomeProc] = useState('')
   const [localProc, setLocalProc] = useState('')
   const [descProc, setDescProc] = useState('')
@@ -46,7 +47,10 @@ const SchedulingModalProc = ({ visible, onClose }) => {
       [
         {
           text: 'OK',
-          onPress: onClose,
+          onPress: () => {
+            onClose()
+            setRefresh(!refresh)
+          },
         },
       ],
       { cancelable: false }

@@ -44,20 +44,27 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Anexar Resultado</Text>
-            <Picker
-              style={{ width: '90%' }}
-              selectedValue={selectedOption}
-              onValueChange={(itemValue) => setSelectedOption(itemValue)}
-            >
-              <Picker.Item label="Selecione um procedimento" value={null} />
-              {proceduresList.map((option, index) => (
-                <Picker.Item
-                  key={index}
-                  label={option.name}
-                  value={option.name}
-                />
-              ))}
-            </Picker>
+            <View style={styles.modalResultProcedureLabel}>
+              <Text style={styles.modalResultProcedureLabelText}>
+                Procedimento
+              </Text>
+            </View>
+            <View style={styles.modalResultProcedureSelect}>
+              <Picker
+                style={{ width: '90%' }}
+                selectedValue={selectedOption}
+                onValueChange={(itemValue) => setSelectedOption(itemValue)}
+              >
+                <Picker.Item label="Selecione um procedimento" value={null} />
+                {proceduresList.map((option, index) => (
+                  <Picker.Item
+                    key={index}
+                    label={option.name}
+                    value={option.name}
+                  />
+                ))}
+              </Picker>
+            </View>
             <TouchableOpacity
               onPress={pickDocument}
               style={styles.resultButton}

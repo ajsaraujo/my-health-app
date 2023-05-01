@@ -1,4 +1,4 @@
-import { GREEN_50, GREEN_600 } from '@shared/ui/colors'
+import { GREEN_100, GREEN_50, GREEN_600 } from '@shared/ui/colors'
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
@@ -48,7 +48,7 @@ export const styles = StyleSheet.create({
     fontSize: 15,
   },
   resultButton: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_100,
     display: 'flex',
     flexDirection: 'row',
     padding: 20,
@@ -58,5 +58,19 @@ export const styles = StyleSheet.create({
   resultButtonText: {
     fontSize: 12,
     marginLeft: 10,
+  },
+  modalResultProcedureLabel: {
+    width: '80%',
+  },
+  modalResultProcedureLabelText: {
+    textAlign: 'center',
+    fontSize: 16,
+  },
+  modalResultProcedureSelect: {
+    width: '77%',
+    borderWidth: 1,
+    borderColor: '#ccc',
+    borderRadius: 20,
+    marginTop: 20,
   },
 })

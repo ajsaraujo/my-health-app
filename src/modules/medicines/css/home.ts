@@ -100,4 +100,10 @@ export const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 20,
   },
+  infoContainer: {
+    width: '100%',
+  },
+  infoText: {
+    marginRight: 20,
+  },
 })

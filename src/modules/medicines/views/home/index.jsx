@@ -1,12 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import {
-  View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Alert,
-  Pressable,
-} from 'react-native'
+import { View, Text, Image, TouchableOpacity, ScrollView } from 'react-native'
 import { styles } from '../../css/home'
 import SchedulingModalChoice from '../form/choiceSchedule'
 import ShedulingInfo from '../info/schedule'
@@ -263,15 +256,17 @@ export default function Home() {
         )}
       </View>
 
-      <View>
-        {views ? (
-          views
-        ) : (
-          <View style={styles.containerNoSchedules}>
-            <Text style={styles.noSchedules}>Não há agendamentos</Text>
-          </View>
-        )}
-      </View>
+      <ScrollView style={styles.infoContainer}>
+        <View style={styles.infoText}>
+          {views ? (
+            views
+          ) : (
+            <View style={styles.containerNoSchedules}>
+              <Text style={styles.noSchedules}>Não há agendamentos</Text>
+            </View>
+          )}
+        </View>
+      </ScrollView>
 
       {/* Tab Actions Buttons */}
 

@@ -35,6 +35,7 @@ export default function Historic() {
 
 
         <View style={styles.profileInfoContainer}>
+
           <View style={styles.infoProfile}>
             <Text style={styles.profileText}>Nome</Text>
             <View style={styles.profileInfo}>
@@ -55,6 +56,39 @@ export default function Historic() {
               <Text style={styles.profileInfoText}>Nada.</Text>
             </View>
           </View>
+
+          <View style={styles.infoProfile}>
+            <Text style={styles.profileText}>Início</Text>
+            <View style={styles.profileInfo}>
+              <Text style={styles.profileInfoText}>10/10/2010</Text>
+            </View>
+          </View>
+
+          <View style={styles.infoProfile}>
+            <Text style={styles.profileText}>Fim</Text>
+            <View style={styles.profileInfo}>
+              <Text style={styles.profileInfoText}>10/10/2010</Text>
+            </View>
+          </View>
+
+          <View style={styles.infoProfile}>
+            <View style={styles.time}>
+              <Text style={styles.profileText}>Próximo</Text>
+              <Text style={styles.profileText}>horário</Text>
+            </View>
+            <View style={styles.profileInfo}>
+              <Text style={styles.profileInfoText}>20:10</Text>
+            </View>
+          </View>
+
+          <View style={styles.infoProfile}>
+            <Text style={styles.profileText}>Período</Text>
+            <View style={styles.profileInfo}>
+              <Text style={styles.profileInfoText}>De 8 em 8 horas</Text>
+            </View>
+          </View>
+
+
         </View>
       </View>
     </View>

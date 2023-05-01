@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 10,
     color: '#333',
-    borderRadius: 5,
+    borderRadius: 20,
   },
   viewProcedureContent:{
     flexDirection: 'column',

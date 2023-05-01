@@ -60,24 +60,32 @@ export const styles = StyleSheet.create({
     fontWeight: 'bold',
   },*/
   profileInfoContainer: {
-    marginTop: 70,
+    marginTop: 40,
   },
   infoProfile: {
     backgroundColor: '#D7E6F1',
-    marginBottom: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 1.5,
   },
   profileText: {
-    marginLeft: 65,
+    marginLeft: 15,
     marginBottom: 3,
     fontSize: 16,
+    fontWeight: 'bold',
+  },
+  time:{
+
   },
   profileInfo: {
     backgroundColor: 'white',
-    borderRadius: 15,
+    borderRadius: 10,
     height: 50,
     width: '75%',
-    marginLeft: 55,
+    marginLeft: 'auto',
     padding: 14,
+    elevation: 4,
+    
   },
   profileInfoText: {
     fontSize: 18,
@@ -99,12 +107,11 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#D7E6F1',
-    paddingTop: 20,
+    paddingTop: 0,
     marginBottom: 0,
   },
   cameraIcon: {
     marginLeft: 13,
     marginTop: 50,
-
   },
 })

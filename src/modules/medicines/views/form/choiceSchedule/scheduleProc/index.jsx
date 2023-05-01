@@ -30,6 +30,11 @@ const SchedulingModalProc = ({ visible, onClose }) => {
     currentDay: new Date().toLocaleDateString('pt-BR'),
   }
 
+  const cadHistoric = {
+    date: new Date().toLocaleDateString('pt-BR'),
+    description: nomeProc,
+  }
+
   const cadProcedimento = {
     nomeProcedimento: nomeProc,
     locProcedimento: localProc,
@@ -55,6 +60,39 @@ const SchedulingModalProc = ({ visible, onClose }) => {
       ],
       { cancelable: false }
     )
+  }
+
+  async function saveHistoric() {
+    try {
+      let dado = cadHistoric
+      const caminho = `${FileSystem.documentDirectory}historic.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      alertSaveProc()
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
   }
 
   async function saveProc() {
@@ -83,8 +121,6 @@ const SchedulingModalProc = ({ visible, onClose }) => {
 
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
-
-      alertSaveProc()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
     }
@@ -211,6 +247,7 @@ const SchedulingModalProc = ({ visible, onClose }) => {
                 onPress={() => {
                   agendarProc()
                   saveProc()
+                  saveHistoric()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   View,
   Text,
@@ -13,6 +13,7 @@ import { RouteParams } from '../../routeParams'
 import { GREEN } from '../../shared/ui/colors'
 import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
 import { ItemListDiary } from '../../shared/ui/components/ItemListDiary'
+import { getRegistrosPaciente } from './infra/services'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegistersDiary'>
 
@@ -29,6 +30,19 @@ const listaRegistros = [
 ]
 
 export default function RegistersDiary(props: DiaryProps) {
+  useEffect(() => {
+    fetchData()
+  })
+
+  const fetchData = async () => {
+    try {
+      var response = await getRegistrosPaciente({ idPaciente: 1 })
+      console.log(JSON.stringify(response))
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <View style={styles.textTitle}>
@@ -44,14 +58,6 @@ export default function RegistersDiary(props: DiaryProps) {
           />
         )}
       />
-      <View style={styles.buttonContainer}>
-        <PrimaryButton
-          style={{ width: '90%', height: 50, marginVertical: 10 }}
-          onPress={props.navigation.goBack}
-        >
-          Voltar
-        </PrimaryButton>
-      </View>
     </>
   )
 }

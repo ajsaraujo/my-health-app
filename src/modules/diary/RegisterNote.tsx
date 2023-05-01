@@ -13,12 +13,14 @@ import { GREEN } from '../../shared/ui/colors'
 import salvar from '../../../assets/saveicon.png'
 import voltar from '../../../assets/backIcon.png'
 import enviar from '../../../assets/sendIcon.png'
+import * as ImagePicker from 'expo-image-picker'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegisterNote'>
 
 export default function RegisterNote(props: DiaryProps) {
   const [noteText, setNoteText] = useState('')
   const [notes, setNotes] = useState([])
+  const [image, setImage] = useState(null)
 
   const handleAddNote = () => {
     if (noteText.length > 0) {
@@ -34,6 +36,22 @@ export default function RegisterNote(props: DiaryProps) {
     setNotes(newNotes)
   }
 
+  const handbleImageSet = async () => {
+    let result = await ImagePicker.launchImageLibraryAsync({
+      mediaTypes: ImagePicker.MediaTypeOptions.Images,
+      allowsEditing: true,
+      aspect: [4, 3],
+      quality: 1,
+    })
+
+    console.log(result)
+    setNotes([...notes, { img: result.assets[0].uri }])
+
+    if (!result.canceled) {
+      setImage(result.assets[0].uri)
+    }
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.notesContainer}>
@@ -47,6 +65,7 @@ export default function RegisterNote(props: DiaryProps) {
           </TouchableOpacity>
         ))}
       </View>
+
       <View style={styles.inputContainer}>
         <TextInput
           style={styles.input}
@@ -55,6 +74,13 @@ export default function RegisterNote(props: DiaryProps) {
           value={noteText}
           onChangeText={(text) => setNoteText(text)}
         />
+
+        <TouchableOpacity
+          style={styles.addButton}
+          onPress={handbleImageSet}
+          activeOpacity={0.7}
+        ></TouchableOpacity>
+
         <TouchableOpacity
           style={styles.addButton}
           onPress={handleAddNote}

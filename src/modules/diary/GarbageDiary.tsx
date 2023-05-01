@@ -29,17 +29,13 @@ export default function GarbageDiary(props: DiaryProps) {
       <FlatList
         data={listaLixeira}
         renderItem={({ item }) => (
-          <ItemListDiary typeList={'lixeira'} text={item.label} />
+          <ItemListDiary
+            typeList={'lixeira'}
+            text={item.label}
+            onPress={() => {}}
+          />
         )}
       />
-      <View style={styles.buttonContainer}>
-        <PrimaryButton
-          style={{ width: '90%', height: 55, marginVertical: 10 }}
-          onPress={props.navigation.goBack}
-        >
-          Voltar
-        </PrimaryButton>
-      </View>
     </>
   )
 }

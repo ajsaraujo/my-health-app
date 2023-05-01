@@ -1,10 +1,49 @@
 import React, { useState } from 'react'
-import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
+import {
+  View,
+  TouchableOpacity,
+  Image,
+  Text,
+  StyleSheet,
+  Alert,
+} from 'react-native'
 import { GREEN } from '../colors'
 import { ModalOptionsDiary } from './modals/ModalOptionsDiary'
 
 export function ItemListDiary({ ...props }) {
-  const [modalViseble, setModalViseble] = useState(false)
+  const deleteAlert = () => {
+    if (props.typeList === 'lixeira') {
+      Alert.alert(
+        'Deseja apagar esse registro permanentemente?',
+        'Caso deseje apagar esse registro de maneira permanente ele além de não fazer mais parte de seus relatórios também não poderá ser mais restaurado para sua lista de registros',
+        [
+          {
+            text: 'Cancelar',
+            onPress: () => console.log('Cancelar'),
+          },
+          {
+            text: 'OK',
+            onPress: () => console.log('OK'),
+          },
+        ]
+      )
+    } else {
+      Alert.alert(
+        'Deseja apagar esse registro?',
+        'Caso apague esse registro ele será enviado para a lixeira e não fará parte do seu relatório final',
+        [
+          {
+            text: 'Cancelar',
+            onPress: () => console.log('Cancelar'),
+          },
+          {
+            text: 'OK',
+            onPress: () => console.log('OK'),
+          },
+        ]
+      )
+    }
+  }
 
   return (
     <View>
@@ -25,16 +64,15 @@ export function ItemListDiary({ ...props }) {
           </View>
           <Text style={styles.textList}>{props.text}</Text>
           <View style={styles.buttonOptionContainer}>
-            <TouchableOpacity onPress={() => setModalViseble(true)}>
+            <TouchableOpacity onPress={deleteAlert}>
               <Image
-                source={require('../../../../assets/dotsOptionsIcon.png')}
+                source={require('../../../../assets/garbageIcon.png')}
                 style={styles.buttonOption}
               />
             </TouchableOpacity>
           </View>
         </View>
       </TouchableOpacity>
-      <ModalOptionsDiary isVisible={modalViseble} />
     </View>
   )
 }
@@ -73,12 +111,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   buttonOption: {
-    height: 25,
-    width: 20,
+    height: 30,
+    width: 25,
   },
   buttonOptionContainer: {
     flexDirection: 'row',
     position: 'absolute',
-    right: 5,
+    right: 10,
+    height: 40,
+    width: 33,
+    backgroundColor: GREEN,
+    borderRadius: 3,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
 })

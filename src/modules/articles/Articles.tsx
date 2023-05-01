@@ -1,17 +1,17 @@
-import { View } from 'react-native'
+import { useFocusEffect } from '@react-navigation/native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
+import { checkIfUserIsAdmin } from '@shared/services/auth'
 import { FloatingActionButton } from '@shared/ui/components'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 import { globalStyles } from '@shared/ui/globalStyles'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
+import { View } from 'react-native'
 
 import { MyHealthModule } from '../../modules'
 import { RouteParams } from '../../routeParams'
 import { fetchArticles } from './api'
 import { ArticleList } from './components/ArticleList'
 import { Article } from './interfaces/Article'
-import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
-import { checkIfUserIsAdmin } from '@shared/services/auth'
-import { useFocusEffect } from '@react-navigation/native'
 
 type ArticlesProps = NativeStackScreenProps<
   RouteParams,

@@ -3,6 +3,7 @@ import { View, Text, TouchableOpacity, FlatList } from 'react-native'
 import { styles } from '../../css/historic'
 import * as FileSystem from 'expo-file-system'
 import Content from './content'
+import Result from '../form/result'
 
 const setaInfo = require('../../img/arrow-info.png')
 
@@ -58,6 +59,7 @@ async function getHistoric() {
 
 export default function Historic() {
   const [dados, setDados] = useState(null)
+  const [showModal, setShowModal] = useState(false)
 
   useEffect(() => {
     async function loadDados() {
@@ -66,6 +68,10 @@ export default function Historic() {
     }
     loadDados()
   }, [])
+
+  const handlePress = () => {
+    setShowModal(true)
+  }
 
   return (
     <View style={styles.historicsContainer}>
@@ -86,10 +92,12 @@ export default function Historic() {
       {/* Tab Actions Buttons */}
 
       <View style={styles.containerHistoricButton}>
-        <TouchableOpacity style={styles.historicButton}>
+        <TouchableOpacity style={styles.historicButton} onPress={handlePress}>
           <Text style={styles.historicButtonText}>Anexar Resultado</Text>
         </TouchableOpacity>
       </View>
+
+      <Result visible={showModal} onClose={() => setShowModal(false)} />
     </View>
   )
 }

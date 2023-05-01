@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import AsyncStorage from '@react-native-async-storage/async-storage'
-
 import {
   Modal,
   View,
@@ -8,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import DateInput from '../../DateInput'
@@ -40,6 +39,20 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     periodo: periodo,
   }
 
+  function alertSaveMed() {
+    Alert.alert(
+      'Medicamento cadastrado com sucesso!',
+      '',
+      [
+        {
+          text: 'OK',
+          onPress: onClose,
+        },
+      ],
+      { cancelable: false }
+    )
+  }
+
   async function saveMed() {
     try {
       let dado = cadMedicamento
@@ -67,7 +80,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
 
-      console.log('Dado adicionado com sucesso!')
+      alertSaveMed()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
     }

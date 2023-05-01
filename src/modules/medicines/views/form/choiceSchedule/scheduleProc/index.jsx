@@ -6,6 +6,7 @@ import {
   TextInput,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Alert,
 } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import DateInput from '../../DateInput'
@@ -38,6 +39,20 @@ const SchedulingModalProc = ({ visible, onClose }) => {
     periodo: periodo,
   }
 
+  function alertSaveProc() {
+    Alert.alert(
+      'Procedimento cadastrado com sucesso!',
+      '',
+      [
+        {
+          text: 'OK',
+          onPress: onClose,
+        },
+      ],
+      { cancelable: false }
+    )
+  }
+
   async function saveProc() {
     try {
       let dado = cadProcedimento
@@ -65,7 +80,7 @@ const SchedulingModalProc = ({ visible, onClose }) => {
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
 
-      console.log('Dado adicionado com sucesso!')
+      alertSaveProc()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
     }

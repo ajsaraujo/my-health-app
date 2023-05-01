@@ -20,20 +20,18 @@ const ToastActionsContext = createContext<ToastActions>({
 export function ToastProvider({ children }: PropsWithChildren) {
   const [toast, setToast] = useState<ToastProps>(DEFAULT_TOAST_VALUE)
 
-  function success(message: string) {
-    showToast(message, 'success')
+  function success(message: string, durationInMs?: number) {
+    showToast(message, 'success', durationInMs)
   }
 
-  function error(message: string) {
-    showToast(message, 'error')
+  function error(message: string, durationInMs?: number) {
+    showToast(message, 'error', durationInMs)
   }
 
-  function showToast(message: string, type: ToastType) {
+  function showToast(message: string, type: ToastType, durationInsMs = 2000) {
     setToast({ visible: true, message, type })
 
-    const TOAST_DURATION_IN_MS = 2000
-
-    setTimeout(hide, TOAST_DURATION_IN_MS)
+    setTimeout(hide, durationInsMs)
   }
 
   function hide() {

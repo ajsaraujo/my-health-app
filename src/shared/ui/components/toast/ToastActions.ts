@@ -1,5 +1,5 @@
 export interface ToastActions {
-  success(message: string): void
-  error(message: string): void
+  success(message: string, durationInMs?: number): void
+  error(message: string, durationInMs?: number): void
   hide(): void
 }

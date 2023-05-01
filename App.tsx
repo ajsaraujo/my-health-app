@@ -4,7 +4,7 @@ import {
   createNativeStackNavigator,
   NativeStackNavigationOptions,
 } from '@react-navigation/native-stack'
-import { Toast, ToastProps } from '@shared/ui/components/toast/Toast'
+import { Toast } from '@shared/ui/components/toast/Toast'
 import { useFonts } from 'expo-font'
 import { View } from 'react-native'
 
@@ -21,7 +21,6 @@ import { RouteParams } from './src/routeParams'
 import { GREEN_700 } from './src/shared/ui/colors'
 import { ToastProvider } from '@shared/ui/components/toast/ToastProvider'
 import Home from '@modules/home/Home'
-import { Loading } from '@shared/ui/components/loading/Loading'
 import { LoadingInterceptor } from '@shared/ui/components/loading/LoadingInterceptor'
 import { useEffect, useState } from 'react'
 import { getSession } from '@shared/services/auth/session'
@@ -120,7 +119,10 @@ export default function App() {
             <Stack.Screen
               name="ResetPassword"
               component={ResetPassword}
-              options={{ headerTitle: 'Redefinir senha' }}
+              options={{
+                headerTitle: 'Redefinir senha',
+                headerLeft: () => null,
+              }}
             ></Stack.Screen>
 
             {/* Tela de publicar noticias */}

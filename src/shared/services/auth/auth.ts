@@ -1,7 +1,9 @@
 import { ErrorResponse } from '@shared/models/ErrorResponse'
-import { failure, Result, success } from '@shared/utils/result/result'
-import axios, { AxiosError } from 'axios'
+import { handleHttpFailure } from '@shared/utils/axios/handleHttpFailure'
+import { Result, success } from '@shared/utils/result/result'
+import axios from 'axios'
 import { config } from 'src/config'
+
 import { saveSession } from './session'
 
 const URL = `${config.mainAPIUrl}/auth`
@@ -23,23 +25,6 @@ export async function authenticate(
 
     return success(response.data as UserSession)
   } catch (error: unknown) {
-    if (error instanceof AxiosError) {
-      return handleAxiosError(error)
-    }
-
-    return failure('Um erro desconhecido ocorreu. Por favor, tente novamente.')
+    return handleHttpFailure(error, { 401: 'Usuário e/ou senha inválidos.' })
   }
-}
-
-function handleAxiosError(error: Error | AxiosError): Result<UserSession> {
-  const UNAUTHORIZED_STATUS = 401
-
-  const isWrongPasswordError =
-    axios.isAxiosError(error) && error.response?.status === UNAUTHORIZED_STATUS
-
-  if (isWrongPasswordError) {
-    return failure('Usuário e/ou senha inválidos.')
-  }
-
-  return failure(error.message)
 }

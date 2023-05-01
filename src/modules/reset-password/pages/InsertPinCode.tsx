@@ -12,6 +12,7 @@ import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ResetPasswordRouteParams } from '../ResetPasswordRouteParams'
 import { useState } from 'react'
 import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
+import { resetPassword } from '../services/resetPassword'
 
 type InsertPinCodeProps = NativeStackScreenProps<
   ResetPasswordRouteParams,
@@ -34,7 +35,7 @@ export function InsertPinCode(props: InsertPinCodeProps) {
     props.navigation.replace('InsertEmail', { userEmail: email })
   }
 
-  function confirm() {
+  async function confirm() {
     const { pinCode, password, passwordConfirmation } = formValues
 
     if (!pinCode) {
@@ -59,8 +60,19 @@ export function InsertPinCode(props: InsertPinCodeProps) {
       return
     }
 
-    goToLoginPage()
-    toast.success('Sua senha foi redefinida com sucesso.')
+    setErrorMessage('')
+
+    const result = await resetPassword(pinCode, password)
+
+    if (result?.isOk) {
+      goToLoginPage()
+
+      const FOUR_SECONDS_IN_MS = 4000
+
+      toast.success('Sua senha foi redefinida com sucesso.', FOUR_SECONDS_IN_MS)
+    } else {
+      toast.error(result.message)
+    }
   }
 
   function goToLoginPage() {

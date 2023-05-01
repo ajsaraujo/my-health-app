@@ -1,4 +1,5 @@
-import { Result, failure, success } from '@shared/utils/result/result'
+import { handleHttpFailure } from '@shared/utils/axios/handleHttpFailure'
+import { Result, success } from '@shared/utils/result/result'
 import axios from 'axios'
 import { config } from 'src/config'
 
@@ -13,14 +14,6 @@ export async function sendPinCode(email: string): Promise<Result<null>> {
 
     return success(null)
   } catch (err) {
-    if (axios.isAxiosError(err)) {
-      const isBadRequest = err.response?.status === 400
-
-      if (isBadRequest) {
-        return failure(`${email} não é um e-mail válido.`)
-      }
-    }
-
-    return failure('Um erro desconhecido ocorreu. Por favor, tente novamente.')
+    return handleHttpFailure(err, { 400: `${email} não é um e-mail válido.` })
   }
 }

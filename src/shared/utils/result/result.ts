@@ -24,3 +24,7 @@ export function success<T>(data: T): Result<T> {
 export function failure<T>(message: string, error?: unknown): Result<T> {
   return { isOk: false, isFailure: true, error, message }
 }
+
+export function genericFailure<T>(): Result<T> {
+  return failure('Um erro desconhecido ocorreu. Por favor, tente novamente.')
+}

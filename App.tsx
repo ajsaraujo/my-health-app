@@ -129,7 +129,7 @@ export default function App() {
             <Stack.Screen
               name="PublishNews"
               component={NewsForm}
-              options={{ title: 'My Health Notícias' }}
+              options={{ title: 'Publicar notícia' }}
             ></Stack.Screen>
           </Stack.Navigator>
         </NavigationContainer>

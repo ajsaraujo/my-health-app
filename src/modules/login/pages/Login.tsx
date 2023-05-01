@@ -1,5 +1,5 @@
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
-import { authenticate } from '@shared/services/auth/auth'
+import { authenticate } from '@shared/services/auth/authenticate'
 import {
   FormField,
   PasswordTextBox,

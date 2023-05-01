@@ -45,7 +45,7 @@ export default function Articles(props: ArticlesProps) {
   }
 
   return (
-    <View style={{ height: '100%' }}>
+    <View style={{ height: '100%', ...globalStyles.defaultContainer }}>
       <ArticleList articles={articles}></ArticleList>
 
       {true && (

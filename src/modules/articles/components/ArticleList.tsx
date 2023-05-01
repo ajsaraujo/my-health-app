@@ -1,6 +1,8 @@
 import { View } from 'react-native'
 import { Article } from '../interfaces/Article'
 import { StyledText } from '@shared/ui/components'
+import { ArticleCard } from './ArticleCard'
+import { globalStyles } from '@shared/ui/globalStyles'
 
 interface ArticleListProps {
   articles: Article[]
@@ -14,9 +16,8 @@ export function ArticleList({ articles }: ArticleListProps) {
   return (
     <View>
       {articles.map((article) => (
-        <View key={article.id}>
-          <StyledText>{article.title}</StyledText>
-          <StyledText>{article.content}</StyledText>
+        <View key={article.id} style={globalStyles.marginBottom4}>
+          <ArticleCard article={article}></ArticleCard>
         </View>
       ))}
     </View>

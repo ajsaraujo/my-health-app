@@ -27,14 +27,14 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     flexDirection: 'row',
     justifyContent: 'center',
-    marginLeft: 20,
+    marginHorizontal: 20,
   },
   tagDay: {
     paddingHorizontal: 8,
     paddingVertical: 4,
     marginRight: 8,
     fontWeight: 'bold',
-    fontSize: 18,
+    fontSize: 14,
   },
   containerInfoDay: {
     width: '100%',

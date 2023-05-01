@@ -5,8 +5,6 @@ import MedChoice from '../form/choiceMed'
 import Content from './content'
 import * as FileSystem from 'expo-file-system'
 
-const setaInfo = require('../../img/arrow-info.png')
-
 const medicinesList = []
 
 async function getMedicines() {

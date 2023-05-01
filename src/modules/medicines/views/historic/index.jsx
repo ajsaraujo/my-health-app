@@ -35,6 +35,8 @@ async function getHistoric() {
         id: count_hist,
         date: dado.date,
         description: dado.description,
+        operation: dado.operation,
+        hour: dado.hour,
       }
 
       // Verifica se o objeto JSON já existe no array

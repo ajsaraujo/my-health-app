@@ -51,7 +51,7 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
       onRequestClose={onClose}
       transparent
     >
-      <TouchableWithoutFeedback>
+      <TouchableWithoutFeedback onPress={onClose}>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Anexar Resultado</Text>

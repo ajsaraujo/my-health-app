@@ -14,6 +14,7 @@ import CodeQuery2 from './ConsultaCid11'
 import { CIAN, GREEN, LIGHT_BLACK, LIGHT_GREY } from '@shared/ui/colors'
 import CodeQuery3 from './ConsultaCif'
 import { Picker } from '@react-native-picker/picker'
+import CodeQuery5 from './FavCid10'
 
 export function CodeQuery4() {
   const navigation = useNavigation()
@@ -58,7 +59,9 @@ export function CodeQuery4() {
             { borderColor: '#000000', backgroundColor: '#ffffff' },
           ]}
           textStyle={{ color: '#000000' }}
-          onPress={() => navigation.goBack()}
+          onPress={() => {
+            navigation.navigate('FavCid10')
+          }}
         >
           CID-10
         </PrimaryButton>
@@ -70,6 +73,9 @@ export function CodeQuery4() {
             },
           ]}
           textStyle={{ color: '#000000' }}
+          onPress={() => {
+            navigation.navigate('FavCid11')
+          }}
         >
           CID-11
         </PrimaryButton>
@@ -81,6 +87,9 @@ export function CodeQuery4() {
             },
           ]}
           textStyle={{ color: '#000000' }}
+          onPress={() => {
+            navigation.navigate('FavCif')
+          }}
         >
           CIF
         </PrimaryButton>
@@ -92,6 +101,9 @@ export function CodeQuery4() {
             },
           ]}
           textStyle={{ color: '#000000' }}
+          onPress={() => {
+            navigation.navigate('FavSigtap')
+          }}
         >
           Tabela Sus
         </PrimaryButton>

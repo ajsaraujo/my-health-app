@@ -29,5 +29,7 @@ export type RouteParams = {
   ConsultaCif: {
     cif: string
   }
+  FavCid10: NO_PARAMS
+
   Favoritos: NO_PARAMS
 }

@@ -3,6 +3,7 @@ import axios from 'axios'
 import { config } from 'src/config'
 
 import { Article } from '../interfaces/Article'
+import { Result, genericFailure, success } from '@shared/utils/result/result'
 
 const URL = `${config.mainAPIUrl}/article`
 
@@ -75,12 +76,23 @@ export async function fetchArticles(): Promise<Article[]> {
   return response.data
 }
 
-export async function postArticle(article: Article): Promise<number> {
+export async function postArticle(
+  title: string,
+  content: string
+): Promise<Result<null>> {
   const session = (await getSession()) as UserSession
 
-  const response = await axios.post(URL, article, {
-    headers: { Authorization: `Bearer ${session.access_token}` },
-  })
+  try {
+    await axios.post(
+      URL,
+      { title, content, authorId: session.id },
+      {
+        headers: { Authorization: `Bearer ${session.access_token}` },
+      }
+    )
 
-  return response.status
+    return success(null)
+  } catch (err) {
+    return genericFailure()
+  }
 }

@@ -4,9 +4,11 @@ import { useNavigation } from '@react-navigation/native'
 import { Navigation } from 'src/routeParams'
 import { useState } from 'react'
 import { globalStyles } from '@shared/ui/globalStyles'
-import { PrimaryButton } from '@shared/ui/components'
+import { FormField, PrimaryButton, TextBox } from '@shared/ui/components'
 import { postArticle } from './../api'
 import { Article } from '../interfaces/Article'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
+
 type NewsForm = {
   title: string
   content: string
@@ -15,41 +17,54 @@ type NewsForm = {
 
 export function NewsForm() {
   const navigation = useNavigation<Navigation>()
-  const [formValues, setFormValues] = useState<Article>({
+  const [formValues, setFormValues] = useState({
     title: '',
     content: '',
-    authorId: 'colocar user_id',
   })
 
-  const handleSubmit = async () => {
-    try {
-      const response = await postArticle(formValues)
-      if (response === 201) {
-        navigation.navigate(MyHealthModule.Articles)
-      }
-    } catch (error) {
-      //   Melhorar esse catch error
-      alert('Ocorreu um erro ao enviar a notícia.')
+  const toast = useToastActions()
+
+  async function handleSubmit() {
+    const result = await postArticle(formValues.title, formValues.content)
+
+    if (result.isOk) {
+      toast.success('O artigo foi publicado com sucesso.')
+      navigation.navigate(MyHealthModule.Articles)
+    } else {
+      toast.error(result.message)
     }
   }
 
   return (
-    <View style={globalStyles.centerVertically}>
-      <TextInput
-        style={globalStyles.centerHorizontally}
-        placeholder="Título"
-        onChangeText={(value) => setFormValues({ ...formValues, title: value })}
-        value={formValues.title}
-      />
-      <TextInput
-        style={globalStyles.centerHorizontally}
-        placeholder="Conteúdo"
-        onChangeText={(value) =>
-          setFormValues({ ...formValues, content: value })
-        }
-        value={formValues.content}
-        multiline
-      />
+    <View
+      style={[
+        globalStyles.defaultContainer,
+        {
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'space-between',
+          height: '100%',
+        },
+      ]}
+    >
+      <View>
+        <FormField label="Título" style={globalStyles.marginBottom2}>
+          <TextBox
+            value={formValues.title}
+            onChangeText={(title) => setFormValues({ ...formValues, title })}
+          ></TextBox>
+        </FormField>
+
+        <FormField label="Conteúdo">
+          <TextBox
+            value={formValues.content}
+            onChangeText={(content) =>
+              setFormValues({ ...formValues, content })
+            }
+          ></TextBox>
+        </FormField>
+      </View>
+
       <PrimaryButton onPress={handleSubmit}>Publicar</PrimaryButton>
     </View>
   )

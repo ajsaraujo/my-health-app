@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   Modal,
   View,
@@ -9,11 +9,18 @@ import {
 } from 'react-native'
 import * as DocumentPicker from 'expo-document-picker'
 import { styles } from '../../../css/info/schedule'
+import { Picker } from '@react-native-picker/picker'
+import * as FileSystem from 'expo-file-system'
 
 const calendar = require('../../../img/historicList.png')
 
-const RegisterModalMed = ({ visible, onClose }) => {
+const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
   const [selectedFile, setSelectedFile] = useState(null)
+  const [selectedOption, setSelectedOption] = useState(null)
+
+  const handlePress = () => {
+    setShowModal(true)
+  }
 
   const pickDocument = async () => {
     const result = await DocumentPicker.getDocumentAsync({})
@@ -33,10 +40,24 @@ const RegisterModalMed = ({ visible, onClose }) => {
       onRequestClose={onClose}
       transparent
     >
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Anexar Resultado</Text>
+            <Picker
+              style={{ width: '90%' }}
+              selectedValue={selectedOption}
+              onValueChange={(itemValue) => setSelectedOption(itemValue)}
+            >
+              <Picker.Item label="Selecione um procedimento" value={null} />
+              {proceduresList.map((option, index) => (
+                <Picker.Item
+                  key={index}
+                  label={option.name}
+                  value={option.name}
+                />
+              ))}
+            </Picker>
             <TouchableOpacity
               onPress={pickDocument}
               style={styles.resultButton}

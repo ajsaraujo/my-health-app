@@ -72,6 +72,7 @@ export const styles = StyleSheet.create({
     marginTop: 66,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   historicButton: {
     justifyContent: 'center',

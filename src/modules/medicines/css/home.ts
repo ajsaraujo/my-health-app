@@ -72,9 +72,10 @@ export const styles = StyleSheet.create({
     marginTop: 10,
   },
   containerSchedulingButton: {
-    marginVertical: 50,
+    marginTop: 30,
     width: '100%',
     alignItems: 'center',
+    paddingBottom: 40,
   },
   schedulingButton: {
     justifyContent: 'center',

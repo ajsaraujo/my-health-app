@@ -1,4 +1,6 @@
 import {
+  FormField,
+  PasswordTextBox,
   PrimaryButton,
   SecondaryButton,
   StyledText,
@@ -9,6 +11,7 @@ import { View, StyleSheet } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { ResetPasswordRouteParams } from '../ResetPasswordRouteParams'
 import { useState } from 'react'
+import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 
 type InsertPinCodeProps = NativeStackScreenProps<
   ResetPasswordRouteParams,
@@ -18,38 +21,93 @@ type InsertPinCodeProps = NativeStackScreenProps<
 export function InsertPinCode(props: InsertPinCodeProps) {
   const email = props.route.params.userEmail
 
+  const [formValues, setFormValues] = useState({
+    pinCode: '',
+    password: '',
+    passwordConfirmation: '',
+  })
+
   const [errorMessage, setErrorMessage] = useState('')
-  const [pinCode, setPinCode] = useState('')
+  const toast = useToastActions()
 
   function returnToInsertEmailScreen() {
     props.navigation.replace('InsertEmail', { userEmail: email })
   }
 
   function confirm() {
+    const { pinCode, password, passwordConfirmation } = formValues
+
     if (!pinCode) {
       setErrorMessage('Por favor, insira o código.')
       return
     }
 
-    props.navigation.replace('InsertNewPassword')
+    if (!password) {
+      setErrorMessage('Por favor, insira a sua senha.')
+      return
+    }
+
+    if (!passwordConfirmation) {
+      setErrorMessage('Por favor, confirme a sua senha.')
+      return
+    }
+
+    if (password !== passwordConfirmation) {
+      setErrorMessage(
+        'As senhas estão diferentes. Por favor, digite a mesma senha nos dois campos.'
+      )
+      return
+    }
+
+    goToLoginPage()
+    toast.success('Sua senha foi redefinida com sucesso.')
+  }
+
+  function goToLoginPage() {
+    props.navigation.pop()
   }
 
   return (
     <View style={styles.container}>
-      <StyledText style={globalStyles.marginBottom2}>
-        Insira o código recebido no e-mail {email}
+      <StyledText style={globalStyles.marginBottom3}>
+        Insira o código recebido no email {email} e defina sua nova senha.
       </StyledText>
 
-      <TextBox
-        placeholder="******"
-        inputMode="numeric"
-        value={pinCode}
-        onChangeText={setPinCode}
-        style={globalStyles.marginBottom4}
-      ></TextBox>
+      <FormField
+        label="Código recebido no e-mail"
+        style={globalStyles.marginBottom1}
+      >
+        <TextBox
+          placeholder="******"
+          inputMode="numeric"
+          value={formValues.pinCode}
+          onChangeText={(pinCode) => setFormValues({ ...formValues, pinCode })}
+        ></TextBox>
+      </FormField>
 
-      <PrimaryButton style={globalStyles.marginBottom1} onPress={confirm}>
-        Confirmar
+      <FormField label="Senha" style={globalStyles.marginBottom1}>
+        <PasswordTextBox
+          value={formValues.password}
+          onChangeText={(password) =>
+            setFormValues({ ...formValues, password })
+          }
+        ></PasswordTextBox>
+      </FormField>
+
+      <FormField label="Confirmação de senha">
+        <PasswordTextBox
+          value={formValues.passwordConfirmation}
+          onChangeText={(passwordConfirmation) =>
+            setFormValues({ ...formValues, passwordConfirmation })
+          }
+        ></PasswordTextBox>
+      </FormField>
+
+      <PrimaryButton
+        style={{ ...globalStyles.marginBottom1, ...globalStyles.marginTop3 }}
+        onPress={confirm}
+      >
+        Redefinir senha
       </PrimaryButton>
       <SecondaryButton onPress={returnToInsertEmailScreen}>
         Não recebi um código

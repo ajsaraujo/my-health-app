@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { GREEN_50, GREEN_600 } from '../../../shared/ui/colors'
+import { GRAY_400, GREEN_50, GREEN_600 } from '../../../shared/ui/colors'
 
 export const styles = StyleSheet.create({
   containerRemedies: {
@@ -39,31 +39,25 @@ export const styles = StyleSheet.create({
   containerInfoDay: {
     width: '100%',
     flexDirection: 'row',
-    marginTop: 10,
-    marginLeft: 11,
   },
   infoDayHour: {
-    width: '20%',
-    marginTop: 10,
-    marginLeft: 5,
+    width: '30%',
     fontSize: 15,
     textAlign: 'center',
     verticalAlign: 'middle',
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
+    padding: 20,
     height: '100%',
+    borderRightColor: '#ccc',
+    borderRightWidth: 1,
   },
   infoDayText: {
     width: '70%',
-    marginTop: 10,
-    marginLeft: 5,
     fontSize: 15,
     textAlign: 'center',
     verticalAlign: 'middle',
     backgroundColor: '#fff',
-    borderRadius: 10,
-    padding: 10,
+    padding: 20,
     height: '100%',
   },
   infoDayButton: {
@@ -112,5 +106,22 @@ export const styles = StyleSheet.create({
   },
   infoText: {
     marginRight: 20,
+  },
+  containerLabelDescription: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginTop: 10,
+    backgroundColor: GRAY_400,
+    padding: 10,
+    borderTopRightRadius: 20,
+    borderTopLeftRadius: 20,
+  },
+  labelDescriptionTextHour: {
+    marginLeft: 15,
+    marginRight: 100,
+    color: '#fff',
+  },
+  labelDescriptionTextDescription: {
+    color: '#fff',
   },
 })

@@ -90,6 +90,7 @@ export default function Home() {
         <View style={styles.containerInfoDay} key={index}>
           <Text style={styles.infoDayHour}>{dado.hour}</Text>
           <Text style={styles.infoDayText}>{dado.description}</Text>
+          <Text style={{ width: '20%', backgroundColor: '#fff' }}></Text>
         </View>
       )
     } else {
@@ -235,6 +236,10 @@ export default function Home() {
         )}
       </View>
 
+      <View style={styles.containerLabelDescription}>
+        <Text style={styles.labelDescriptionTextHour}>Horário</Text>
+        <Text style={styles.labelDescriptionTextDescription}>Descrição</Text>
+      </View>
       <ScrollView contentContainerStyle={{ paddingBottom: 20 }}>
         <View style={styles.infoText}>
           {views ? (

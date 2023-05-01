@@ -52,15 +52,13 @@ const SchedulingModalProc = ({ visible, onClose }) => {
 
   function alertSaveProc() {
     Alert.alert(
-      'Procedimento cadastrado com sucesso!',
-      '',
+      'Sucesso',
+      'Procedimento agendado com sucesso',
       [
         {
           text: 'OK',
-          onPress: () => {
-            onClose()
-            setRefresh(!refresh)
-          },
+          style: 'default',
+          onPress: () => onClose(),
         },
       ],
       { cancelable: false }

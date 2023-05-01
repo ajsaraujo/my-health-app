@@ -6,11 +6,11 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Image,
+  Alert,
 } from 'react-native'
 import * as DocumentPicker from 'expo-document-picker'
 import { styles } from '../../../css/info/schedule'
 import { Picker } from '@react-native-picker/picker'
-import * as FileSystem from 'expo-file-system'
 
 const calendar = require('../../../img/historicList.png')
 
@@ -30,7 +30,18 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
   }
 
   function saveResult() {
-    console.log('save')
+    Alert.alert(
+      'Sucesso',
+      'Arquivo anexado com sucesso',
+      [
+        {
+          text: 'OK',
+          style: 'default',
+          onPress: () => onClose(),
+        },
+      ],
+      { cancelable: false }
+    )
   }
 
   return (

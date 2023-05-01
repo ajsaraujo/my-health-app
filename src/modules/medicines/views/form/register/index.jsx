@@ -25,15 +25,13 @@ const RegisterModalMed = ({ visible, onClose }) => {
 
   function alertSaveMed() {
     Alert.alert(
-      'Medicamento cadastrado com sucesso!',
-      '',
+      'Sucesso',
+      'Medicamento cadastrado com sucesso',
       [
         {
           text: 'OK',
-          onPress: () => {
-            onClose()
-            setRefresh(!refresh)
-          },
+          style: 'default',
+          onPress: () => onClose(),
         },
       ],
       { cancelable: false }

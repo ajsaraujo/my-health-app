@@ -52,15 +52,13 @@ const SchedulingModalMed = ({ visible, onClose }) => {
 
   function alertSaveMed() {
     Alert.alert(
-      'Medicamento cadastrado com sucesso!',
-      '',
+      'Sucesso',
+      'Medicamento agendado com sucesso',
       [
         {
           text: 'OK',
-          onPress: () => {
-            onClose()
-            setRefresh(!refresh)
-          },
+          style: 'default',
+          onPress: () => onClose(),
         },
       ],
       { cancelable: false }

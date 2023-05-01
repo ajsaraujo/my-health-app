@@ -25,15 +25,33 @@ let dataFormatada = `${dia}/${mes}/${ano}` // Concatena a data formatada com bar
 const today = dataFormatada
 const setaInfo = require('../../img/arrow-info.png')
 
-export default function Home() {
-  const [views, setViews] = useState(null)
-  useEffect(() => {
-    async function fetchViews() {
-      const views = await lerDados()
-      setViews(views)
+async function lerDados() {
+  try {
+    const caminho = `${FileSystem.documentDirectory}dados.json`
+
+    // Verifica se o arquivo já existe
+    const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+    if (!infoArquivo.exists) {
+      console.log('O arquivo não existe!')
+      return
     }
-    fetchViews()
-  }, [])
+
+    // Lê os dados do arquivo
+    const arquivo = await FileSystem.readAsStringAsync(caminho)
+
+    // Converte a string JSON para array
+    const dados = JSON.parse(arquivo)
+
+    console.log(dados)
+
+    return dados
+  } catch (error) {
+    console.log('Erro ao ler o JSON:', error)
+  }
+}
+
+export default function Home() {
   const daysOfWeek = [
     'Sunday',
     'Monday',
@@ -46,6 +64,7 @@ export default function Home() {
   const date = new Date()
   const dayOfWeek = daysOfWeek[date.getDay()]
   const [currentDay, setCurrentDay] = useState('Sunday')
+  const [dados, setDados] = useState(null)
 
   const changeDayCalendar = (day) => {
     setCurrentDay(day)
@@ -81,50 +100,30 @@ export default function Home() {
     return daysOfWeek[dayOfWeek]
   }
 
-  async function lerDados() {
-    try {
-      const caminho = `${FileSystem.documentDirectory}dados.json`
-
-      // Verifica se o arquivo já existe
-      const infoArquivo = await FileSystem.getInfoAsync(caminho)
-
-      if (!infoArquivo.exists) {
-        console.log('O arquivo não existe!')
-        return
-      }
-
-      // Lê os dados do arquivo
-      const arquivo = await FileSystem.readAsStringAsync(caminho)
-
-      // Converte a string JSON para array
-      const dados = JSON.parse(arquivo)
-
-      const views = dados.map((dado, index) => {
-        const dayOfSchedule = getDayOfWeek(dado.currentDay)
-
-        if (currentDay == dayOfSchedule) {
-          return (
-            <View style={styles.containerInfoDay} key={index}>
-              <Text style={styles.infoDayHour}>{dado.hour}</Text>
-              <Text style={styles.infoDayText}>{dado.descMedicamento}</Text>
-              <TouchableOpacity style={styles.infoDayButton}>
-                <Image
-                  source={setaInfo}
-                  style={styles.infoDayButtonText}
-                ></Image>
-              </TouchableOpacity>
-            </View>
-          )
-        } else {
-          return null
-        }
-      })
-
-      return views
-    } catch (error) {
-      console.log('Erro ao ler o JSON:', error)
+  useEffect(() => {
+    async function loadDados() {
+      const dados = await lerDados()
+      setDados(dados)
     }
-  }
+    loadDados()
+  }, [])
+
+  const views = dados?.map((dado, index) => {
+    const dayOfSchedule = getDayOfWeek(dado.currentDay)
+    if (currentDay === dayOfSchedule) {
+      return (
+        <View style={styles.containerInfoDay} key={index}>
+          <Text style={styles.infoDayHour}>{dado.hour}</Text>
+          <Text style={styles.infoDayText}>{dado.descMedicamento}</Text>
+          <TouchableOpacity style={styles.infoDayButton}>
+            <Image source={setaInfo} style={styles.infoDayButtonText} />
+          </TouchableOpacity>
+        </View>
+      )
+    } else {
+      return null
+    }
+  })
 
   return (
     <View style={styles.containerRemedies}>

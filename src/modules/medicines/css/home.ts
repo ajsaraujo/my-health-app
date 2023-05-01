@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import { GREEN_50 } from '../../../shared/ui/colors'
 
 export const styles = StyleSheet.create({
   containerRemedies: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_50,
     height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
@@ -17,7 +18,7 @@ export const styles = StyleSheet.create({
     marginTop: 20,
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15, 
+    fontSize: 15,
   },
   titleHomeContainer: {
     marginTop: 0,
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
     paddingVertical: 4,
     marginRight: 8,
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 18,
   },
   containerInfoDay: {
     width: '100%',
@@ -84,7 +85,7 @@ export const styles = StyleSheet.create({
   },
   schedulingButton: {
     justifyContent: 'center',
-    backgroundColor: '#1E90FF',
+    backgroundColor: '#43A047',
     padding: 20,
     borderRadius: 20,
     elevation: 10,

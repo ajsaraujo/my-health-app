@@ -1,10 +1,11 @@
 import { StyleSheet } from 'react-native'
+import { GREEN_50 } from '../../../shared/ui/colors'
 
 export const styles = StyleSheet.create({
   navigationRemediesContainer: {
     flexDirection: 'row',
     justifyContent: 'center',
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_50,
     paddingTop: 20,
     marginBottom: 0,
   },

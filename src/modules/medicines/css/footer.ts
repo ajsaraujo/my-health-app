@@ -1,8 +1,9 @@
 import { StyleSheet } from 'react-native'
+import { GREEN_50, GREEN_600 } from '../../../shared/ui/colors'
 
 export const styles = StyleSheet.create({
   footerContainer: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_50,
     paddingHorizontal: 60,
     paddingVertical: 35,
     flexDirection: 'row',
@@ -18,7 +19,7 @@ export const styles = StyleSheet.create({
   },
   footerButtonActive: {
     width: '25%',
-    backgroundColor: '#1E90FF',
+    backgroundColor: GREEN_600,
     borderRadius: 20,
     margin: 10,
     justifyContent: 'center',

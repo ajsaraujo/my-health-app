@@ -1,8 +1,9 @@
+import { GREEN_50, GREEN_600 } from '@shared/ui/colors'
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   historicsContainer: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_50,
     height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
@@ -76,7 +77,7 @@ export const styles = StyleSheet.create({
   },
   historicButton: {
     justifyContent: 'center',
-    backgroundColor: '#1E90FF',
+    backgroundColor: GREEN_600,
     padding: 20,
     borderRadius: 20,
     elevation: 10,

@@ -1,8 +1,9 @@
+import { GREEN_50, GREEN_600 } from '@shared/ui/colors'
 import { StyleSheet } from 'react-native'
 
 export const styles = StyleSheet.create({
   medicinesContainer: {
-    backgroundColor: '#D7E6F1',
+    backgroundColor: GREEN_50,
     height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
@@ -74,14 +75,14 @@ export const styles = StyleSheet.create({
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
-    marginRight: 20, 
+    marginRight: 20,
   },
   timeContentText: {
     color: 'white',
     fontSize: 15,
     fontWeight: 'bold',
     marginLeft: 15,
-    paddingRight: 23
+    paddingRight: 23,
   },
   //
   containerMedicineButton: {
@@ -92,7 +93,7 @@ export const styles = StyleSheet.create({
   },
   medicineButton: {
     justifyContent: 'center',
-    backgroundColor: '#1E90FF',
+    backgroundColor: GREEN_600,
     padding: 20,
     borderRadius: 20,
     elevation: 10,

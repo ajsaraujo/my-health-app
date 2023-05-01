@@ -75,24 +75,6 @@ export default function Home() {
     setShowModalChoice(true)
   }
 
-  function getDayOfWeek(dateString) {
-    const dateParts = dateString.split('/')
-    const day = dateParts[0]
-    const month = dateParts[1] - 1 // Mês é indexado a partir de 0
-    const year = dateParts[2]
-    const dayOfWeek = new Date(year, month, day).getDay()
-    const daysOfWeek = [
-      'Sunday',
-      'Monday',
-      'Tuesday',
-      'Wednesday',
-      'Thursday',
-      'Friday',
-      'Saturday',
-    ]
-    return daysOfWeek[dayOfWeek]
-  }
-
   useEffect(() => {
     async function loadDados() {
       const dados = await lerDados()
@@ -102,7 +84,7 @@ export default function Home() {
   }, [])
 
   const views = dados?.map((dado, index) => {
-    const dayOfSchedule = getDayOfWeek(dado.currentDay)
+    const dayOfSchedule = dado.dayOfWeek
     if (currentDay === dayOfSchedule) {
       return (
         <View style={styles.containerInfoDay} key={index}>

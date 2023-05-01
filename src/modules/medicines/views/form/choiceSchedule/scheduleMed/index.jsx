@@ -14,8 +14,17 @@ import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
 
+const diasDaSemana = [
+  { pt: 'Domingo', en: 'Sunday' },
+  { pt: 'Segunda', en: 'Monday' },
+  { pt: 'Terça', en: 'Tuesday' },
+  { pt: 'Quarta', en: 'Wednesday' },
+  { pt: 'Quinta', en: 'Thursday' },
+  { pt: 'Sexta', en: 'Friday' },
+  { pt: 'Sábado', en: 'Saturday' },
+]
+
 const SchedulingModalMed = ({ visible, onClose }) => {
-  const [refresh, setRefresh] = useState(false)
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
   const [descMed, setDescMed] = useState('')
@@ -23,11 +32,16 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   const [selDateFinal, setSelDateFinal] = useState('')
   const [horario, setHorario] = useState('')
   const [periodo, setPeriodo] = useState(null)
+  const [selectedDay, setSelectedDay] = useState(null)
+
+  const handleDayChange = (day) => {
+    setSelectedDay(day)
+  }
 
   const cadAgendamento = {
     hour: horario,
     description: descMed,
-    currentDay: new Date().toLocaleDateString('pt-BR'),
+    dayOfWeek: selectedDay,
   }
 
   const cadHistoric = {
@@ -249,6 +263,18 @@ const SchedulingModalMed = ({ visible, onClose }) => {
                   value="De 8 em 8 horas"
                   label="De 8 em 8 horas"
                 />
+              </Picker>
+            </View>
+            <View style={styles.input}>
+              <Picker
+                style={{ width: '100%' }}
+                selectedValue={selectedDay}
+                onValueChange={handleDayChange}
+              >
+                <Picker.Item key={0} value={null} label="Selecione o dia" />
+                {diasDaSemana.map((dia) => (
+                  <Picker.Item key={dia.pt} label={dia.pt} value={dia.en} />
+                ))}
               </Picker>
             </View>
             <View style={styles.containerSchedulingButton}>

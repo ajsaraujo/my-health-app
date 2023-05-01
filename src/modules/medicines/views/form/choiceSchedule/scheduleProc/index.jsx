@@ -7,12 +7,23 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback,
   Alert,
+  FlatList,
 } from 'react-native'
 import { Picker } from '@react-native-picker/picker'
 import DateInput from '../../DateInput'
 import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
+
+const diasDaSemana = [
+  { pt: 'Domingo', en: 'Sunday' },
+  { pt: 'Segunda', en: 'Monday' },
+  { pt: 'Terça', en: 'Tuesday' },
+  { pt: 'Quarta', en: 'Wednesday' },
+  { pt: 'Quinta', en: 'Thursday' },
+  { pt: 'Sexta', en: 'Friday' },
+  { pt: 'Sábado', en: 'Saturday' },
+]
 
 const SchedulingModalProc = ({ visible, onClose }) => {
   const [refresh, setRefresh] = useState(false)
@@ -24,10 +35,16 @@ const SchedulingModalProc = ({ visible, onClose }) => {
   const [horario, setHorario] = useState('')
   const [periodo, setPeriodo] = useState(null)
 
+  const [selectedDay, setSelectedDay] = useState(null)
+
+  const handleDayChange = (day) => {
+    setSelectedDay(day)
+  }
+
   const cadAgendamento = {
     hour: horario,
     description: descProc,
-    currentDay: new Date().toLocaleDateString('pt-BR'),
+    dayOfWeek: selectedDay,
   }
 
   const cadHistoric = {
@@ -242,6 +259,18 @@ const SchedulingModalProc = ({ visible, onClose }) => {
                   value="A cada 30 dias"
                   label="A cada 30 dias"
                 />
+              </Picker>
+            </View>
+            <View style={styles.input}>
+              <Picker
+                style={{ width: '100%' }}
+                selectedValue={selectedDay}
+                onValueChange={handleDayChange}
+              >
+                <Picker.Item key={0} value={null} label="Selecione o dia" />
+                {diasDaSemana.map((dia) => (
+                  <Picker.Item key={dia.pt} label={dia.pt} value={dia.en} />
+                ))}
               </Picker>
             </View>
             <View style={styles.containerSchedulingButton}>

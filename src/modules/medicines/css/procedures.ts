@@ -4,7 +4,7 @@ import { StyleSheet, Text } from 'react-native'
 export const styles = StyleSheet.create({
   proceduresContainer: {
     backgroundColor: '#D7E6F1',
-    height: '84%',
+    height: '75%',
     paddingVertical: 0,
     paddingHorizontal: 30,
   },

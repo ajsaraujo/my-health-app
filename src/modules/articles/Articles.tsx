@@ -4,7 +4,7 @@ import { checkIfUserIsAdmin } from '@shared/services/auth'
 import { FloatingActionButton } from '@shared/ui/components'
 import { useToastActions } from '@shared/ui/components/toast/ToastProvider'
 import { globalStyles } from '@shared/ui/globalStyles'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { View } from 'react-native'
 
 import { MyHealthModule } from '../../modules'
@@ -24,7 +24,7 @@ export default function Articles(props: ArticlesProps) {
 
   const toast = useToastActions()
 
-  useFocusEffect(() => {
+  useEffect(() => {
     function fetchData() {
       fetchArticles()
         .then(setArticles)
@@ -39,7 +39,7 @@ export default function Articles(props: ArticlesProps) {
     }
 
     fetchData()
-  })
+  }, [])
 
   function goToPostNews() {
     props.navigation.push('PublishNews')

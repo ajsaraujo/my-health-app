@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   View,
   Text,
@@ -26,6 +26,14 @@ const today = dataFormatada
 const setaInfo = require('../../img/arrow-info.png')
 
 export default function Home() {
+  const [views, setViews] = useState(null)
+  useEffect(() => {
+    async function fetchViews() {
+      const views = await lerDados()
+      setViews(views)
+    }
+    fetchViews()
+  }, [])
   const daysOfWeek = [
     'Sunday',
     'Monday',
@@ -37,37 +45,43 @@ export default function Home() {
   ]
   const date = new Date()
   const dayOfWeek = daysOfWeek[date.getDay()]
-  const [currentDay, setCurrentDay] = useState(dayOfWeek)
+  const [currentDay, setCurrentDay] = useState('Sunday')
 
   const changeDayCalendar = (day) => {
-    if (day === currentDay) {
-      setCurrentDay(currentDay)
-    } else {
-      setCurrentDay(day)
-    }
+    setCurrentDay(day)
   }
 
   const [showModalChoice, setShowModalChoice] = useState(false)
 
   // @todo Trocar por um solução dinâmica
-  const [showInfo1, setShowInfo1] = useState(false)
-  const [showInfo2, setShowInfo2] = useState(false)
-  const [showInfo3, setShowInfo3] = useState(false)
-  const handleInfo1 = () => {
-    setShowInfo1(true)
-  }
-  const handleInfo2 = () => {
-    setShowInfo2(true)
-  }
-  const handleInfo3 = () => {
-    setShowInfo3(true)
+  const [showInfo, setShowInfo] = useState(false)
+  const handleInfo = () => {
+    setShowInfo(true)
   }
 
   const handlePress = () => {
     setShowModalChoice(true)
   }
 
-  async function lerJSON() {
+  function getDayOfWeek(dateString) {
+    const dateParts = dateString.split('/')
+    const day = dateParts[0]
+    const month = dateParts[1] - 1 // Mês é indexado a partir de 0
+    const year = dateParts[2]
+    const dayOfWeek = new Date(year, month, day).getDay()
+    const daysOfWeek = [
+      'Sunday',
+      'Monday',
+      'Tuesday',
+      'Wednesday',
+      'Thursday',
+      'Friday',
+      'Saturday',
+    ]
+    return daysOfWeek[dayOfWeek]
+  }
+
+  async function lerDados() {
     try {
       const caminho = `${FileSystem.documentDirectory}dados.json`
 
@@ -85,12 +99,28 @@ export default function Home() {
       // Converte a string JSON para array
       const dados = JSON.parse(arquivo)
 
-      // // Imprime os dados
-      for (let i = 0; i < dados.length; i++) {
-        console.log(dados[i])
-      }
+      const views = dados.map((dado, index) => {
+        const dayOfSchedule = getDayOfWeek(dado.currentDay)
 
-      // return dados;
+        if (currentDay == dayOfSchedule) {
+          return (
+            <View style={styles.containerInfoDay} key={index}>
+              <Text style={styles.infoDayHour}>{dado.hour}</Text>
+              <Text style={styles.infoDayText}>{dado.descMedicamento}</Text>
+              <TouchableOpacity style={styles.infoDayButton}>
+                <Image
+                  source={setaInfo}
+                  style={styles.infoDayButtonText}
+                ></Image>
+              </TouchableOpacity>
+            </View>
+          )
+        } else {
+          return null
+        }
+      })
+
+      return views
     } catch (error) {
       console.log('Erro ao ler o JSON:', error)
     }
@@ -234,69 +264,13 @@ export default function Home() {
         )}
       </View>
 
-      <View>
-        {/* {lerJSON.map( (schedule) => {
-          <Pressable style={styles.containerInfoDay} onPress={handleInfo1}>
-          <Text style={styles.infoDayHour}>{schedule.funcMed}</Text>
-          <Text style={styles.infoDayText}>{schedule.nomeMed}</Text>
-          <TouchableOpacity style={styles.infoDayButton} >
-            <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
-          </TouchableOpacity>
-          <ShedulingInfo
-            visible={showInfo1}
-            data={{ hour: '8:00', description: schedule.descMed }}
-            onClose={() => setShowInfo1(false)}
-          />
-          </Pressable>
-        } )} */}
-        <Pressable style={styles.containerInfoDay} onPress={handleInfo1}>
-          <Text style={styles.infoDayHour}>8:00</Text>
-          <Text style={styles.infoDayText}>Tomar insulina</Text>
-          <TouchableOpacity style={styles.infoDayButton}>
-            <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
-          </TouchableOpacity>
-          <ShedulingInfo
-            visible={showInfo1}
-            data={{ hour: '8:00', description: 'Tomar insulina' }}
-            onClose={() => setShowInfo1(false)}
-          />
-        </Pressable>
-
-        <Pressable style={styles.containerInfoDay} onPress={handleInfo2}>
-          <Text style={styles.infoDayHour}>15:00</Text>
-          <Text style={styles.infoDayText}>Exame de Rotina</Text>
-          <TouchableOpacity style={styles.infoDayButton}>
-            <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
-          </TouchableOpacity>
-          <ShedulingInfo
-            visible={showInfo2}
-            data={{ hour: '15:00', description: 'Exame de Rotina' }}
-            onClose={() => setShowInfo2(false)}
-          />
-        </Pressable>
-
-        <Pressable style={styles.containerInfoDay} onPress={handleInfo3}>
-          <Text style={styles.infoDayHour}>21:30</Text>
-          <Text style={styles.infoDayText}>Exame Urinário</Text>
-          <TouchableOpacity style={styles.infoDayButton}>
-            <Image source={setaInfo} style={styles.infoDayButtonText}></Image>
-          </TouchableOpacity>
-          <ShedulingInfo
-            visible={showInfo3}
-            data={{ hour: '21:30', description: 'Exame Urinário' }}
-            onClose={() => setShowInfo3(false)}
-          />
-        </Pressable>
-      </View>
+      <View>{views ? views : <Text>Carregando...</Text>}</View>
 
       {/* Tab Actions Buttons */}
 
       <View style={styles.containerSchedulingButton}>
         <TouchableOpacity style={styles.schedulingButton} onPress={handlePress}>
           <Text style={styles.schedulingButtonText}>Novo Agendamento</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.schedulingButton} onPress={lerJSON}>
-          <Text style={styles.schedulingButtonText}>Get Agendamentos</Text>
         </TouchableOpacity>
       </View>
       <SchedulingModalChoice

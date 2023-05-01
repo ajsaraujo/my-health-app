@@ -21,7 +21,11 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Informações</Text>
             <Text>{data.hour}</Text>
+            <Text>{data.function}</Text>
             <Text>{data.description}</Text>
+            <Text>{data.dataInicio}</Text>
+            <Text>{data.dataFinal}</Text>
+            <Text>{data.periodo}</Text>
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}

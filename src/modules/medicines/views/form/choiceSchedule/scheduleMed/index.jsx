@@ -53,6 +53,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     dataFinal: selDateFinal,
     hour: horario,
     periodo: periodo,
+    currentDay: new Date().toLocaleDateString('pt-BR'),
   }
 
   async function agendarMed() {

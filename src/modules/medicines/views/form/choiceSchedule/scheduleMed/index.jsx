@@ -184,7 +184,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
       onRequestClose={onClose}
       transparent
     >
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Novo Medicamento</Text>
@@ -279,6 +279,12 @@ const SchedulingModalMed = ({ visible, onClose }) => {
               </Picker>
             </View>
             <View style={styles.containerSchedulingButton}>
+              <TouchableOpacity
+                style={styles.schedulingButton}
+                onPress={onClose}
+              >
+                <Text style={styles.schedulingButtonText}>Fechar</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.schedulingButton}
                 onPress={() => {

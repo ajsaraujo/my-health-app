@@ -31,13 +31,15 @@ export const styles = StyleSheet.create({
   containerSchedulingButton: {
     width: '100%',
     alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'row',
   },
   schedulingButton: {
     justifyContent: 'center',
     backgroundColor: GREEN_600,
-    width: '80%',
-    padding: 20,
-    margin: 20,
+    width: '40%',
+    padding: 10,
+    margin: 10,
     borderRadius: 20,
   },
   schedulingButtonText: {

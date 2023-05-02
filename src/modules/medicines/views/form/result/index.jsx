@@ -51,7 +51,7 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
       onRequestClose={onClose}
       transparent
     >
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Anexar Resultado</Text>
@@ -86,6 +86,12 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
               </Text>
             </TouchableOpacity>
             <View style={styles.containerSchedulingButton}>
+              <TouchableOpacity
+                style={styles.schedulingButton}
+                onPress={onClose}
+              >
+                <Text style={styles.schedulingButtonText}>Fechar</Text>
+              </TouchableOpacity>
               <TouchableOpacity
                 style={styles.schedulingButton}
                 onPress={saveResult}

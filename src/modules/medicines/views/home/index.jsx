@@ -88,7 +88,7 @@ export default function Home() {
     if (currentDay === dayOfSchedule) {
       return (
         <View style={styles.containerInfoDay} key={index}>
-          <Text style={styles.infoDayHour}>{dado.hour}</Text>
+          <Text style={styles.infoDayHour}>{dado.hour.replace(':', 'h')}</Text>
           <Text style={styles.infoDayText}>{dado.description}</Text>
           <Text style={{ width: '20%', backgroundColor: '#fff' }}></Text>
         </View>

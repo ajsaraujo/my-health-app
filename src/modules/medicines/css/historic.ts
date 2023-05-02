@@ -104,11 +104,23 @@ export const styles = StyleSheet.create({
   timeContentText: {
     marginVertical: 10,
     color: '#48494a',
-    fontSize: 20,
+    fontSize: 15,
     fontWeight: 'bold',
   },
   viewHistoricContentText: {
     fontSize: 15,
+  },
+  containerHour: {
+    marginVertical: 10,
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+  },
+  hourIcon: {
+    marginHorizontal: 10,
+    marginTop: 10,
+    height: 20,
+    width: 20,
   },
   containerHistoricContent: {
     width: '100%',

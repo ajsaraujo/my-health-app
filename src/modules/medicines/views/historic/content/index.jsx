@@ -2,14 +2,16 @@ import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from '../../../css/historic'
 
-const calendar = require('../../../img/historicList.png')
+const historicIcon = require('../../../img/historicList.png')
+const calendar = require('../../../img/calendar_schedule-icon.png')
+const hour = require('../../../img/hourIcon.png')
 
 export default function Content({ data }) {
   return (
     <TouchableOpacity style={styles.containerHistoricContent}>
       <Text style={styles.nameContentText}>{data.description}</Text>
       <View style={styles.historicDate}>
-        <Image source={calendar} style={styles.historicIcon} />
+        <Image source={historicIcon} style={styles.historicIcon} />
         <View style={styles.viewHistoricContent}>
           <Text style={styles.viewHistoricContentText}>
             Data de Início: {data.dataInicio}
@@ -17,12 +19,16 @@ export default function Content({ data }) {
           <Text style={styles.viewHistoricContentText}>
             Data de Início: {data.dataFinal}
           </Text>
-          <Text style={styles.viewHistoricContentText}>
-            Horário: {data.hour}
-          </Text>
         </View>
       </View>
-      <Text style={styles.timeContentText}>Data: {data.date}</Text>
+      <View style={styles.containerHour}>
+        <Image source={hour} style={styles.hourIcon} />
+        <Text style={styles.timeContentText}>
+          {data.hour.replace(':', 'h')}
+        </Text>
+        <Image source={calendar} style={styles.hourIcon} />
+        <Text style={styles.timeContentText}>{data.date}</Text>
+      </View>
     </TouchableOpacity>
   )
 }

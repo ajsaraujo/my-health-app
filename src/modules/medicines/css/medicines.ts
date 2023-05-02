@@ -67,19 +67,13 @@ export const styles = StyleSheet.create({
     width: 43,
   },
   startDateContentText: {
-    color: 'black',
     fontSize: 18,
-    fontWeight: 'bold',
   },
   endDateContentText: {
-    color: 'black',
     fontSize: 18,
-    fontWeight: 'bold',
   },
   timeContentText: {
-    color: 'black',
     fontSize: 20,
-    fontWeight: 'bold',
   },
   containerHour: {
     marginTop: 10,

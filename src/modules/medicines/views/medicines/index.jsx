@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { View, Text, Image, TouchableOpacity, FlatList } from 'react-native'
 import { styles } from '../../css/medicines'
-import MedChoice from '../form/choiceMed'
+import MedSchedule from '../form/choiceSchedule/scheduleMed'
 import Content from './content'
 import * as FileSystem from 'expo-file-system'
 
@@ -94,8 +94,7 @@ export default function Medicines() {
           <Text style={styles.medicineButtonText}>Novo Medicamento</Text>
         </TouchableOpacity>
       </View>
-
-      <MedChoice visible={showModal} onClose={() => setShowModal(false)} />
+      <MedSchedule visible={showModal} onClose={() => setShowModal(false)} />
     </View>
   )
 }

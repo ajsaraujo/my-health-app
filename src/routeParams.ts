@@ -8,6 +8,8 @@ export type RouteParams = {
   Home: NO_PARAMS
   News: NO_PARAMS
   PublishNews: NO_PARAMS
+  Profile: NO_PARAMS
+  EditProfile: NO_PARAMS
 
   // Calculadoras
   [MyHealthModule.Calculators]: NO_PARAMS

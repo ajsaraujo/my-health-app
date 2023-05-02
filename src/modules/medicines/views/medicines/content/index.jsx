@@ -8,13 +8,16 @@ export default function Content({ data }) {
   return (
     <TouchableOpacity style={styles.containerMedicinesContent}>
       <Text style={styles.nameContentText}>{data.nome}</Text>
-      <View style={styles.viewMedicineContent}>
-        <Text style={styles.startDateContentText}>
-          Início: {data.data_inicio}
-        </Text>
-        <Text style={styles.endDateContentText}>Fim: {data.data_fim}</Text>
-        <Text style={styles.timeContentText}>{data.horario} h</Text>
+      <View style={styles.calendarDate}>
+        <Image source={calendar} style={styles.calendarIcon} />
+        <View style={styles.viewMedicineContent}>
+          <Text style={styles.startDateContentText}>
+            Início: {data.data_inicio}
+          </Text>
+          <Text style={styles.endDateContentText}>Fim: {data.data_fim}</Text>
+        </View>
       </View>
+      <Text style={styles.timeContentText}>Horário: {data.horario}</Text>
     </TouchableOpacity>
   )
 }

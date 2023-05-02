@@ -54,13 +54,19 @@ export default function Home() {
     'Friday',
     'Saturday',
   ]
+
   const date = new Date()
-  const dayOfWeek = daysOfWeek[date.getDay()]
-  const [currentDay, setCurrentDay] = useState(dayOfWeek)
+  const currentDayOfWeek = date.getDay()
+  const [currentDay, setCurrentDay] = useState(daysOfWeek[currentDayOfWeek])
+  const [selectedDate, setSelectedDate] = useState(date)
   const [dados, setDados] = useState(null)
 
   const changeDayCalendar = (day) => {
+    const dayIndex = daysOfWeek.indexOf(day)
+    const diff = dayIndex - currentDayOfWeek
+    const newDate = new Date(date.getTime() + diff * 24 * 60 * 60 * 1000)
     setCurrentDay(day)
+    setSelectedDate(newDate)
   }
 
   const [showModalChoice, setShowModalChoice] = useState(false)
@@ -104,7 +110,9 @@ export default function Home() {
       <View style={styles.titleHomeContainer}>
         {/* substituir dps pelo username do user e date atual */}
         <Text style={styles.helloRemediesText}>{hello}</Text>
-        <Text style={styles.helloRemediesDate}>{today}</Text>
+        <Text style={styles.helloRemediesDate}>
+          {selectedDate.toLocaleDateString()}
+        </Text>
       </View>
 
       {/* Tab Calendar */}

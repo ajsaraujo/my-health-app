@@ -24,6 +24,8 @@ const diasDaSemana = [
   { pt: 'Sábado', en: 'Saturday' },
 ]
 
+let idCounter = 0 // Inicialize com o último ID utilizado
+
 const SchedulingModalMed = ({ visible, onClose }) => {
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
@@ -38,13 +40,19 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     setSelectedDay(day)
   }
 
+  function incrementId() {
+    idCounter++
+  }
+
   const cadAgendamento = {
+    id: idCounter,
     hour: horario,
     description: descMed,
     dayOfWeek: selectedDay,
   }
 
   const cadHistoric = {
+    id: idCounter,
     date: new Date().toLocaleDateString('pt-BR'),
     description: nomeMed,
     dataInicio: selDateIni,
@@ -56,6 +64,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   }
 
   const cadMedicamento = {
+    id: idCounter,
     nomeMedicamento: nomeMed,
     funcMedicamento: funcMed,
     descMedicamento: descMed,
@@ -107,6 +116,8 @@ const SchedulingModalMed = ({ visible, onClose }) => {
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
 
+      // Atualiza o contador de IDs
+      idCounter += 1
       alertSaveMed()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
@@ -291,6 +302,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
                   agendarMed()
                   saveMed()
                   saveHistoric()
+                  incrementId()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

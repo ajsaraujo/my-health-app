@@ -26,12 +26,11 @@ async function getProcedures() {
 
     // Converte a string JSON para array
     const dados = JSON.parse(arquivo)
-    var count_proc = 0
 
     dados.forEach((dado) => {
       // Cria um novo objeto JSON com os dados
       const conteudo = {
-        id: count_proc,
+        id: dado.id,
         nome: dado.nomeProcedimento,
         local: dado.locProcedimento,
         data_inicio: dado.dataInicio,
@@ -48,7 +47,6 @@ async function getProcedures() {
       } else {
         // Se não existir, adiciona o novo objeto JSON ao array
         proceduresList.push(conteudo)
-        count_proc++
       }
     })
   } catch (error) {

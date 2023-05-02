@@ -24,6 +24,7 @@ const diasDaSemana = [
   { pt: 'Sexta', en: 'Friday' },
   { pt: 'Sábado', en: 'Saturday' },
 ]
+let idCounter = 1 // Inicialize com o último ID utilizado
 
 const SchedulingModalProc = ({ visible, onClose }) => {
   const [refresh, setRefresh] = useState(false)
@@ -37,17 +38,23 @@ const SchedulingModalProc = ({ visible, onClose }) => {
 
   const [selectedDay, setSelectedDay] = useState(null)
 
+  function incrementId() {
+    idCounter++
+  }
+
   const handleDayChange = (day) => {
     setSelectedDay(day)
   }
 
   const cadAgendamento = {
+    id: idCounter,
     hour: horario,
     description: descProc,
     dayOfWeek: selectedDay,
   }
 
   const cadHistoric = {
+    id: idCounter,
     date: new Date().toLocaleDateString('pt-BR'),
     description: nomeProc,
     dataInicio: selDateIni,
@@ -59,6 +66,7 @@ const SchedulingModalProc = ({ visible, onClose }) => {
   }
 
   const cadProcedimento = {
+    id: idCounter,
     nomeProcedimento: nomeProc,
     locProcedimento: localProc,
     descProcedimento: descProc,
@@ -287,6 +295,7 @@ const SchedulingModalProc = ({ visible, onClose }) => {
                   agendarProc()
                   saveProc()
                   saveHistoric()
+                  incrementId()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

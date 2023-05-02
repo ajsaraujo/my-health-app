@@ -24,13 +24,12 @@ async function getMedicines() {
 
     // Converte a string JSON para array
     const dados = JSON.parse(arquivo)
-    var count_med = 0
 
     dados.forEach((dado) => {
       // console.log(dado)
       // Cria um novo objeto JSON com os dados
       const conteudo = {
-        id: count_med,
+        id: dado.id,
         nome: dado.nomeMedicamento,
         funcao: dado.funcMedicamento,
         data_inicio: dado.dataInicio,
@@ -47,7 +46,6 @@ async function getMedicines() {
       } else {
         // Se não existir, adiciona o novo objeto JSON ao array
         medicinesList.push(conteudo)
-        count_med++
       }
     })
   } catch (error) {

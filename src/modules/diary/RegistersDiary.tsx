@@ -39,11 +39,10 @@ export default function RegistersDiary(props: DiaryProps) {
   const fetchData = async () => {
     try {
       var response = await getRegistrosPaciente({ idPaciente: 1 })
-      console.log('response: ', response.data)
       setListRegisters(response.data)
-      console.log('listRegisters', listRegisters)
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
+      props.navigation.goBack()
     }
   }
 
@@ -58,7 +57,7 @@ export default function RegistersDiary(props: DiaryProps) {
           <ItemListDiary
             typeList={'Registros'}
             text={`Data do registro \r\n${item.dataCriacao}`}
-            onPress={() => props.navigation.push('RegisterNote', item.relato)}
+            onPress={() => props.navigation.push('RegisterNote', item)}
             itemList={item}
           />
         )}

@@ -11,6 +11,8 @@ import { GREEN } from '../colors'
 import { ModalOptionsDiary } from './modals/ModalOptionsDiary'
 import { sendToGarbage } from '../../../modules/diary/infra/services'
 import axios from 'axios'
+import showError from '../../../modules/diary/helpers/showError'
+import showSuccess from '../../../modules/diary/helpers/showSucess'
 
 export function ItemListDiary({ ...props }) {
   const deleteAlert = (idRegistro) => {
@@ -52,9 +54,12 @@ export function ItemListDiary({ ...props }) {
       var response = await axios.put(
         `https://a2ca-138-255-87-166.ngrok-free.app/Registro/MoveToLixeira/${idRegistro}`
       )
-      console.log('send to garbage response: ', response.data)
+      showSuccess(
+        'Sucesso',
+        'Seu registro foi movido para lixeira com sucesso com sucesso!'
+      )
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
     }
   }
 
@@ -63,9 +68,9 @@ export function ItemListDiary({ ...props }) {
       var response = await axios.delete(
         `https://a2ca-138-255-87-166.ngrok-free.app/Registro/DeleteFromTrash/0?idRegistro=${idRegistro}`
       )
-      console.log(response.data)
+      showSuccess('Sucesso', 'Seu registro foi atualizado com sucesso!')
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
     }
   }
 

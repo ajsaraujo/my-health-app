@@ -5,6 +5,8 @@ import { RouteParams } from '../../routeParams'
 import { ItemListDiary } from '../../shared/ui/components/ItemListDiary'
 import { getRegistrosLixeira } from './infra/services'
 import axios from 'axios'
+import showSuccess from './helpers/showSucess'
+import showError from './helpers/showError'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'GarbageDiary'>
 
@@ -37,9 +39,10 @@ export default function GarbageDiary(props: DiaryProps) {
       var response = await axios.put(
         `https://a2ca-138-255-87-166.ngrok-free.app/Registro/RestoreFromTrash/0?idRegistro=${idRegistro}`
       )
-      console.log('restore from garbage', response.data)
+      showSuccess('Sucesso', 'Seu registro foi restaurado com sucesso!')
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
+      props.navigation.goBack()
     }
   }
 
@@ -49,7 +52,8 @@ export default function GarbageDiary(props: DiaryProps) {
       console.log('response: ', response.data)
       setListRegisters(response.data)
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
+      props.navigation.goBack()
     }
   }
 

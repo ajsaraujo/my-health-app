@@ -13,19 +13,28 @@ import { GREEN } from '../../shared/ui/colors'
 import salvar from '../../../assets/saveicon.png'
 import voltar from '../../../assets/backIcon.png'
 import enviar from '../../../assets/sendIcon.png'
-import * as ImagePicker from 'expo-image-picker'
-import { postNewRegister } from './infra/services'
 import axios from 'axios'
+import { useNavigation } from '@react-navigation/native'
+import showError from './helpers/showError'
+import showSuccess from './helpers/showSucess'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegisterNote'>
 
 export default function RegisterNote(props: DiaryProps) {
   const [noteText, setNoteText] = useState('')
   const [notes, setNotes] = useState([])
-  const [image, setImage] = useState(null)
+  const [lastScreen, setLastScreen] = useState('')
+  const navigation = useNavigation()
 
   useEffect(() => {
-    if (props.route.params) setNotes([...notes, { text: props.route.params }])
+    const aux = navigation.addListener('state', () => {
+      const previousScreen =
+        navigation.getState().routes[navigation.getState().routes.length - 2]
+          .name
+      setLastScreen(previousScreen)
+    })
+    if (props.route.params)
+      setNotes([...notes, { text: props.route.params.relato }])
     console.log('params: ', props.route.params)
   }, [])
 
@@ -43,35 +52,29 @@ export default function RegisterNote(props: DiaryProps) {
     setNotes(newNotes)
   }
 
-  const handbleImageSet = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.Images,
-      allowsEditing: true,
-      aspect: [4, 3],
-      quality: 1,
-    })
-
-    console.log(result)
-    setNotes([...notes, { img: result.assets[0].uri }])
-
-    if (!result.canceled) {
-      setImage(result.assets[0].uri)
-    }
-  }
-
   const saveNewRegister = async () => {
     try {
       var relato = ''
       for (let i = 0; i < notes.length; i++) {
         relato = relato + notes[i].text + '\r\n'
       }
-      var response = await axios.post(
-        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/AddRegistro`,
-        { relato, pacienteId: 1 }
-      )
-      console.log(response.data)
+      if (lastScreen == 'Diário') {
+        var response = await axios.post(
+          `https://a2ca-138-255-87-166.ngrok-free.app/Registro/AddRegistro`,
+          { relato, pacienteId: 1 }
+        )
+        showSuccess('Sucesso', 'Seu registro foi salvo com sucesso!')
+      } else {
+        var response = await axios.put(
+          `https://a2ca-138-255-87-166.ngrok-free.app/Registro/UpdateRegistro`,
+          { relato, id: props.route.params.id }
+        )
+        showSuccess('Sucesso', 'Seu registro foi atualizado com sucesso!')
+      }
+      props.navigation.goBack()
     } catch (err) {
-      console.log(err)
+      showError('Ocorreu um erro', err)
+      props.navigation.goBack()
     }
   }
 
@@ -82,7 +85,8 @@ export default function RegisterNote(props: DiaryProps) {
           <TouchableOpacity
             key={index}
             style={styles.note}
-            onPress={() => handleDeleteNote(index, note.time)}
+            onPress={() => {}}
+            activeOpacity={0.7}
           >
             <Text style={styles.noteText}>{note.text}</Text>
           </TouchableOpacity>
@@ -97,13 +101,6 @@ export default function RegisterNote(props: DiaryProps) {
           value={noteText}
           onChangeText={(text) => setNoteText(text)}
         />
-
-        <TouchableOpacity
-          style={styles.addButton}
-          onPress={handbleImageSet}
-          activeOpacity={0.7}
-        ></TouchableOpacity>
-
         <TouchableOpacity
           style={styles.addButton}
           onPress={handleAddNote}

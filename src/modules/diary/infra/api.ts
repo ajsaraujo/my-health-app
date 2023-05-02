@@ -2,12 +2,10 @@ import axios from 'axios'
 
 const api = axios.create({
   headers: {
-    'Content-Type': 'application/x-www-form-urlencoded',
-    Accept: '*/*',
-    'Accept-Encoding': 'gzip, deflate, br',
-    Connection: 'keep-alive',
+    'Content-Type': 'application/json',
+    Accept: 'application/json',
   },
-  baseURL: 'https://localhost:44347/',
+  baseURL: 'https://a2ca-138-255-87-166.ngrok-free.app/',
 })
 
 export const services = {
@@ -17,7 +15,7 @@ export const services = {
   },
   registros: {
     getRegistrosAtivosPaciente: 'Registro/GetRegistrosPaciente/',
-    getRegistrosLixeiraPaciente: '/Registro/GetLixeiraPaciente',
+    getRegistrosLixeiraPaciente: 'Registro/GetLixeiraPaciente/',
     addRegistro: 'Registro/AddRegistro',
     atualizarRegistro: 'Registro/UpdateRegistro',
     moverRegistroParaLixeira: 'Registro/MoveToLixeira/',

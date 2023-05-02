@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   StyleSheet,
   Text,
@@ -14,6 +14,8 @@ import salvar from '../../../assets/saveicon.png'
 import voltar from '../../../assets/backIcon.png'
 import enviar from '../../../assets/sendIcon.png'
 import * as ImagePicker from 'expo-image-picker'
+import { postNewRegister } from './infra/services'
+import axios from 'axios'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegisterNote'>
 
@@ -21,6 +23,11 @@ export default function RegisterNote(props: DiaryProps) {
   const [noteText, setNoteText] = useState('')
   const [notes, setNotes] = useState([])
   const [image, setImage] = useState(null)
+
+  useEffect(() => {
+    if (props.route.params) setNotes([...notes, { text: props.route.params }])
+    console.log('params: ', props.route.params)
+  }, [])
 
   const handleAddNote = () => {
     if (noteText.length > 0) {
@@ -49,6 +56,22 @@ export default function RegisterNote(props: DiaryProps) {
 
     if (!result.canceled) {
       setImage(result.assets[0].uri)
+    }
+  }
+
+  const saveNewRegister = async () => {
+    try {
+      var relato = ''
+      for (let i = 0; i < notes.length; i++) {
+        relato = relato + notes[i].text + '\r\n'
+      }
+      var response = await axios.post(
+        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/AddRegistro`,
+        { relato, pacienteId: 1 }
+      )
+      console.log(response.data)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -89,7 +112,11 @@ export default function RegisterNote(props: DiaryProps) {
           <Image source={enviar} style={styles.sendIcon} />
         </TouchableOpacity>
       </View>
-      <TouchableOpacity style={styles.saveButton} activeOpacity={0.7}>
+      <TouchableOpacity
+        style={styles.saveButton}
+        activeOpacity={0.7}
+        onPress={saveNewRegister}
+      >
         <Image style={styles.saveIcon} source={salvar} />
       </TouchableOpacity>
       <TouchableOpacity

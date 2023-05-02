@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import {
   View,
   Text,
@@ -30,14 +30,18 @@ const listaRegistros = [
 ]
 
 export default function RegistersDiary(props: DiaryProps) {
+  const [listRegisters, setListRegisters] = useState([])
+
   useEffect(() => {
     fetchData()
-  })
+  }, [])
 
   const fetchData = async () => {
     try {
       var response = await getRegistrosPaciente({ idPaciente: 1 })
-      console.log(JSON.stringify(response))
+      console.log('response: ', response.data)
+      setListRegisters(response.data)
+      console.log('listRegisters', listRegisters)
     } catch (err) {
       console.log(err)
     }
@@ -49,12 +53,13 @@ export default function RegistersDiary(props: DiaryProps) {
         <Text style={styles.textTitle}>Lista de Registros</Text>
       </View>
       <FlatList
-        data={listaRegistros}
+        data={listRegisters}
         renderItem={({ item }) => (
           <ItemListDiary
             typeList={'Registros'}
-            text={item.label}
-            onPress={() => props.navigation.navigate('RegisterNote')}
+            text={`Data do registro \r\n${item.dataCriacao}`}
+            onPress={() => props.navigation.push('RegisterNote', item.relato)}
+            itemList={item}
           />
         )}
       />

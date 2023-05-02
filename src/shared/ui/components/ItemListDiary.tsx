@@ -9,9 +9,11 @@ import {
 } from 'react-native'
 import { GREEN } from '../colors'
 import { ModalOptionsDiary } from './modals/ModalOptionsDiary'
+import { sendToGarbage } from '../../../modules/diary/infra/services'
+import axios from 'axios'
 
 export function ItemListDiary({ ...props }) {
-  const deleteAlert = () => {
+  const deleteAlert = (idRegistro) => {
     if (props.typeList === 'lixeira') {
       Alert.alert(
         'Deseja apagar esse registro permanentemente?',
@@ -23,7 +25,7 @@ export function ItemListDiary({ ...props }) {
           },
           {
             text: 'OK',
-            onPress: () => console.log('OK'),
+            onPress: () => deleteRegister(idRegistro),
           },
         ]
       )
@@ -38,10 +40,32 @@ export function ItemListDiary({ ...props }) {
           },
           {
             text: 'OK',
-            onPress: () => console.log('OK'),
+            onPress: () => sendGarbage(idRegistro),
           },
         ]
       )
+    }
+  }
+
+  const sendGarbage = async (idRegistro) => {
+    try {
+      var response = await axios.put(
+        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/MoveToLixeira/${idRegistro}`
+      )
+      console.log('send to garbage response: ', response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const deleteRegister = async (idRegistro) => {
+    try {
+      var response = await axios.delete(
+        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/DeleteFromTrash/0?idRegistro=${idRegistro}`
+      )
+      console.log(response.data)
+    } catch (err) {
+      console.log(err)
     }
   }
 
@@ -64,7 +88,7 @@ export function ItemListDiary({ ...props }) {
           </View>
           <Text style={styles.textList}>{props.text}</Text>
           <View style={styles.buttonOptionContainer}>
-            <TouchableOpacity onPress={deleteAlert}>
+            <TouchableOpacity onPress={() => deleteAlert(props.itemList.id)}>
               <Image
                 source={require('../../../../assets/garbageIcon.png')}
                 style={styles.buttonOption}

@@ -1,38 +1,73 @@
-import React from 'react'
-import { View, Text, StyleSheet, FlatList } from 'react-native'
+import React, { useEffect, useState } from 'react'
+import { View, Text, StyleSheet, FlatList, Alert } from 'react-native'
 import { NativeStackScreenProps } from '@react-navigation/native-stack'
 import { RouteParams } from '../../routeParams'
-import { GREEN } from '../../shared/ui/colors'
-import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
 import { ItemListDiary } from '../../shared/ui/components/ItemListDiary'
+import { getRegistrosLixeira } from './infra/services'
+import axios from 'axios'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'GarbageDiary'>
 
-const listaLixeira = [
-  { label: 'Data do registro \r\n 01/01/2023', id: 1, key: 1 },
-  { label: 'Data do registro \r\n 02/02/2023', id: 2, key: 2 },
-  { label: 'Data do registro \r\n 03/03/2023', id: 3, key: 3 },
-  { label: 'Data do registro \r\n 04/04/2023', id: 4, key: 4 },
-  { label: 'Data do registro \r\n 05/05/2023', id: 5, key: 5 },
-  { label: 'Data do registro \r\n 06/06/2023', id: 6, key: 6 },
-  { label: 'Data do registro \r\n 07/07/2023', id: 7, key: 7 },
-  { label: 'Data do registro \r\n 08/08/2023', id: 8, key: 8 },
-  { label: 'Data do registro \r\n 09/09/2023', id: 9, key: 9 },
-]
-
 export default function GarbageDiary(props: DiaryProps) {
+  const [listRegisters, setListRegisters] = useState([])
+
+  useEffect(() => {
+    fetchData()
+  }, [])
+
+  const alertRestore = (idRegistro) => {
+    Alert.alert(
+      'Deseja restaurar esse registro?',
+      'Caso deseje restaurar esse registro ele sairá da sua lixeira e voltará para os seus registro, dessa maneira ele vai fazer parte dos seus relatórios',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => {},
+        },
+        {
+          text: 'OK',
+          onPress: () => restoreFromGarbage(idRegistro),
+        },
+      ]
+    )
+  }
+
+  const restoreFromGarbage = async (idRegistro) => {
+    try {
+      var response = await axios.put(
+        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/RestoreFromTrash/0?idRegistro=${idRegistro}`
+      )
+      console.log('restore from garbage', response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  const fetchData = async () => {
+    try {
+      var response = await getRegistrosLixeira({ idPaciente: 1 })
+      console.log('response: ', response.data)
+      setListRegisters(response.data)
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
   return (
     <>
       <View style={styles.textTitle}>
         <Text style={styles.textTitle}>Lixeira</Text>
       </View>
       <FlatList
-        data={listaLixeira}
+        data={listRegisters}
         renderItem={({ item }) => (
           <ItemListDiary
             typeList={'lixeira'}
-            text={item.label}
-            onPress={() => {}}
+            text={`Data do registro \r\n${item.dataCriacao}`}
+            onPress={() => {
+              alertRestore(item.id)
+            }}
+            itemList={item}
           />
         )}
       />

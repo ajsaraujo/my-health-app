@@ -12,7 +12,10 @@ export default function Content({ data }) {
         <Image source={calendar} style={styles.historicIcon} />
         <View style={styles.viewHistoricContent}>
           <Text style={styles.viewHistoricContentText}>
-            Operação: {data.operation}
+            Data de Início: {data.dataInicio}
+          </Text>
+          <Text style={styles.viewHistoricContentText}>
+            Data de Início: {data.dataFinal}
           </Text>
           <Text style={styles.viewHistoricContentText}>
             Horário: {data.hour}

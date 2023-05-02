@@ -47,7 +47,8 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   const cadHistoric = {
     date: new Date().toLocaleDateString('pt-BR'),
     description: nomeMed,
-    operation: 'Cadastro',
+    dataInicio: selDateIni,
+    dataFinal: selDateFinal,
     hour: new Date().toLocaleTimeString([], {
       hour: '2-digit',
       minute: '2-digit',

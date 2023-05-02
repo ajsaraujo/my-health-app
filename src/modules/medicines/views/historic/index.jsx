@@ -36,7 +36,8 @@ async function getHistoric() {
         id: count_hist,
         date: dado.date,
         description: dado.description,
-        operation: dado.operation,
+        dataInicio: dado.dataInicio,
+        dataFinal: dado.dataFinal,
         hour: dado.hour,
       }
 

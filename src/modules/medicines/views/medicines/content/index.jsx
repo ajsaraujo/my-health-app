@@ -3,6 +3,7 @@ import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from '../../../css/medicines'
 
 const calendar = require('../../../img/calendar_schedule-icon.png')
+const hour = require('../../../img/hourIcon.png')
 
 export default function Content({ data }) {
   return (
@@ -17,7 +18,12 @@ export default function Content({ data }) {
           <Text style={styles.endDateContentText}>Fim: {data.data_fim}</Text>
         </View>
       </View>
-      <Text style={styles.timeContentText}>Horário: {data.horario}</Text>
+      <View style={styles.containerHour}>
+        <Image source={hour} style={styles.hourIcon} />
+        <Text style={styles.timeContentText}>
+          {data.horario.replace(':', 'h')}
+        </Text>
+      </View>
     </TouchableOpacity>
   )
 }

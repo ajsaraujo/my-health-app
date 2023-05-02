@@ -50,6 +50,8 @@ export const styles = StyleSheet.create({
     height: '100%',
     borderRightColor: '#ccc',
     borderRightWidth: 1,
+    borderTopColor: '#ccc',
+    borderTopWidth: 1,
   },
   infoDayText: {
     width: '70%',
@@ -59,6 +61,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#fff',
     padding: 20,
     height: '100%',
+    borderTopColor: '#ccc',
+    borderTopWidth: 1,
   },
   infoDayButton: {
     backgroundColor: '#1E90FF',
@@ -114,7 +118,21 @@ export const styles = StyleSheet.create({
     backgroundColor: GRAY_400,
     padding: 10,
     borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
+  },
+  containerLabelFinal: {
+    display: 'flex',
+    width: '120%',
+    flexDirection: 'row',
+    height: 20,
+  },
+  labelFinal: {
+    width: '20%',
+    backgroundColor: '#fff',
+  },
+  labelFinalFirst: {
+    width: '80%',
+    backgroundColor: '#fff',
+    borderBottomLeftRadius: 20,
   },
   labelDescriptionTextHour: {
     marginLeft: 15,

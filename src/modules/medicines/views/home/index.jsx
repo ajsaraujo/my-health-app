@@ -249,6 +249,14 @@ export default function Home() {
               <Text style={styles.noSchedules}>Não há agendamentos</Text>
             </View>
           )}
+          {views ? (
+            <View style={styles.containerLabelFinal}>
+              <View style={styles.labelFinalFirst}></View>
+              <View style={styles.labelFinal}></View>
+            </View>
+          ) : (
+            <View></View>
+          )}
         </View>
       </ScrollView>
 

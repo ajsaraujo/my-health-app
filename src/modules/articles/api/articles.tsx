@@ -4,6 +4,19 @@ import axios from 'axios'
 import { config } from 'src/config'
 
 import { Article } from '../interfaces/Article'
+import { config } from 'src/config'
+import { getSession } from '@shared/services/auth/session'
+
+const URL = `${config.mainAPIUrl}/article`
+
+async function fetchToken() {
+  const session = await getSession()
+
+  if (session !== null) {
+    return session.access_token
+  }
+  return null
+}
 
 const URL = `${config.mainAPIUrl}/article`
 

@@ -12,7 +12,6 @@ import * as FileSystem from 'expo-file-system'
 import { styles } from '../../../css/info/schedule'
 
 const RegisterModalMed = ({ visible, onClose }) => {
-  const [refresh, setRefresh] = useState(false)
   const [nomeMed, setNomeMed] = useState('')
   const [funcMed, setFuncMed] = useState('')
   const [descMed, setDescMed] = useState('')
@@ -21,6 +20,17 @@ const RegisterModalMed = ({ visible, onClose }) => {
     nomeMedicamento: nomeMed,
     funcMedicamento: funcMed,
     descMedicamento: descMed,
+  }
+
+  const cadHistoric = {
+    date: new Date().toLocaleDateString('pt-BR'),
+    description: nomeMed,
+    dataInicio: null,
+    dataFinal: null,
+    hour: new Date().toLocaleTimeString([], {
+      hour: '2-digit',
+      minute: '2-digit',
+    }),
   }
 
   function alertSaveMed() {
@@ -36,6 +46,39 @@ const RegisterModalMed = ({ visible, onClose }) => {
       ],
       { cancelable: false }
     )
+  }
+
+  async function saveHistoric() {
+    try {
+      let dado = cadHistoric
+      const caminho = `${FileSystem.documentDirectory}historic.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Adiciona o novo dado no array
+        dados.push(dado)
+      } else {
+        // Se o arquivo não existe, cria um novo array contendo o dado
+        dados = [dado]
+      }
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      alertSaveMed()
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
   }
 
   async function saveMed() {
@@ -64,8 +107,6 @@ const RegisterModalMed = ({ visible, onClose }) => {
 
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
-
-      alertSaveMed()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
     }
@@ -112,7 +153,10 @@ const RegisterModalMed = ({ visible, onClose }) => {
             <View style={styles.containerSchedulingButton}>
               <TouchableOpacity
                 style={styles.schedulingButton}
-                onPress={saveMed}
+                onPress={() => {
+                  saveMed()
+                  saveHistoric()
+                }}
               >
                 <Text style={styles.schedulingButtonText}>Cadastrar</Text>
               </TouchableOpacity>

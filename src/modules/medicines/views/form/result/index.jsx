@@ -57,33 +57,85 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
         // Se o arquivo já existe, lê os dados existentes
         const arquivo = await FileSystem.readAsStringAsync(caminho)
         dados = JSON.parse(arquivo)
-
-        // Procura pelo registro correspondente ao id
-        const index = dados.findIndex((item) => item.id === selectedOption)
-
-        if (index !== -1) {
-          // Atualiza o registro com a informação do arquivo selecionado
-          dados[index].result = selectedFile
-
-          // Converte o array atualizado para string JSON
-          const dadosString = JSON.stringify(dados)
-
-          // Salva os dados no arquivo
-          await FileSystem.writeAsStringAsync(caminho, dadosString)
-
-          // Retorna o registro atualizado
-          console.log('cadastrado!')
-          console.log(dados[index])
-          alertSaveResult()
-          // return dados[index]
-        } else {
-          console.log('Registro não encontrado')
-        }
       } else {
-        console.log('Arquivo não encontrado')
+        // Se o arquivo não existe, cria um novo array vazio
+        dados = []
+      }
+
+      // Procura pelo registro correspondente ao id
+      const index = dados.findIndex((item) => item.id === selectedOption)
+
+      if (index !== -1) {
+        // Atualiza o registro com a informação do arquivo selecionado
+        dados[index].result = selectedFile
+
+        // Converte o array atualizado para string JSON
+        const dadosString = JSON.stringify(dados)
+
+        // Salva os dados no arquivo
+        await FileSystem.writeAsStringAsync(caminho, dadosString)
+      }
+
+      // Adiciona o novo dado no array
+      dados.push(cadProcedimento)
+
+      // Converte o array para string JSON
+      const dadosString = JSON.stringify(dados)
+
+      // Salva os dados no arquivo
+      await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+      // Salva um arquivo JSON com o nome do arquivo e o caminho selecionado
+      if (selectedFile) {
+        const arquivoJSON = JSON.stringify({
+          fileName: selectedFile,
+          filePath: `${FileSystem.documentDirectory}${selectedFile}`,
+        })
+        await FileSystem.writeAsStringAsync(
+          `${FileSystem.documentDirectory}${selectedFile}.json`,
+          arquivoJSON
+        )
       }
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
+    }
+
+    const caminho = `${FileSystem.documentDirectory}procedures.json`
+
+    // Verifica se o arquivo já existe
+    const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+    let dados
+    if (infoArquivo.exists) {
+      // Se o arquivo já existe, lê os dados existentes
+      const arquivo = await FileSystem.readAsStringAsync(caminho)
+      dados = JSON.parse(arquivo)
+
+      // Procura pelo registro correspondente ao id
+      const index = dados.findIndex((item) => item.id === selectedOption)
+
+      if (index !== -1) {
+        // Atualiza o registro com a informação do arquivo selecionado
+        dados[index].result = selectedFile
+        dados[index].fileName = selectedFile
+        dados[index].filePath = `${FileSystem.documentDirectory}${selectedFile}`
+
+        // Converte o array atualizado para string JSON
+        const dadosString = JSON.stringify(dados)
+
+        // Salva os dados no arquivo
+        await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+        // Retorna o registro atualizado
+        console.log('cadastrado!')
+        console.log(dados[index])
+        alertSaveResult()
+        // return dados[index]
+      } else {
+        console.log('Registro não encontrado')
+      }
+    } else {
+      console.log('Arquivo não encontrado')
     }
   }
 

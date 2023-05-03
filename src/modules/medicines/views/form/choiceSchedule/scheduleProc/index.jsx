@@ -74,6 +74,8 @@ const SchedulingModalProc = ({ visible, onClose }) => {
     dataFinal: selDateFinal,
     hour: horario,
     periodo: periodo,
+    fileName: null,
+    filePath: null,
     result: null,
   }
 

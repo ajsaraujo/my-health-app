@@ -35,6 +35,7 @@ export default function Content({ data }) {
           {data.horario.replace(':', 'h')}
         </Text>
       </View>
+      <Text style={{ marginTop: 15 }}>Clique para ver mais</Text>
       <ShedulingInfo
         visible={showModalChoice}
         onClose={() => setShowModalChoice(false)}

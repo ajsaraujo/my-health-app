@@ -1,6 +1,6 @@
 import { StyleSheet } from 'react-native'
 
-export const styles = StyleSheet.create({
+export const styleProf = StyleSheet.create({
   profileContainer: {
     backgroundColor: '#D7E6F1',
     height: '84%',
@@ -74,9 +74,7 @@ export const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: 'bold',
   },
-  time:{
-
-  },
+  time: {},
   profileInfo: {
     backgroundColor: 'white',
     borderRadius: 10,
@@ -85,7 +83,6 @@ export const styles = StyleSheet.create({
     marginLeft: 'auto',
     padding: 14,
     elevation: 4,
-    
   },
   profileInfoText: {
     fontSize: 18,
@@ -107,11 +104,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'center',
     backgroundColor: '#D7E6F1',
-    paddingTop: 0,
-    marginBottom: 0,
+    borderRadius: 50,
+    padding: 20,
+    marginBottom: 10,
   },
   cameraIcon: {
-    marginLeft: 13,
-    marginTop: 50,
+    height: 50,
+    width: 50,
   },
 })

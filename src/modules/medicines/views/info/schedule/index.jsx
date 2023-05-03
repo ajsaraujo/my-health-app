@@ -8,10 +8,21 @@ import {
   Image,
 } from 'react-native'
 import { styles } from '../../../css/info/schedule'
+import CameraO from '../../camera'
+import { styleProf } from '../../../css/profile'
+
+const cameraIcon = require('../../../img/camera-icon_resized.png')
 
 const calendar = require('../../../img/historicList.png')
 
 const ShedulingInfo = ({ visible, onClose, data }) => {
+  const [showModal, setShowModal] = useState(false)
+
+  const handlePress = () => {
+    setShowModal(true)
+  }
+
+  //@todo implementar funcao de download do arquivo
   function downloadArquivo() {
     console.log('download')
   }
@@ -27,6 +38,22 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Informações</Text>
+            {data.funcao ? (
+              <View style={styleProf.cameraIconContainer}>
+                <TouchableOpacity onPress={handlePress}>
+                  <Image
+                    source={cameraIcon}
+                    style={styleProf.cameraIcon}
+                  ></Image>
+                </TouchableOpacity>
+                <CameraO
+                  visible={showModal}
+                  onClose={() => setShowModal(false)}
+                />
+              </View>
+            ) : (
+              ''
+            )}
             <Text style={styles.modalInfoText}>Nome: {data.nome}</Text>
             <Text style={styles.modalInfoText}>
               Descrição: {data.descricao}

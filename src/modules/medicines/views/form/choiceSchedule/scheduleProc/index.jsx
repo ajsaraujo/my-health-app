@@ -306,8 +306,8 @@ const SchedulingModalProc = ({ visible, onClose }) => {
                   saveProc()
                   saveHistoric()
                   scheduleNotification()
-                  incrementId()
                   alertSaveProc()
+                  incrementId()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

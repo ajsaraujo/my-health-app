@@ -25,7 +25,7 @@ const diasDaSemana = [
   { pt: 'Sábado', en: 'Saturday' },
 ]
 
-let idCounter = 0 // Inicialize com o último ID utilizado
+let idCounter = 1 // Inicialize com o último ID utilizado
 
 const SchedulingModalMed = ({ visible, onClose }) => {
   const [nomeMed, setNomeMed] = useState('')
@@ -307,9 +307,9 @@ const SchedulingModalMed = ({ visible, onClose }) => {
                   agendarMed()
                   saveMed()
                   saveHistoric()
-                  incrementId()
                   scheduleNotification()
                   alertSaveMed()
+                  incrementId()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

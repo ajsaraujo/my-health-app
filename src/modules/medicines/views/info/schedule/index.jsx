@@ -79,7 +79,9 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
                 style={styles.resultButton}
               >
                 <Image source={calendar} style={{ height: 20, width: 20 }} />
-                <Text style={styles.resultButtonText}>{data.result}</Text>
+                <Text style={styles.resultButtonText}>
+                  {data.result ? data.result : 'Sem resultado anexado'}
+                </Text>
               </TouchableOpacity>
             )}
             <View style={styles.containerSchedulingButtonInfo}>

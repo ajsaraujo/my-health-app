@@ -13,14 +13,32 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Permissão para acessar a câmera",
+        "NSPhotoLibraryUsageDescription": "Permissão para acessar a biblioteca de fotos",
+        "NSLocationWhenInUseUsageDescription": "Permissão para acessar a localização quando estiver em uso",
+        "NSUserNotificationAlertStyle": "alert",
+        "NSUserNotificationEnabled": true
+      }
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.carlos.vue.myhealth"
+      "package": "com.carlos.vue.myhealth",
+      "permissions": [
+        "CAMERA",
+        "READ_EXTERNAL_STORAGE",
+        "WRITE_EXTERNAL_STORAGE",
+        "ACCESS_FINE_LOCATION",
+        "ACCESS_COARSE_LOCATION",
+        "SCHEDULE_EXACT_ALARM",
+        "RECEIVE_BOOT_COMPLETED",
+        "NOTIFICATIONS",
+        "WAKE_LOCK"
+      ]
     },
     "web": {
       "favicon": "./assets/favicon.png"

@@ -13,6 +13,7 @@ import DateInput from '../../DateInput'
 import TimeInput from '../../TimeInput'
 import { styles } from '../../../../css/form/schedule'
 import * as FileSystem from 'expo-file-system'
+import * as Notifications from 'expo-notifications'
 
 const diasDaSemana = [
   { pt: 'Domingo', en: 'Sunday' },
@@ -47,7 +48,7 @@ const SchedulingModalMed = ({ visible, onClose }) => {
   const cadAgendamento = {
     id: idCounter,
     hour: horario,
-    description: descMed,
+    description: nomeMed,
     dayOfWeek: selectedDay,
   }
 
@@ -89,6 +90,14 @@ const SchedulingModalMed = ({ visible, onClose }) => {
     )
   }
 
+  async function scheduleNotification() {
+    await Notifications.requestPermissionsAsync()
+    await Notifications.presentNotificationAsync({
+      title: 'My Health',
+      body: 'Lembre-se de tomar o(a) ' + nomeMed + ' !',
+    })
+  }
+
   async function saveHistoric() {
     try {
       let dado = cadHistoric
@@ -115,10 +124,6 @@ const SchedulingModalMed = ({ visible, onClose }) => {
 
       // Salva os dados no arquivo
       await FileSystem.writeAsStringAsync(caminho, dadosString)
-
-      // Atualiza o contador de IDs
-      idCounter += 1
-      alertSaveMed()
     } catch (error) {
       console.log('Erro ao adicionar ao JSON:', error)
     }
@@ -303,6 +308,8 @@ const SchedulingModalMed = ({ visible, onClose }) => {
                   saveMed()
                   saveHistoric()
                   incrementId()
+                  scheduleNotification()
+                  alertSaveMed()
                 }}
               >
                 <Text style={styles.schedulingButtonText}>Agendar</Text>

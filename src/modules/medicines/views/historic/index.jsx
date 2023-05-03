@@ -82,7 +82,7 @@ async function getProcedures() {
     dados.forEach((dado) => {
       // Cria um novo objeto JSON com os dados
       const conteudo = {
-        id: count_proc,
+        id: dado.id,
         name: dado.nomeProcedimento,
       }
 

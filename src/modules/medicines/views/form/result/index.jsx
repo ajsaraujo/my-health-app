@@ -11,6 +11,7 @@ import {
 import * as DocumentPicker from 'expo-document-picker'
 import { styles } from '../../../css/info/schedule'
 import { Picker } from '@react-native-picker/picker'
+import * as FileSystem from 'expo-file-system'
 
 const calendar = require('../../../img/historicList.png')
 
@@ -29,7 +30,7 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
     }
   }
 
-  function saveResult() {
+  function alertSaveResult() {
     Alert.alert(
       'Sucesso',
       'Arquivo anexado com sucesso',
@@ -42,6 +43,48 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
       ],
       { cancelable: false }
     )
+  }
+
+  async function saveResult() {
+    try {
+      const caminho = `${FileSystem.documentDirectory}procedures.json`
+
+      // Verifica se o arquivo já existe
+      const infoArquivo = await FileSystem.getInfoAsync(caminho)
+
+      let dados
+      if (infoArquivo.exists) {
+        // Se o arquivo já existe, lê os dados existentes
+        const arquivo = await FileSystem.readAsStringAsync(caminho)
+        dados = JSON.parse(arquivo)
+
+        // Procura pelo registro correspondente ao id
+        const index = dados.findIndex((item) => item.id === selectedOption)
+
+        if (index !== -1) {
+          // Atualiza o registro com a informação do arquivo selecionado
+          dados[index].result = selectedFile
+
+          // Converte o array atualizado para string JSON
+          const dadosString = JSON.stringify(dados)
+
+          // Salva os dados no arquivo
+          await FileSystem.writeAsStringAsync(caminho, dadosString)
+
+          // Retorna o registro atualizado
+          console.log('cadastrado!')
+          console.log(dados[index])
+          alertSaveResult()
+          // return dados[index]
+        } else {
+          console.log('Registro não encontrado')
+        }
+      } else {
+        console.log('Arquivo não encontrado')
+      }
+    } catch (error) {
+      console.log('Erro ao adicionar ao JSON:', error)
+    }
   }
 
   return (
@@ -71,7 +114,7 @@ const RegisterModalMed = ({ visible, onClose, proceduresList }) => {
                   <Picker.Item
                     key={index}
                     label={option.name}
-                    value={option.name}
+                    value={option.id}
                   />
                 ))}
               </Picker>

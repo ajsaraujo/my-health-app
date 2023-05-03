@@ -74,6 +74,7 @@ const SchedulingModalProc = ({ visible, onClose }) => {
     dataFinal: selDateFinal,
     hour: horario,
     periodo: periodo,
+    result: null,
   }
 
   function alertSaveProc() {

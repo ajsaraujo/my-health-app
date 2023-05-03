@@ -104,6 +104,7 @@ export const styles = StyleSheet.create({
     backgroundColor: '#ccc',
     padding: 20,
     borderRadius: 20,
+    marginLeft: 24,
   },
   infoContainer: {
     width: '100%',

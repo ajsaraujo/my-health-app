@@ -38,6 +38,7 @@ async function getProcedures() {
         data_inicio: dado.dataInicio,
         data_fim: dado.dataFinal,
         horario: dado.hour,
+        result: dado.result,
       }
 
       // Verifica se o objeto JSON já existe no array

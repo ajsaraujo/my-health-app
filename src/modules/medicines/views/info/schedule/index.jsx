@@ -5,10 +5,17 @@ import {
   Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
+  Image,
 } from 'react-native'
 import { styles } from '../../../css/info/schedule'
 
+const calendar = require('../../../img/historicList.png')
+
 const ShedulingInfo = ({ visible, onClose, data }) => {
+  function downloadArquivo() {
+    console.log('download')
+  }
+
   return (
     <Modal
       visible={visible}
@@ -37,6 +44,13 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
             <Text style={styles.modalInfoText}>
               Data de Fim: {data.data_fim}
             </Text>
+            <TouchableOpacity
+              onPress={downloadArquivo}
+              style={styles.resultButton}
+            >
+              <Image source={calendar} style={{ height: 20, width: 20 }} />
+              <Text style={styles.resultButtonText}>{data.result}</Text>
+            </TouchableOpacity>
             <View style={styles.containerSchedulingButtonInfo}>
               <TouchableOpacity
                 style={styles.schedulingButtonInfo}

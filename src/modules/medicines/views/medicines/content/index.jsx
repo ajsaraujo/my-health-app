@@ -1,13 +1,24 @@
 import React, { useState } from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from '../../../css/medicines'
+import ShedulingInfo from '../../info/schedule'
 
 const calendar = require('../../../img/calendar_schedule-icon.png')
 const hour = require('../../../img/hourIcon.png')
 
 export default function Content({ data }) {
+  const [showModalChoice, setShowModalChoice] = useState(false)
+
+  const handlePress = () => {
+    setShowModalChoice(true)
+    console.log(data)
+  }
+
   return (
-    <TouchableOpacity style={styles.containerMedicinesContent}>
+    <TouchableOpacity
+      style={styles.containerMedicinesContent}
+      onPress={handlePress}
+    >
       <Text style={styles.nameContentText}>{data.nome}</Text>
       <View style={styles.calendarDate}>
         <Image source={calendar} style={styles.calendarIcon} />
@@ -24,6 +35,11 @@ export default function Content({ data }) {
           {data.horario.replace(':', 'h')}
         </Text>
       </View>
+      <ShedulingInfo
+        visible={showModalChoice}
+        onClose={() => setShowModalChoice(false)}
+        data={data}
+      />
     </TouchableOpacity>
   )
 }

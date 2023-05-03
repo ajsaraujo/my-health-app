@@ -16,19 +16,30 @@ const ShedulingInfo = ({ visible, onClose, data }) => {
       onRequestClose={onClose}
       transparent
     >
-      <TouchableWithoutFeedback onPress={onClose}>
+      <TouchableWithoutFeedback>
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
             <Text style={styles.modalTitle}>Informações</Text>
-            <Text>{data.hour}</Text>
-            <Text>{data.function}</Text>
-            <Text>{data.description}</Text>
-            <Text>{data.dataInicio}</Text>
-            <Text>{data.dataFinal}</Text>
-            <Text>{data.periodo}</Text>
-            <View style={styles.containerSchedulingButton}>
+            <Text style={styles.modalInfoText}>Nome: {data.nome}</Text>
+            <Text style={styles.modalInfoText}>
+              Descrição: {data.descricao}
+            </Text>
+            <Text style={styles.modalInfoText}>Horário: {data.horario}</Text>
+            {data.funcao ? (
+              <Text style={styles.modalInfoText}>Função: {data.funcao}</Text>
+            ) : (
+              <Text style={styles.modalInfoText}>Local: {data.local}</Text>
+            )}
+            <Text style={styles.modalInfoText}>Período: {data.periodo}</Text>
+            <Text style={styles.modalInfoText}>
+              Data de Início: {data.data_inicio}
+            </Text>
+            <Text style={styles.modalInfoText}>
+              Data de Fim: {data.data_fim}
+            </Text>
+            <View style={styles.containerSchedulingButtonInfo}>
               <TouchableOpacity
-                style={styles.schedulingButton}
+                style={styles.schedulingButtonInfo}
                 onPress={onClose}
               >
                 <Text style={styles.schedulingButtonText}>Fechar</Text>

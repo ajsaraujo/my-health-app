@@ -32,6 +32,8 @@ async function getMedicines() {
         id: dado.id,
         nome: dado.nomeMedicamento,
         funcao: dado.funcMedicamento,
+        descricao: dado.descMedicamento,
+        periodo: dado.periodo,
         data_inicio: dado.dataInicio,
         data_fim: dado.dataFinal,
         horario: dado.hour,

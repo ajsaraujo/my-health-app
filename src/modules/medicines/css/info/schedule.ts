@@ -34,6 +34,10 @@ export const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
   },
+  containerSchedulingButtonInfo: {
+    width: '100%',
+    alignItems: 'center',
+  },
   schedulingButton: {
     justifyContent: 'center',
     backgroundColor: GREEN_600,
@@ -41,6 +45,19 @@ export const styles = StyleSheet.create({
     padding: 10,
     margin: 10,
     borderRadius: 20,
+  },
+  schedulingButtonInfo: {
+    justifyContent: 'center',
+    backgroundColor: GREEN_600,
+    width: '40%',
+    padding: 10,
+    marginBottom: 10,
+    marginTop: 20,
+    borderRadius: 20,
+  },
+  modalInfoText: {
+    fontSize: 16,
+    marginVertical: 5,
   },
   schedulingButtonText: {
     color: '#fff',

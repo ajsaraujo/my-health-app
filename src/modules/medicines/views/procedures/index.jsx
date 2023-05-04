@@ -33,7 +33,7 @@ async function getProcedures() {
         id: dado.id,
         nome: dado.nomeProcedimento,
         local: dado.locProcedimento,
-        descricao: dado.descMedicamento,
+        descricao: dado.descProcedimento,
         periodo: dado.periodo,
         data_inicio: dado.dataInicio,
         data_fim: dado.dataFinal,

@@ -5,7 +5,7 @@ const api = axios.create({
     'Content-Type': 'application/json',
     Accept: 'application/json',
   },
-  baseURL: 'https://a2ca-138-255-87-166.ngrok-free.app/',
+  baseURL: 'https://d691-138-255-87-166.ngrok-free.app/',
 })
 
 export const services = {

@@ -14,6 +14,7 @@ import { GREEN } from '../../shared/ui/colors'
 import { PrimaryButton } from '../../shared/ui/components/PrimaryButton'
 import { ItemListDiary } from '../../shared/ui/components/ItemListDiary'
 import { getRegistrosPaciente } from './infra/services'
+import showError from './helpers/showError'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegistersDiary'>
 
@@ -39,6 +40,7 @@ export default function RegistersDiary(props: DiaryProps) {
   const fetchData = async () => {
     try {
       var response = await getRegistrosPaciente({ idPaciente: 1 })
+      console.log(response.data)
       setListRegisters(response.data)
     } catch (err) {
       showError('Ocorreu um erro', err)

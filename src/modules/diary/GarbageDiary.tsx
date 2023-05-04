@@ -37,7 +37,7 @@ export default function GarbageDiary(props: DiaryProps) {
   const restoreFromGarbage = async (idRegistro) => {
     try {
       var response = await axios.put(
-        `https://a2ca-138-255-87-166.ngrok-free.app/Registro/RestoreFromTrash/0?idRegistro=${idRegistro}`
+        `https://d691-138-255-87-166.ngrok-free.app/Registro/RestoreFromTrash/0?idRegistro=${idRegistro}`
       )
       showSuccess('Sucesso', 'Seu registro foi restaurado com sucesso!')
     } catch (err) {

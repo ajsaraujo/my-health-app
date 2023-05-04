@@ -60,13 +60,13 @@ export default function RegisterNote(props: DiaryProps) {
       }
       if (lastScreen == 'Diário') {
         var response = await axios.post(
-          `https://a2ca-138-255-87-166.ngrok-free.app/Registro/AddRegistro`,
+          `https://d691-138-255-87-166.ngrok-free.app/Registro/AddRegistro`,
           { relato, pacienteId: 1 }
         )
         showSuccess('Sucesso', 'Seu registro foi salvo com sucesso!')
       } else {
         var response = await axios.put(
-          `https://a2ca-138-255-87-166.ngrok-free.app/Registro/UpdateRegistro`,
+          `https://d691-138-255-87-166.ngrok-free.app/Registro/UpdateRegistro`,
           { relato, id: props.route.params.id }
         )
         showSuccess('Sucesso', 'Seu registro foi atualizado com sucesso!')

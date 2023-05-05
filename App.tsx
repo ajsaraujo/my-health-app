@@ -15,6 +15,7 @@ import { Login } from './src/modules/login/pages/Login'
 import RegisterDiary from './src/modules/diary/RegistersDiary'
 import RegisterNote from './src/modules/diary/RegisterNote'
 import GarbageDiary from './src/modules/diary/GarbageDiary'
+import { LoadingInterceptor } from './src/shared/ui/components/loading/LoadingInterceptor'
 
 const Stack = createNativeStackNavigator<RouteParams>()
 
@@ -35,61 +36,64 @@ export default function App() {
   }
 
   return (
-    <NavigationContainer
-      theme={{
-        ...DefaultTheme,
-        colors: {
-          ...DefaultTheme.colors,
-          background: 'white',
-        },
-      }}
-    >
-      {/* Definição de rotas do aplicativo */}
-      <Stack.Navigator initialRouteName="Login">
-        {/* Tela de login */}
-        <Stack.Screen
-          name="Login"
-          component={Login}
-          options={{ headerShown: false }}
-        ></Stack.Screen>
-
-        {/* Tela principal (Home) */}
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ ...TITLE_STYLES, title: 'My Health' }}
-        ></Stack.Screen>
-
-        {/* Módulos */}
-        {Object.values(MyHealthModule).map((module) => (
+    <>
+      <LoadingInterceptor></LoadingInterceptor>
+      <NavigationContainer
+        theme={{
+          ...DefaultTheme,
+          colors: {
+            ...DefaultTheme.colors,
+            background: 'white',
+          },
+        }}
+      >
+        {/* Definição de rotas do aplicativo */}
+        <Stack.Navigator initialRouteName="Login">
+          {/* Tela de login */}
           <Stack.Screen
-            key={module}
-            name={module}
-            component={components[module]}
-            options={TITLE_STYLES}
+            name="Login"
+            component={Login}
+            options={{ headerShown: false }}
           ></Stack.Screen>
-        ))}
 
-        <Stack.Screen
-          key={'RegistersDiary'}
-          name={'RegistersDiary'}
-          component={RegisterDiary}
-          options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
-        ></Stack.Screen>
+          {/* Tela principal (Home) */}
+          <Stack.Screen
+            name="Home"
+            component={Home}
+            options={{ ...TITLE_STYLES, title: 'My Health' }}
+          ></Stack.Screen>
 
-        <Stack.Screen
-          key={'RegisterNote'}
-          name={'RegisterNote'}
-          component={RegisterNote}
-          options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
-        ></Stack.Screen>
-        <Stack.Screen
-          key={'GarbageDiary'}
-          name={'GarbageDiary'}
-          component={GarbageDiary}
-          options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
-        ></Stack.Screen>
-      </Stack.Navigator>
-    </NavigationContainer>
+          {/* Módulos */}
+          {Object.values(MyHealthModule).map((module) => (
+            <Stack.Screen
+              key={module}
+              name={module}
+              component={components[module]}
+              options={TITLE_STYLES}
+            ></Stack.Screen>
+          ))}
+
+          <Stack.Screen
+            key={'RegistersDiary'}
+            name={'RegistersDiary'}
+            component={RegisterDiary}
+            options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
+          ></Stack.Screen>
+
+          <Stack.Screen
+            key={'RegisterNote'}
+            name={'RegisterNote'}
+            component={RegisterNote}
+            options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
+          ></Stack.Screen>
+          <Stack.Screen
+            key={'GarbageDiary'}
+            name={'GarbageDiary'}
+            component={GarbageDiary}
+            options={{ ...TITLE_STYLES, title: 'Diário de Saúde' }}
+          ></Stack.Screen>
+        </Stack.Navigator>
+      </NavigationContainer>
+    </>
   )
 }

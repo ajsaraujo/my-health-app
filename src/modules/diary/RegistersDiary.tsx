@@ -18,18 +18,6 @@ import showError from './helpers/showError'
 
 type DiaryProps = NativeStackScreenProps<RouteParams, 'RegistersDiary'>
 
-const listaRegistros = [
-  { label: 'Data do registro \r\n01/01/2023', id: 1, key: 1 },
-  { label: 'Data do registro \r\n02/02/2023', id: 2, key: 2 },
-  { label: 'Data do registro \r\n03/03/2023', id: 3, key: 3 },
-  { label: 'Data do registro \r\n04/04/2023', id: 4, key: 4 },
-  { label: 'Data do registro \r\n05/05/2023', id: 5, key: 5 },
-  { label: 'Data do registro \r\n06/06/2023', id: 6, key: 6 },
-  { label: 'Data do registro \r\n07/07/2023', id: 7, key: 7 },
-  { label: 'Data do registro \r\n08/08/2023', id: 8, key: 8 },
-  { label: 'Data do registro \r\n09/09/2023', id: 9, key: 9 },
-]
-
 export default function RegistersDiary(props: DiaryProps) {
   const [listRegisters, setListRegisters] = useState([])
 

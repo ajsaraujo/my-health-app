@@ -61,7 +61,7 @@ export default function Diary(props: DiaryProps) {
     var listaRegistros = []
     try {
       var user = await axios.get(
-        'https://d691-138-255-87-166.ngrok-free.app/Paciente/Get/1'
+        'https://e0fb-138-255-87-166.ngrok-free.app/Paciente/Get/1'
       )
       setUserData(user.data)
       console.log('dados do usuario: ', userData)

@@ -52,7 +52,7 @@ export function ItemListDiary({ ...props }) {
   const sendGarbage = async (idRegistro) => {
     try {
       var response = await axios.put(
-        `https://d691-138-255-87-166.ngrok-free.app/Registro/MoveToLixeira/${idRegistro}`
+        `https://e0fb-138-255-87-166.ngrok-free.app/Registro/MoveToLixeira/${idRegistro}`
       )
       showSuccess(
         'Sucesso',
@@ -66,7 +66,7 @@ export function ItemListDiary({ ...props }) {
   const deleteRegister = async (idRegistro) => {
     try {
       var response = await axios.delete(
-        `https://d691-138-255-87-166.ngrok-free.app/Registro/DeleteFromTrash/0?idRegistro=${idRegistro}`
+        `https://e0fb-138-255-87-166.ngrok-free.app/Registro/DeleteFromTrash/0?idRegistro=${idRegistro}`
       )
       showSuccess('Sucesso', 'Seu registro foi atualizado com sucesso!')
     } catch (err) {

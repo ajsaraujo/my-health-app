@@ -33,7 +33,7 @@ export const RED_700 = '#D32F2F'
 export const RED_800 = '#C62828'
 export const RED_900 = '#B71C1C'
 
-export const GREEN = GREEN_400
+export const GREEN = GREEN_600
 export const RED = RED_400
 export const LIGHT_GRAY = GRAY_200
 export const LIGHT_BLACK = GRAY_900

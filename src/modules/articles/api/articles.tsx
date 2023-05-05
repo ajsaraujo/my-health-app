@@ -1,11 +1,9 @@
 import { getSession } from '@shared/services/auth'
 import { genericFailure, Result, success } from '@shared/utils/result/result'
 import axios from 'axios'
-import { config } from 'src/config'
 
 import { Article } from '../interfaces/Article'
 import { config } from 'src/config'
-import { getSession } from '@shared/services/auth/session'
 
 const URL = `${config.mainAPIUrl}/article`
 
@@ -17,8 +15,6 @@ async function fetchToken() {
   }
   return null
 }
-
-const URL = `${config.mainAPIUrl}/article`
 
 let articles: Article[] | null = null
 

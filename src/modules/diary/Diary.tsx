@@ -53,7 +53,7 @@ export default function Diary(props: DiaryProps) {
       icon: lixeira,
       key: 4,
       id: 4,
-      pressFunction: () => props.navigation.navigate('RegistersDiary'),
+      pressFunction: () => props.navigation.navigate('GarbageDiary'),
     },
   ]
 
